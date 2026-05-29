@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Chúc Bé Vui Học Tiếng Việt</title>
+    
+    <script>
+        window.KHO_GOC_AUTHOR = {
+            tuvung: [
+                { text: "Con kiến" },
+                { text: "Trái banh" },
+                { text: "Bông hoa" },
+                { text: "Con mèo" },
+                { text: "Ngôi sao" }
+            ],
+            cauvan: [
+                { text: "Chúc bé vui học Tiếng Việt chăm ngoan mỗi ngày" },
+                { text: "Em yêu trường em" },
+                { text: "Bé ngoan nghe lời ông bà cha mẹ" }
+            ]
+        };
+    </script>
+
+    <script src="data.js"></script>
+
     <style>
         :root {
             --color-dau: #E63946;
@@ -12,167 +32,76 @@
             --color-btn: #457B9D;
             --color-accent: #A8DADC;
         }
-        
         * { box-sizing: border-box; }
-
         body { 
-            font-family: 'Segoe UI', Arial, sans-serif; 
-            background: var(--color-bg); 
-            margin: 0; 
-            padding: 0; 
-            text-align: center; 
-            color: #333; 
-            -webkit-user-select: none; 
-            user-select: none; 
-            overflow: hidden !important; 
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-family: 'Segoe UI', Arial, sans-serif; background: var(--color-bg); margin: 0; padding: 0; 
+            text-align: center; color: #333; -webkit-user-select: none; user-select: none; 
+            overflow: hidden !important; height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center;
         }
-
         .container { 
-            width: 100%;
-            max-width: 600px; 
-            height: 100vh;
-            max-height: 100vh;
-            margin: auto; 
-            background: white; 
-            padding: clamp(6px, 1.5vh, 12px); 
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1); 
-            position: relative; 
-            z-index: 10; 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; 
-            overflow: hidden;
+            width: 100%; max-width: 600px; height: 100vh; max-height: 100vh; margin: auto; background: white; 
+            padding: clamp(6px, 1.5vh, 12px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); position: relative; 
+            z-index: 10; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
         }
-        
         .title-wrap { width: 100%; overflow: hidden; margin: 2px 0; flex-shrink: 0; }
         h1 { color: var(--color-dau); margin: 0; font-size: clamp(1.1rem, 2.5vh, 1.5rem); text-shadow: 1px 1px 2px rgba(0,0,0,0.1); white-space: nowrap; display: inline-block; }
-        
         #fw-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999; }
-
         .status-bar { 
-            display: flex; justify-content: space-between; align-items: center; 
-            background: var(--color-accent); padding: clamp(4px, 1vh, 6px) 12px; border-radius: 30px; 
-            font-weight: bold; margin-bottom: 4px; font-size: clamp(0.75rem, 1.8vh, 0.9rem); flex-shrink: 0;
+            display: flex; justify-content: space-between; align-items: center; background: var(--color-accent); 
+            padding: clamp(4px, 1vh, 6px) 12px; border-radius: 30px; font-weight: bold; margin-bottom: 4px; font-size: clamp(0.75rem, 1.8vh, 0.9rem); flex-shrink: 0;
         }
         .status-bar .profile-area { display: flex; align-items: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .btn-edit-profile { background: none; border: none; cursor: pointer; font-size: 1.1rem; margin-left: 4px; padding: 0; flex-shrink: 0; }
-        
-        /* HÀNG NÚT CHỌN GAME 1 - 6 */
-        .mode-selector { 
-            display: flex; 
-            justify-content: center; 
-            gap: clamp(4px, 2vw, 10px); 
-            margin: 6px 0; 
-            width: 100%; 
-            flex-shrink: 0; 
-        }
+        .mode-selector { display: flex; justify-content: center; gap: clamp(4px, 2vw, 10px); margin: 6px 0; width: 100%; flex-shrink: 0; }
         .btn-mode { 
-            width: clamp(32px, 5vh, 42px);
-            height: clamp(32px, 5vh, 42px);
-            border: none; 
-            border-radius: 50%; 
-            background: #ddd; 
-            cursor: pointer; 
-            font-weight: bold; 
-            font-size: clamp(0.95rem, 2.2vh, 1.15rem); 
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            box-shadow: 0 3px 0 #bbb;
-            transition: all 0.1s;
+            width: clamp(32px, 5vh, 42px); height: clamp(32px, 5vh, 42px); border: none; border-radius: 50%; 
+            background: #ddd; cursor: pointer; font-weight: bold; font-size: clamp(0.95rem, 2.2vh, 1.15rem); 
+            display: flex; justify-content: center; align-items: center; box-shadow: 0 3px 0 #bbb; transition: all 0.1s;
         }
-        .btn-mode.active { 
-            background: var(--color-btn); 
-            color: white; 
-            box-shadow: 0 3px 0 #2b4f66;
-        }
+        .btn-mode.active { background: var(--color-btn); color: white; box-shadow: 0 3px 0 #2b4f66; }
         .btn-mode:active { transform: translateY(2px); box-shadow: none; }
-
         .game-instruction { font-size: clamp(0.85rem, 2vh, 1.05rem); font-weight: bold; margin-bottom: 4px; color: #1D3557; flex-shrink: 0; min-height: 24px; }
-
         .game-panel { 
-            flex: 1; 
-            min-height: 80px; 
-            background: #fafafa; 
-            border: 3px dashed var(--color-btn); 
-            border-radius: 15px; 
-            padding: 6px; 
-            position: relative; 
-            overflow: hidden; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
+            flex: 1; min-height: 80px; background: #fafafa; border: 3px dashed var(--color-btn); border-radius: 15px; 
+            padding: 6px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; 
         }
-        
         .syllable { 
-            font-size: clamp(1.8rem, 6vh, 3.3rem); 
-            font-weight: bold; display: inline-block; margin: 2px; padding: 2px 8px; 
+            font-size: clamp(1.8rem, 6vh, 3.3rem); font-weight: bold; display: inline-block; margin: 2px; padding: 2px 8px; 
             background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 2px solid transparent; 
         }
         .slot-clickable { cursor: pointer; border: 2px dashed #999; border-radius: 8px; display: inline-block; margin: 2px; }
         .slot-clickable:hover { border-color: var(--color-dau); background: #ffe3e3; }
         .part-dau { color: var(--color-dau); }
         .part-van { color: var(--color-van); }
-        
         .feedback { font-size: clamp(0.9rem, 2vh, 1.10rem); font-weight: bold; margin: 2px 0; height: 22px; color: #2a9d8f; flex-shrink: 0; }
-
         .interactive-zone { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-top: 4px; min-height: 45px; width: 100%; flex-shrink: 0; align-items: center; }
-        
         .block { 
-            padding: clamp(4px, 1.1vh, 8px) clamp(8px, 1.8vw, 14px); 
-            font-size: clamp(0.9rem, 2.8vh, 1.2rem); 
+            padding: clamp(4px, 1.1vh, 8px) clamp(8px, 1.8vw, 14px); font-size: clamp(0.9rem, 2.8vh, 1.2rem); 
             font-weight: bold; background: white; border: 2px solid #ccc; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 0 #bbb; transition: all 0.1s; margin: 2px;
         }
         .block:active { transform: translateY(4px); box-shadow: none; }
-        
-        /* Popup Styles */
-        .profile-edit-box, .db-manager-overlay, .bxh-overlay {
-            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;
-        }
-        .profile-popup {
-            width: 95%; max-width: 480px; background: #eef2f3; border-radius: 15px; padding: 15px; display: flex; flex-direction: column; gap: 8px; max-height: 90vh; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        
-        /* TAB STYLE CHO KHO TỪ VỰNG */
+        .profile-edit-box, .db-manager-overlay, .bxh-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
+        .profile-popup { width: 95%; max-width: 500px; background: #eef2f3; border-radius: 15px; padding: 15px; display: flex; flex-direction: column; gap: 8px; max-height: 95vh; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
         .db-tabs { display: flex; gap: 4px; margin-top: 4px; }
         .db-tab-btn { flex: 1; padding: 6px; border: none; background: #ccc; font-weight: bold; cursor: pointer; border-radius: 6px 6px 0 0; font-size: 0.85rem; }
         .db-tab-btn.active { background: white; color: #1b4332; border-bottom: 2px solid #1b4332; }
-        .db-list-container { text-align: left; margin-top: 0; font-size: 0.85rem; overflow-y: auto; flex: 1; background: #fff; padding: 8px; border-radius: 0 0 8px 8px; border: 1px solid #bbb; }
-        .db-item-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px dashed #eee; text-align: left; }
-
-        .emoji-scroll { overflow-y: auto; max-height: 25vh; padding: 6px; border: 2px dashed #aaa; border-radius: 10px; background: #fff; }
+        .db-list-container { text-align: left; margin-top: 0; font-size: 0.85rem; overflow-y: auto; flex: 1; background: #fff; padding: 8px; border-radius: 0 0 8px 8px; border: 1px solid #bbb; min-height: 180px; }
+        .db-item-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px dashed #eee; }
+        .emoji-scroll { overflow-y: auto; max-height: 20vh; padding: 6px; border: 2px dashed #aaa; border-radius: 10px; background: #fff; }
         .emoji-group { margin-bottom: 5px; padding: 5px; border-radius: 8px; background: #f7f7f7; text-align: left; }
         .emoji-select { cursor: pointer; font-size: 20px; padding: 3px; display: inline-block; }
         .emoji-select.selected { background: var(--color-accent); border-radius: 5px; }
-        .emoji-divider { height: 1px; background: #ddd; margin: 6px 0; }
-        .emoji-group-title { font-weight: bold; margin: 4px 0; font-size: 13px; color: #444; text-align: left; }
-
+        .emoji-group-title { font-weight: bold; margin: 4px 0; font-size: 13px; color: #444; }
         .bxh-table { width: 100%; margin-top: 5px; border-collapse: collapse; text-align: left; font-size: 0.85rem; }
         .bxh-table th, .bxh-table td { padding: 6px; border-bottom: 1px solid #ddd; }
         .bxh-table tr:nth-child(even) { background-color: #f9f9f9; }
-        .share-btn-group { display: flex; gap: 5px; justify-content: center; margin: 4px 0; }
-        .btn-action { background: #2a9d8f; color: white; border: none; padding: 6px 12px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 0.85rem; }
         input { padding: 6px; width: 100%; border-radius: 8px; border: 1px solid #ccc; margin-top: 4px; }
-
-        /* Game Ghép Cặp */
         .matching-container { display: flex; width: 100%; height: 100%; justify-content: space-between; gap: 10px; }
         .matching-column { flex: 1; display: flex; flex-direction: column; gap: 6px; justify-content: center; }
-        .matching-item { 
-            background: white; border: 2px solid #ccc; border-radius: 10px; text-align: center;
-            font-weight: bold; cursor: pointer; box-shadow: 0 3px 0 #bbb; transition: all 0.1s;
-            user-select: none;
-        }
+        .matching-item { background: white; border: 2px solid #ccc; border-radius: 10px; text-align: center; font-weight: bold; cursor: pointer; box-shadow: 0 3px 0 #bbb; transition: all 0.1s; user-select: none; }
         .matching-item:active { transform: translateY(2px); box-shadow: 0 1px 0 #bbb; }
         .matching-item.selected { background-color: var(--color-accent) !important; border-color: var(--color-btn) !important; }
         .matching-item.matched { cursor: default; pointer-events: none; box-shadow: none; transform: none; }
-
-        /* Chữ rơi */
         .falling-word { position: absolute; cursor: pointer; z-index: 50; animation: custom-pulse 1s infinite alternate; }
         @keyframes custom-pulse { from { transform: scale(1); } to { transform: scale(1.03); } }
     </style>
@@ -195,7 +124,6 @@
         </div>
     </div>
 
-    <!-- HÀNG NÚT ĐIỀU HƯỚNG TỪ GAME 1 ĐẾN GAME 6 -->
     <div class="mode-selector">
         <button class="btn-mode active" id="mode-ghep-chu" onclick="switchMode('ghep-chu', event)">1</button>
         <button class="btn-mode" id="mode-ghep-cau" onclick="switchMode('ghep-cau', event)">2</button>
@@ -211,12 +139,11 @@
     <div class="interactive-zone" id="interactive-zone"></div>
 </div>
 
-<!-- POPUP ĐỔI TÊN -->
 <div class="profile-edit-box" id="profile-edit-box">
     <div class="profile-popup">
         <div style="font-size:35px; text-align:center;" id="player-avatar-preview">😀</div>
         <input type="text" id="nickname-input" placeholder="Đổi tên của bé...">
-        <button class="btn-action" onclick="saveNewProfile()" style="width:100%; margin-top:5px;">Lưu Hồ Sơ 💾</button>
+        <button class="btn-action" onclick="saveNewProfile()" style="width:100%; margin-top:5px; background:#457B9D; color:white; border:none; padding:8px; border-radius:8px; font-weight:bold; cursor:pointer;">Lưu Hồ Sơ 💾</button>
         <div class="emoji-scroll">
             <div class="emoji-group-title">😄 Mặt cười</div>
             <div class="emoji-group">
@@ -224,72 +151,60 @@
                 <span class="emoji-select" onclick="changeEmoji('😃')">😃</span>
                 <span class="emoji-select" onclick="changeEmoji('😄')">😄</span>
             </div>
-            <div class="emoji-divider"></div>
             <div class="emoji-group-title">🐱 Mèo cảm xúc</div>
             <div class="emoji-group">
                 <span class="emoji-select" onclick="changeEmoji('😺')">😺</span>
                 <span class="emoji-select" onclick="changeEmoji('😸')">😸</span>
             </div>
         </div>
-        <button class="btn-action" onclick="toggleEditProfile()" style="background:#555;">Đóng</button>
+        <button class="btn-action" onclick="toggleEditProfile()" style="background:#555; color:white; border:none; padding:6px; border-radius:8px; cursor:pointer;">Đóng</button>
     </div>
 </div>
 
-<!-- POPUP QUẢN LÝ TỪ VỰNG PHÂN TÁCH 2 TAB CHUẨN CÓ SỐ THỨ TỰ CANH TRÁI -->
 <div class="db-manager-overlay" id="db-manager-overlay">
     <div class="profile-popup">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h4 style="margin:0; color:#1b4332;">⚙️ Kho Từ Vựng Phụ Huynh</h4>
-            <button class="btn-action" onclick="toggleDatabaseManager()" style="background:#555; padding: 2px 8px;">X</button>
+            <h4 style="margin:0; color:#1b4332;"> Kho Từ Vựng Phụ Huynh (Offline)</h4>
+            <button class="btn-action" onclick="toggleDatabaseManager()" style="background:#555; padding: 2px 8px; color:white; border:none; border-radius:4px; cursor:pointer;">X</button>
         </div>
         
-        <input type="text" id="new-sentence-input" placeholder="Nhập từ hoặc câu mới vào đây...">
+        <input type="text" id="new-sentence-input" placeholder="Nhập từ hoặc câu để bé học thêm...">
         <div style="display:flex; gap:4px; margin-top:4px;">
-            <button class="btn-action" onclick="addNewItemFromInput()" style="flex:1; background:#1b4332;">Thêm Tự Động ➕</button>
-            <button class="btn-action" onclick="resetDatabase()" style="background:#e63946; font-size:0.75rem;">Reset Gốc</button>
+            <button class="btn-action" onclick="addNewItemFromInput()" style="flex:1; background:#1b4332; color:white; border:none; padding:6px; border-radius:8px; font-weight:bold; cursor:pointer;">Thêm Câu Học ➕</button>
+            <button class="btn-action" onclick="resetDatabase()" style="background:#e63946; font-size:0.75rem; color:white; border:none; padding:6px; border-radius:8px; cursor:pointer;">Xóa Câu Thêm</button>
         </div>
 
-        <!-- Thanh tiêu đề chuyển đổi 2 Tab -->
         <div class="db-tabs">
-            <button class="db-tab-btn active" id="tab-btn-tu" onclick="switchDbTab('tu')">Từ Vựng (G6)</button>
+            <button class="db-tab-btn active" id="tab-btn-tu" onclick="switchDbTab('tu')">Từ Vựng</button>
             <button class="db-tab-btn" id="tab-btn-cau" onclick="switchDbTab('cau')">Câu Văn</button>
         </div>
-        <!-- Vùng hiển thị danh sách có Số thứ tự và Căn lề trái -->
         <div class="db-list-container" id="db-list-words"></div>
     </div>
 </div>
 
-<!-- POPUP BXH -->
 <div class="bxh-overlay" id="bxh-overlay">
     <div class="profile-popup">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <h3 style="margin:0;">Bảng Xếp Hạng 🏆</h3>
-            <button class="btn-action" onclick="closeBXHOverlay()" style="background:#555; padding: 2px 8px;">X</button>
+            <button class="btn-action" onclick="closeBXHOverlay()" style="background:#555; padding: 2px 8px; color:white; border:none; border-radius:4px; cursor:pointer;">X</button>
         </div>
-        <div style="overflow-y: auto; max-height: 35vh; margin-top: 5px;">
+        <div style="overflow-y: auto; max-height: 50vh; margin-top: 5px;">
             <table class="bxh-table">
-                <thead><tr><th>Hạng</th><th>ID</th><th>Người Chơi</th><th>Điểm</th></tr></thead>
+                <thead><tr><th>Hạng</th><th>Mã Số Bé</th><th>Người Chơi</th><th>Điểm</th></tr></thead>
                 <tbody id="bxh-body"></tbody>
             </table>
         </div>
-        <div style="font-weight: bold; font-size: 0.8rem; color: #555; margin-top: 4px;">CHIA SẺ DỮ LIỆU:</div>
-        <div class="share-btn-group">
-            <button class="btn-action" onclick="exportCode('HXH')">Mã BXH 📤</button>
-            <button class="btn-action" onclick="exportCode('DATA')" style="background:#457B9D">Mã Bài Học 📚</button>
-        </div>
-        <input type="text" id="import-input" placeholder="Dán mã nhận vào đây...">
-        <button class="btn-action" style="background:#e76f51; width: 100%; margin-top: 4px;" onclick="importCode()">Nhận Kết Nối 📥</button>
     </div>
 </div>
 
 <script>
+// KHỞI TẠO HỒ SƠ AN TOÀN
 function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         let r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
 }
-
 const myProfile = {
     id: localStorage.getItem('vngame_global_id') || generateUUID(),
     nickname: localStorage.getItem('vngame_nickname_v2') || "Bé Yêu",
@@ -298,113 +213,28 @@ const myProfile = {
 localStorage.setItem('vngame_global_id', myProfile.id);
 let tempEmoji = myProfile.emoji;
 
-function autoScaleTitle() {
-    const title = document.getElementById('main-title');
-    const wrap = title.parentElement;
-    if (!title || !wrap) return;
-    title.style.fontSize = "1.4rem"; 
-    let maxWidth = wrap.clientWidth;
-    let currentWidth = title.scrollWidth;
-    if (currentWidth > maxWidth) title.style.fontSize = ((maxWidth / currentWidth) * 1.3) + "rem";
+// ĐỌC TRỘN DỮ LIỆU AN TOÀN
+let userAddedTuVung = JSON.parse(localStorage.getItem('user_db_tuvung')) || [];
+let userAddedCauVan = JSON.parse(localStorage.getItem('user_db_cauvan')) || [];
+let currentActiveTuVung = [];
+let currentActiveCauVan = [];
+
+function reloadAndMergeDatabase() {
+    // Đọc từ kho KHO_GOC_AUTHOR (cho dù nó lấy từ HTML hay từ file data.js nạp vào)
+    let originTu = (window.KHO_GOC_AUTHOR && window.KHO_GOC_AUTHOR.tuvung) ? window.KHO_GOC_AUTHOR.tuvung : [{text: "Vui học"}];
+    let originCau = (window.KHO_GOC_AUTHOR && window.KHO_GOC_AUTHOR.cauvan) ? window.KHO_GOC_AUTHOR.cauvan : [{text: "Chúc bé vui học mỗi ngày"}];
+
+    currentActiveTuVung = [...originTu, ...userAddedTuVung];
+    currentActiveCauVan = [...originCau, ...userAddedCauVan];
 }
-window.addEventListener('resize', autoScaleTitle);
-
-// AUDIO CODE
-let audioCtx = null;
-function initAudio() { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
-function playSound(type) {
-    initAudio(); if (!audioCtx) return;
-    const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
-    osc.connect(gain); gain.connect(audioCtx.destination);
-    if (type === 'correct') {
-        osc.frequency.setValueAtTime(600, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.15);
-        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-        osc.start(); osc.stop(audioCtx.currentTime + 0.15);
-    } else if (type === 'milestone') {
-        let now = audioCtx.currentTime; osc.frequency.setValueAtTime(523.25, now);
-        osc.frequency.setValueAtTime(659.25, now + 0.1); osc.frequency.setValueAtTime(783.99, now + 0.2);
-        gain.gain.setValueAtTime(0.2, now); osc.start(); osc.stop(now + 0.4);
-    } else if (type === 'wrong') {
-        osc.type = 'sawtooth'; osc.frequency.setValueAtTime(220, audioCtx.currentTime);
-        gain.gain.setValueAtTime(0.1, audioCtx.currentTime); osc.start(); osc.stop(audioCtx.currentTime + 0.2);
-    }
-}
-
-// CANVAS PHÁO HOA
-const canvas = document.getElementById('fw-canvas'); const ctx = canvas.getContext('2d');
-let particles = [];
-function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-window.addEventListener('resize', resizeCanvas); resizeCanvas();
-
-function createFirework() {
-    playSound('milestone'); let x = Math.random() * canvas.width; let y = canvas.height * 0.4;
-    let colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
-    let color = colors[Math.floor(Math.random() * colors.length)];
-    for (let i = 0; i < 40; i++) {
-        let angle = Math.random() * Math.PI * 2; let speed = Math.random() * 4 + 2;
-        particles.push({ x: x, y: y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, alpha: 1, color: color });
-    }
-}
-function updateFireworks() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = particles.length - 1; i >= 0; i--) {
-        let p = particles[i]; p.x += p.vx; p.y += p.vy; p.vy += 0.05; p.alpha -= 0.02;
-        if (p.alpha <= 0) { particles.splice(i, 1); continue; }
-        ctx.save(); ctx.globalAlpha = p.alpha; ctx.beginPath(); ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
-        ctx.fillStyle = p.color; ctx.fill(); ctx.restore();
-    }
-    requestAnimationFrame(updateFireworks);
-}
-requestAnimationFrame(updateFireworks);
-
-function triggerCelebration() {
-    let count = 0;
-    let interval = setInterval(() => { createFirework(); count++; if (count >= 4) clearInterval(interval); }, 250);
-}
-
-// LOGIC TÁCH PHỤ ÂM ĐẦU & VẦN
-function autoSplitSyllable(word) {
-    if (!word) return ["", ""];
-    const complexOnsets = ["ngh", "gh", "kh", "nh", "th", "ch", "tr", "ng", "ph", "gi", "qu"];
-    let lowerWord = word.toLowerCase();
-    for (let onset of complexOnsets) { if (lowerWord.startsWith(onset)) return [word.substr(0, onset.length), word.substr(onset.length)]; }
-    if ("bcdđghklmnpqrstvx".includes(lowerWord[0])) return [word.substr(0, 1), word.substr(1)];
-    return ["", word];
-}
-
-function convertSentenceToStructured(sentence) {
-    return sentence.trim().split(/\s+/).map(w => autoSplitSyllable(w));
-}
-
-// KHO DỮ LIỆU GỐC ĐƯỢC CHIA THÀNH 2 KHO RIÊNG BIỆT (TỪ VỰNG VÀ CÂU VĂN)
-const defaultTuVung = [
-    { text: "Con kiến", structured: [["C", "on"], ["ki", "ến"]] },
-    { text: "Trái banh", structured: [["Tr", "ái"], ["b", "anh"]] },
-    { text: "Ngôi nhà", structured: [["Ng", "ôi"], ["nh", "à"]] },
-    { text: "Xe đạp", structured: [["X", "e"], ["đ", "ạp"]] },
-    { text: "Con cá", structured: [["c", "on"], ["c", "á"]] }
-];
-
-const defaultCauVan = [
-    { text: "Chúc bé vui học Tiếng Việt chăm ngoan mỗi ngày", structured: [["Ch", "úc"], ["b", "é"], ["v", "ui"], ["h", "ọc"], ["T", "iếng"], ["V", "iệt"], ["ch", "ăm"], ["ng", "oan"], ["m", "ỗi"], ["ng", "ày"]] },
-    { text: "Yêu Tổ quốc yêu đồng bào học tập tốt", structured: [["Y", "êu"], ["T", "ổ"], ["qu", "ốc"], ["y", "êu"], ["đ", "ồng"], ["b", "ào"], ["h", "ọc"], ["t", "ập"], ["t", "ốt"]] },
-    { text: "Bầu ơi thương lấy bí cùng tuy rằng khác giống", structured: [["B", "ầu"], ["ơi", ""], ["th", "ương"], ["l", "ấy"], ["b", "í"], ["c", "ùng"], ["tu", "y"], ["r", "ằng"], ["kh", "ác"], ["gi", "ống"]] },
-    { text: "Ăn quả nhớ kẻ trồng cây ăn khoai nhớ kẻ", structured: [["Ă", "n"], ["qu", "ả"], ["nh", "ớ"], ["k", "ẻ"], ["tr", "ồng"], ["c", "ây"], ["ă", "n"], ["kh", "oai"], ["nh", "ớ"], ["k", "ẻ"]] }
-];
-
-let dbTuVung = JSON.parse(localStorage.getItem('vngame_db_tuvung')) || defaultTuVung;
-let dbCauVan = JSON.parse(localStorage.getItem('vngame_db_cauvan')) || defaultCauVan;
 
 let currentMode = 'ghep-chu'; 
 let currentItem = null;
-let currentTabActive = 'tu'; // Tab mặc định khi mở popup: 'tu' hoặc 'cau'
-
+let currentTabActive = 'tu'; 
 let score = 0; let loopInterval = null; let isLocking = false; let ghepCauTimer = null;
 let selectedLeft = null; let selectedRight = null; let activePairsCount = 0; let matchColorIndex = 0;
 const pairColors = ["#E63946", "#E67E22", "#FFB703", "#2A9D8F", "#8338EC"];
 
-// QUẢN LÝ POPUP & ĐỔI TAB DỮ LIỆU
 function toggleDatabaseManager() {
     let box = document.getElementById('db-manager-overlay');
     box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
@@ -421,128 +251,137 @@ function switchDbTab(tabName) {
 function renderCurrentDBList() {
     let listDiv = document.getElementById('db-list-words'); if(!listDiv) return;
     let html = "";
-    let activeDb = (currentTabActive === 'tu') ? dbTuVung : dbCauVan;
-    
-    if(activeDb.length === 0) {
-        html = `<div style="color:#aaa; text-align:center; padding:15px;">Kho trống, vui lòng thêm bài học mới!</div>`;
+    let originTu = (window.KHO_GOC_AUTHOR && window.KHO_GOC_AUTHOR.tuvung) ? window.KHO_GOC_AUTHOR.tuvung : [];
+    let originCau = (window.KHO_GOC_AUTHOR && window.KHO_GOC_AUTHOR.cauvan) ? window.KHO_GOC_AUTHOR.cauvan : [];
+
+    if (currentTabActive === 'tu') {
+        html += `<div style="background:#f1faee; padding:4px; font-weight:bold; font-size:0.75rem;">📌 DỮ LIỆU GỐC HỆ THỐNG (${originTu.length})</div>`;
+        originTu.forEach((d, i) => { html += `<div class="db-item-row" style="opacity:0.75;"><span>${i+1}. ${escapeHTML(d.text)}</span><span style="color:green; font-size:0.7rem;">[Hệ thống]</span></div>`; });
+        
+        html += `<div style="background:#ffe3e3; padding:4px; font-weight:bold; font-size:0.75rem; margin-top:8px;">✏️ TỪ DO PHỤ HUYNH THÊM (${userAddedTuVung.length})</div>`;
+        if(userAddedTuVung.length===0) html += `<div style="color:#aaa; padding:5px; font-size:0.8rem;">Chưa có từ thêm thủ công.</div>`;
+        userAddedTuVung.forEach((d, i) => {
+            html += `<div class="db-item-row"><span>${i+1}. ${escapeHTML(d.text)}</span><button onclick="deleteUserItem(${i}, 'tu')" style="background:#E63946; color:white; border:none; padding:2px 6px; border-radius:4px; cursor:pointer; font-size:0.7rem;">Xóa</button></div>`;
+        });
     } else {
-        activeDb.forEach((d, i) => {
-            html += `<div class="db-item-row">
-                <span style="flex:1; padding-right:10px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
-                    <b>${i + 1}.</b> ${d.text}
-                </span>
-                <button onclick="deleteDbItem(${i})" style="background:#E63946; color:white; border:none; padding:2px 6px; border-radius:4px; cursor:pointer; font-size:0.75rem; flex-shrink:0;">Xóa</button>
-            </div>`;
+        html += `<div style="background:#f1faee; padding:4px; font-weight:bold; font-size:0.75rem;">📌 DỮ LIỆU GỐC HỆ THỐNG (${originCau.length})</div>`;
+        originCau.forEach((d, i) => { html += `<div class="db-item-row" style="opacity:0.75;"><span>${i+1}. ${escapeHTML(d.text)}</span><span style="color:green; font-size:0.7rem;">[Hệ thống]</span></div>`; });
+        
+        html += `<div style="background:#ffe3e3; padding:4px; font-weight:bold; font-size:0.75rem; margin-top:8px;">✏️ CÂU DO PHỤ HUYNH THÊM (${userAddedCauVan.length})</div>`;
+        if(userAddedCauVan.length===0) html += `<div style="color:#aaa; padding:5px; font-size:0.8rem;">Chưa có câu thêm thủ công.</div>`;
+        userAddedCauVan.forEach((d, i) => {
+            html += `<div class="db-item-row"><span>${i+1}. ${escapeHTML(d.text)}</span><button onclick="deleteUserItem(${i}, 'cau')" style="background:#E63946; color:white; border:none; padding:2px 6px; border-radius:4px; cursor:pointer; font-size:0.7rem;">Xóa</button></div>`;
         });
     }
     listDiv.innerHTML = html;
 }
 
+function escapeHTML(str) {
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+
 function addNewItemFromInput() {
     let input = document.getElementById('new-sentence-input'); let text = input.value.trim();
-    if (!text) return alert("Vui lòng nhập nội dung!");
-    
+    if (!text) return alert("Vui lòng gõ nội dung!");
     let wordCount = text.split(/\s+/).length;
-    let structuredData = convertSentenceToStructured(text);
     
-    // Tự động phân loại dựa trên tab đang đứng hoặc số lượng từ
     if (currentTabActive === 'tu' || wordCount <= 2) {
-        dbTuVung.push({ text: text, structured: structuredData });
-        localStorage.setItem('vngame_db_tuvung', JSON.stringify(dbTuVung));
+        userAddedTuVung.push({ text: text });
+        localStorage.setItem('user_db_tuvung', JSON.stringify(userAddedTuVung));
         switchDbTab('tu');
     } else {
-        dbCauVan.push({ text: text, structured: structuredData });
-        localStorage.setItem('vngame_db_cauvan', JSON.stringify(dbCauVan));
+        userAddedCauVan.push({ text: text });
+        localStorage.setItem('user_db_cauvan', JSON.stringify(userAddedCauVan));
         switchDbTab('cau');
     }
-    
     input.value = ""; 
+    reloadAndMergeDatabase();
     initGame();
 }
 
-function deleteDbItem(index) {
-    if (currentTabActive === 'tu') {
-        if (dbTuVung.length <= 1) return alert("Học phần từ vựng phải giữ lại ít nhất 1 mục!");
-        dbTuVung.splice(index, 1);
-        localStorage.setItem('vngame_db_tuvung', JSON.stringify(dbTuVung));
+function deleteUserItem(index, type) {
+    if (type === 'tu') {
+        userAddedTuVung.splice(index, 1);
+        localStorage.setItem('user_db_tuvung', JSON.stringify(userAddedTuVung));
     } else {
-        if (dbCauVan.length <= 1) return alert("Học phần câu văn phải giữ lại ít nhất 1 mục!");
-        dbCauVan.splice(index, 1);
-        localStorage.setItem('vngame_db_cauvan', JSON.stringify(dbCauVan));
+        userAddedCauVan.splice(index, 1);
+        localStorage.setItem('user_db_cauvan', JSON.stringify(userAddedCauVan));
     }
+    reloadAndMergeDatabase();
     renderCurrentDBList(); 
     initGame();
 }
 
 function resetDatabase() {
-    if(confirm("Xác nhận khôi phục toàn bộ dữ liệu gốc?")) {
-        localStorage.removeItem('vngame_db_tuvung');
-        localStorage.removeItem('vngame_db_cauvan');
-        dbTuVung = [...defaultTuVung];
-        dbCauVan = [...defaultCauVan];
-        switchDbTab(currentTabActive); 
+    if(confirm("Xác nhận xóa các câu do bạn tự thêm? Dữ liệu gốc hệ thống vẫn giữ nguyên.")) {
+        userAddedTuVung = []; userAddedCauVan = [];
+        localStorage.removeItem('user_db_tuvung'); localStorage.removeItem('user_db_cauvan');
+        reloadAndMergeDatabase();
+        renderCurrentDBList(); 
         initGame();
     }
 }
 
-function toggleEditProfile() {
-    let box = document.getElementById('profile-edit-box');
-    box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
-    document.getElementById('nickname-input').value = myProfile.nickname;
+// HIỆU ỨNG ÂM THANH & PHÁO HOA
+let audioCtx = null; function initAudio() { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+function playSound(type) {
+    initAudio(); if (!audioCtx) return; const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination);
+    if (type === 'correct') { osc.frequency.setValueAtTime(600, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.15); gain.gain.setValueAtTime(0.15, audioCtx.currentTime); osc.start(); osc.stop(audioCtx.currentTime + 0.15); }
+    else if (type === 'milestone') { let now = audioCtx.currentTime; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.1); osc.frequency.setValueAtTime(783.99, now + 0.2); gain.gain.setValueAtTime(0.2, now); osc.start(); osc.stop(now + 0.4); }
+    else if (type === 'wrong') { osc.type = 'sawtooth'; osc.frequency.setValueAtTime(220, audioCtx.currentTime); gain.gain.setValueAtTime(0.1, audioCtx.currentTime); osc.start(); osc.stop(audioCtx.currentTime + 0.2); }
 }
-
-function changeEmoji(emo) {
-    tempEmoji = emo; document.getElementById("player-avatar-preview").textContent = emo;
-    updateEmojiHighlight();
+const canvas = document.getElementById('fw-canvas'); const ctx = canvas.getContext('2d'); let particles = [];
+function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+window.addEventListener('resize', resizeCanvas); resizeCanvas();
+function createFirework() {
+    playSound('milestone'); let x = Math.random() * canvas.width; let y = canvas.height * 0.4; let colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF']; let color = colors[Math.floor(Math.random() * colors.length)];
+    for (let i = 0; i < 40; i++) { let angle = Math.random() * Math.PI * 2; let speed = Math.random() * 4 + 2; particles.push({ x: x, y: y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, alpha: 1, color: color }); }
 }
-
-function updateEmojiHighlight() {
-    document.querySelectorAll(".emoji-select").forEach(el => { el.classList.toggle("selected", el.textContent === tempEmoji); });
+function updateFireworks() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = particles.length - 1; i >= 0; i--) { let p = particles[i]; p.x += p.vx; p.y += p.vy; p.vy += 0.05; p.alpha -= 0.02; if (p.alpha <= 0) { particles.splice(i, 1); continue; } ctx.save(); ctx.globalAlpha = p.alpha; ctx.beginPath(); ctx.arc(p.x, p.y, 3, 0, Math.PI * 2); ctx.fillStyle = p.color; ctx.fill(); ctx.restore(); }
+    requestAnimationFrame(updateFireworks);
 }
+requestAnimationFrame(updateFireworks);
+function triggerCelebration() { let count = 0; let interval = setInterval(() => { createFirework(); count++; if (count >= 4) clearInterval(interval); }, 250); }
 
+// PHÂN TÍCH TIẾNG VIỆT TỰ ĐỘNG
+function autoSplitSyllable(word) {
+    if (!word) return ["", ""]; const complexOnsets = ["ngh", "gh", "kh", "nh", "th", "ch", "tr", "ng", "ph", "gi", "qu"]; let lowerWord = word.toLowerCase();
+    for (let onset of complexOnsets) { if (lowerWord.startsWith(onset)) return [word.substr(0, onset.length), word.substr(onset.length)]; }
+    if ("bcdđghklmnpqrstvx".includes(lowerWord[0])) return [word.substr(0, 1), word.substr(1)]; return ["", word];
+}
+function getStructuredFromText(sentence) { return sentence.trim().split(/\s+/).map(w => autoSplitSyllable(w)); }
+
+function toggleEditProfile() { let box = document.getElementById('profile-edit-box'); box.style.display = box.style.display === 'flex' ? 'none' : 'flex'; document.getElementById('nickname-input').value = myProfile.nickname; }
+function changeEmoji(emo) { tempEmoji = emo; document.getElementById("player-avatar-preview").textContent = emo; updateEmojiHighlight(); }
+function updateEmojiHighlight() { document.querySelectorAll(".emoji-select").forEach(el => { el.classList.toggle("selected", el.textContent === tempEmoji); }); }
 function saveNewProfile() {
-    let name = document.getElementById('nickname-input').value.trim();
-    if (name) myProfile.nickname = name; myProfile.emoji = tempEmoji;
-    localStorage.setItem('vngame_nickname_v2', myProfile.nickname);
-    localStorage.setItem('vngame_emoji_v2', myProfile.emoji);
-    document.getElementById('player-avatar').textContent = myProfile.emoji;
-    document.getElementById('player-profile-display').textContent = myProfile.nickname;
-    document.getElementById('profile-edit-box').style.display = 'none';
-    saveScore(myProfile.id, myProfile.emoji, myProfile.nickname, score);
+    let name = document.getElementById('nickname-input').value.trim(); if (name) myProfile.nickname = name; myProfile.emoji = tempEmoji;
+    localStorage.setItem('vngame_nickname_v2', myProfile.nickname); localStorage.setItem('vngame_emoji_v2', myProfile.emoji);
+    document.getElementById('player-avatar').textContent = myProfile.emoji; document.getElementById('player-profile-display').textContent = myProfile.nickname;
+    document.getElementById('profile-edit-box').style.display = 'none'; saveScore(myProfile.id, myProfile.emoji, myProfile.nickname, score);
 }
-
 function openBXHOverlay() { document.getElementById('bxh-overlay').style.display = 'flex'; renderBXH(); }
 function closeBXHOverlay() { document.getElementById('bxh-overlay').style.display = 'none'; }
+function createSyllableHTML(pair) { if(!pair) return ''; return `<span class="syllable"><span class="part-dau">${escapeHTML(pair[0])}</span><span class="part-van">${escapeHTML(pair[1])}</span></span>`; }
 
-function createSyllableHTML(pair) {
-    if(!pair) return '';
-    return `<span class="syllable"><span class="part-dau">${pair[0]}</span><span class="part-van">${pair[1]}</span></span>`;
+function autoScaleTitle() {
+    const title = document.getElementById('main-title'); const wrap = title.parentElement; if (!title || !wrap) return;
+    title.style.fontSize = "1.4rem"; let maxWidth = wrap.clientWidth; let currentWidth = title.scrollWidth;
+    if (currentWidth > maxWidth) title.style.fontSize = ((maxWidth / currentWidth) * 1.3) + "rem";
 }
 
-// ĐIỀU HƯỚNG VÀ PHÂN PHỐI NGUỒN DATA CHO TỪNG GAME
+// KÍCH HOẠT GAME
 function initGame() {
     if(isLocking) return; if(loopInterval) clearInterval(loopInterval);
-    document.getElementById('game-panel').innerHTML = '';
-    document.getElementById('interactive-zone').innerHTML = '';
-    document.getElementById('feedback').textContent = '';
-    
-    if (score === 0) {
-        let saved = localStorage.getItem('player_score_' + myProfile.id);
-        if (saved) { score = parseInt(saved) || 0; document.getElementById('score-val').textContent = score; }
-    }
+    document.getElementById('game-panel').innerHTML = ''; document.getElementById('interactive-zone').innerHTML = ''; document.getElementById('feedback').textContent = '';
+    if (score === 0) { let saved = localStorage.getItem('player_score_' + myProfile.id); if (saved) { score = parseInt(saved) || 0; document.getElementById('score-val').textContent = score; } }
 
-    // GAME 1-5: Trộn cả 2 kho dữ liệu lại làm một để bốc ngẫu nhiên câu hỏi
-    let gộpKhoChung = [...dbTuVung, ...dbCauVan];
-    
-    if (currentMode === 'ghep-cap-2') {
-        // GAME 6: Chỉ bốc từ kho Từ Vựng độc lập
-        currentItem = dbTuVung[Math.floor(Math.random() * dbTuVung.length)];
-    } else {
-        // GAME 1, 2, 3, 4, 5 lấy dữ liệu hỗn hợp chung
-        currentItem = gộpKhoChung[Math.floor(Math.random() * gộpKhoChung.length)];
-    }
-    
-    if (!currentItem) currentItem = defaultTuVung[0]; // Dự phòng bảo vệ lỗi dữ liệu trống
+    let gộpKhoChung = [...currentActiveTuVung, ...currentActiveCauVan];
+    let selectedItem = (currentMode === 'ghep-cap-2') ? currentActiveTuVung[Math.floor(Math.random() * currentActiveTuVung.length)] : gộpKhoChung[Math.floor(Math.random() * gộpKhoChung.length)];
+    if (!selectedItem) selectedItem = { text: "Vui học" }; 
+    currentItem = { text: selectedItem.text, structured: getStructuredFromText(selectedItem.text) };
     
     if (currentMode === 'ghep-chu') setupGhepChu();
     else if (currentMode === 'ghep-cau') setupGhepCau();
@@ -561,352 +400,163 @@ function switchMode(mode, e) {
     initGame();
 }
 
-function showFeedback(msg, isSuccess) {
-    const fb = document.getElementById('feedback'); fb.textContent = msg;
-    fb.style.color = isSuccess ? "#2a9d8f" : "#e63946";
-}
+function showFeedback(msg, isSuccess) { const fb = document.getElementById('feedback'); fb.textContent = msg; fb.style.color = isSuccess ? "#2a9d8f" : "#e63946"; }
+function addScore(p) { score += p; document.getElementById('score-val').textContent = score; localStorage.setItem('player_score_' + myProfile.id, score); saveScore(myProfile.id, myProfile.emoji, myProfile.nickname, score); if (score > 0 && score % 50 === 0) triggerCelebration(); }
 
-function addScore(p) {
-    score += p; document.getElementById('score-val').textContent = score;
-    localStorage.setItem('player_score_' + myProfile.id, score);
-    saveScore(myProfile.id, myProfile.emoji, myProfile.nickname, score);
-    if (score > 0 && score % 50 === 0) triggerCelebration();
-}
-
-// ==========================================
-// MÀN 1: GHÉP CHỮ (TÌM PHỤ ÂM ĐẦU) - DATA CHUNG
-// ==========================================
+// LOGIC CÁC MINI GAME
 function setupGhepChu() {
-    const instruct = document.getElementById('game-instruction');
-    instruct.innerHTML = `🎮 <b>Game 1: Ghép Chữ</b><br><span style="font-size:0.85rem;font-weight:normal;color:#555;">Tìm phụ âm màu Đỏ điền vào ô trống:</span>`;
-    
-    const panel = document.getElementById('game-panel');
-    const zone = document.getElementById('interactive-zone');
-    
-    let filtered = currentItem.structured.filter(w => w[0] !== "");
-    if (filtered.length === 0) filtered = currentItem.structured;
+    const instruct = document.getElementById('game-instruction'); instruct.innerHTML = `🎮 <b>Game 1: Ghép Chữ</b><br><span style="font-size:0.85rem;font-weight:normal;color:#555;">Tìm phụ âm màu Đỏ điền vào ô trống:</span>`;
+    const panel = document.getElementById('game-panel'); const zone = document.getElementById('interactive-zone');
+    let filtered = currentItem.structured.filter(w => w[0] !== ""); if (filtered.length === 0) filtered = currentItem.structured;
     let target = filtered[Math.floor(Math.random() * filtered.length)];
-
-    panel.innerHTML = `<div class="syllable"><span class="part-dau" style="opacity:0.3">?</span><span class="part-van">${target[1]}</span></div>`;
-
-    let gộpKhoChung = [...dbTuVung, ...dbCauVan];
+    panel.innerHTML = `<div class="syllable"><span class="part-dau" style="opacity:0.3">?</span><span class="part-van">${escapeHTML(target[1])}</span></div>`;
+    
+    let gộpKhoChung = [...currentActiveTuVung, ...currentActiveCauVan];
     let options = [target[0]];
     while(options.length < 3) {
-        let rS = gộpKhoChung[Math.floor(Math.random() * gộpKhoChung.length)].structured;
-        let rD = rS[Math.floor(Math.random() * rS.length)][0];
+        let rText = gộpKhoChung[Math.floor(Math.random() * gộpKhoChung.length)].text;
+        let rS = getStructuredFromText(rText); let rD = rS[Math.floor(Math.random() * rS.length)][0];
         if(rD && rD !== target[0] && !options.includes(rD)) options.push(rD);
     }
     options.sort(() => Math.random() - 0.5);
-
     options.forEach(opt => {
-        let b = document.createElement('button'); b.className = 'block';
-        b.style.color = 'var(--color-dau)'; b.textContent = opt;
+        let b = document.createElement('button'); b.className = 'block'; b.style.color = 'var(--color-dau)'; b.textContent = opt;
         b.onclick = () => {
             if(isLocking) return;
             if(opt === target[0]) {
-                playSound('correct'); showFeedback("Bé giỏi quá! 🎉", true);
-                panel.innerHTML = createSyllableHTML(target); addScore(10);
+                playSound('correct'); showFeedback("Bé giỏi quá! 🎉", true); panel.innerHTML = createSyllableHTML(target); addScore(10);
                 isLocking = true; setTimeout(() => { isLocking = false; initGame(); }, 2000);
             } else { playSound('wrong'); showFeedback("Bé thử lại nhé! 🌟", false); }
-        };
-        zone.appendChild(b);
+        }; zone.appendChild(b);
     });
 }
 
-// ==========================================
-// MÀN 2: GHÉP CÂU (SẮP XẾP TỪ) - DATA CHUNG
-// ==========================================
 function setupGhepCau() {
     if (ghepCauTimer) clearInterval(ghepCauTimer);
-    const instruct = document.getElementById('game-instruction');
-    instruct.innerHTML = `🎮 <b>Game 2: Ghép Câu</b><br><span id="countdown-text" style="font-size:0.85rem;color:#e65100;font-weight:normal;">Ghi nhớ mẫu câu...</span>`;
-    
-    const panel = document.getElementById('game-panel');
-    const zone = document.getElementById('interactive-zone');
-    
+    const instruct = document.getElementById('game-instruction'); instruct.innerHTML = `🎮 <b>Game 2: Ghép Câu</b><br><span id="countdown-text" style="font-size:0.85rem;color:#e65100;font-weight:normal;">Ghi nhớ mẫu câu...</span>`;
+    const panel = document.getElementById('game-panel'); const zone = document.getElementById('interactive-zone');
     panel.innerHTML = `<div id="answer-slots" style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:4px;"></div>`;
-    const slots = document.getElementById('answer-slots');
-
-    let shuffled = [...currentItem.structured].sort(() => Math.random() - 0.5);
-    let currentAnswer = [];
-
-    isLocking = true;
-    currentItem.structured.forEach(pair => {
-        let div = document.createElement('div'); div.className = 'slot-clickable';
-        div.innerHTML = createSyllableHTML(pair); slots.appendChild(div);
-    });
-
+    const slots = document.getElementById('answer-slots'); let shuffled = [...currentItem.structured].sort(() => Math.random() - 0.5);
+    let currentAnswer = []; isLocking = true;
+    currentItem.structured.forEach(pair => { let div = document.createElement('div'); div.className = 'slot-clickable'; div.innerHTML = createSyllableHTML(pair); slots.appendChild(div); });
     let timeLeft = 5;
-    zone.innerHTML = `<div style="text-align:center; width:100%;">
-        <button class="btn-action" id="skip-preview-btn" style="padding:4px 12px; font-size:0.85rem;">Ghép Ngay Khỏi Đợi 🚀</button>
-    </div>`;
-    
+    zone.innerHTML = `<div style="text-align:center; width:100%;"><button class="btn-action" id="skip-preview-btn" style="padding:4px 12px; font-size:0.85rem;background:#457B9D;color:white;border:none;border-radius:4px;cursor:pointer;">Ghép Ngay Khỏi Đợi 🚀</button></div>`;
     document.getElementById('countdown-text').innerHTML = `Xem câu mẫu còn: <b>${timeLeft}s</b>`;
-
-    function startMainGame() {
-        if (ghepCauTimer) { clearInterval(ghepCauTimer); ghepCauTimer = null; }
-        isLocking = false; 
-        instruct.innerHTML = `🎮 <b>Game 2: Ghép Câu</b><br><span style="font-size:0.85rem;font-weight:normal;color:#555;">Chạm các chữ bên dưới để xếp lại câu đúng:</span>`;
-        slots.innerHTML = ''; renderChoices();
-    }
+    function startMainGame() { if (ghepCauTimer) { clearInterval(ghepCauTimer); ghepCauTimer = null; } isLocking = false; instruct.innerHTML = `🎮 <b>Game 2: Ghép Câu</b><br><span style="font-size:0.85rem;font-weight:normal;color:#555;">Chạm các chữ bên dưới để xếp lại câu đúng:</span>`; slots.innerHTML = ''; renderChoices(); }
     document.getElementById('skip-preview-btn').onclick = startMainGame;
-
-    ghepCauTimer = setInterval(() => {
-        timeLeft--;
-        let txt = document.getElementById('countdown-text');
-        if(!txt) { clearInterval(ghepCauTimer); return; }
-        txt.innerHTML = `Xem câu mẫu còn: <b>${timeLeft}s</b>`;
-        if(timeLeft <= 0) startMainGame();
-    }, 1000);
-
+    ghepCauTimer = setInterval(() => { timeLeft--; let txt = document.getElementById('countdown-text'); if(!txt) { clearInterval(ghepCauTimer); return; } txt.innerHTML = `Xem câu mẫu còn: <b>${timeLeft}s</b>`; if(timeLeft <= 0) startMainGame(); }, 1000);
     function renderChoices() {
         zone.innerHTML = '';
         shuffled.forEach((pair, idx) => {
-            let b = document.createElement('button'); b.className = 'block';
-            b.innerHTML = createSyllableHTML(pair); b.id = "choice-btn-" + idx;
-            b.onclick = () => {
-                if(isLocking) return;
-                currentAnswer.push({ pair: pair, srcIndex: idx });
-                b.style.visibility = 'hidden'; renderUpperSlots(); checkSentenceResult();
-            };
-            zone.appendChild(b);
+            let b = document.createElement('button'); b.className = 'block'; b.innerHTML = createSyllableHTML(pair); b.id = "choice-btn-" + idx;
+            b.onclick = () => { if(isLocking) return; currentAnswer.push({ pair: pair, srcIndex: idx }); b.style.visibility = 'hidden'; renderUpperSlots(); checkSentenceResult(); }; zone.appendChild(b);
         });
     }
-
     function renderUpperSlots() {
         slots.innerHTML = '';
         currentAnswer.forEach((item, ansIdx) => {
-            let div = document.createElement('div'); div.className = 'slot-clickable';
-            div.innerHTML = createSyllableHTML(item.pair);
-            div.onclick = () => {
-                if(isLocking) return;
-                document.getElementById("choice-btn-" + item.srcIndex).style.visibility = 'visible';
-                currentAnswer.splice(ansIdx, 1); renderUpperSlots();
-            };
-            slots.appendChild(div);
+            let div = document.createElement('div'); div.className = 'slot-clickable'; div.innerHTML = createSyllableHTML(item.pair);
+            div.onclick = () => { if(isLocking) return; document.getElementById("choice-btn-" + item.srcIndex).style.visibility = 'visible'; currentAnswer.splice(ansIdx, 1); renderUpperSlots(); }; slots.appendChild(div);
         });
     }
-
     function checkSentenceResult() {
         if(currentAnswer.length === currentItem.structured.length) {
             let correct = currentAnswer.every((item, i) => item.pair.join('') === currentItem.structured[i].join(''));
-            if(correct) {
-                playSound('correct'); addScore(20); showFeedback("Đúng rồi! Bé xếp câu siêu quá! 🎉", true);
-                isLocking = true; setTimeout(() => { isLocking = false; initGame(); }, 2000);
-            } else {
-                playSound('wrong'); isLocking = true;
-                showFeedback("Chưa chính xác, xem mẫu câu đúng:", false);
-                zone.innerHTML = `<div style="display:flex; gap:2px; justify-content:center; flex-wrap:wrap; background:#fff3e0; padding:6px; border-radius:8px; width:100%;">
-                    ${currentItem.structured.map(p => createSyllableHTML(p)).join('')}
-                </div>`;
-                setTimeout(() => { isLocking = false; initGame(); }, 4000);
-            }
+            if(correct) { playSound('correct'); addScore(20); showFeedback("Đúng rồi! Bé xếp câu siêu quá! 🎉", true); isLocking = true; setTimeout(() => { isLocking = false; initGame(); }, 2000); } 
+            else { playSound('wrong'); isLocking = true; showFeedback("Chưa chính xác, xem mẫu câu đúng:", false); zone.innerHTML = `<div style="display:flex; gap:2px; justify-content:center; flex-wrap:wrap; background:#fff3e0; padding:6px; border-radius:8px; width:100%;">${currentItem.structured.map(p => createSyllableHTML(p)).join('')}</div>`; setTimeout(() => { isLocking = false; initGame(); }, 4000); }
         }
     }
 }
 
-// ==========================================
-// MÀN 3: BẮN CHỮ (CHỮ RƠI) - DATA CHUNG
-// ==========================================
 function setupBanChu() {
-    const instruct = document.getElementById('game-instruction');
-    const panel = document.getElementById('game-panel');
-    const zone = document.getElementById('interactive-zone');
-    
-    let target = currentItem.structured[Math.floor(Math.random() * currentItem.structured.length)];
-    let targetTxt = target.join('');
-    
-    instruct.innerHTML = `🎮 <b>Game 3: Bắn Chữ</b><br><span style="font-size:0.85rem;font-weight:normal;">Chạm đúng chữ: <b style="color:var(--color-dau);font-size:1rem;">${targetTxt}</b></span>`;
-    zone.innerHTML = ''; 
-    
-    let spawnedElements = [];
-    let gộpKhoChung = [...dbTuVung, ...dbCauVan];
-
+    const instruct = document.getElementById('game-instruction'); const panel = document.getElementById('game-panel'); const zone = document.getElementById('interactive-zone');
+    let target = currentItem.structured[Math.floor(Math.random() * currentItem.structured.length)]; let targetTxt = target.join('');
+    instruct.innerHTML = `🎮 <b>Game 3: Bắn Chữ</b><br><span style="font-size:0.85rem;font-weight:normal;">Chạm đúng chữ: <b style="color:var(--color-dau);font-size:1rem;">${escapeHTML(targetTxt)}</b></span>`;
+    zone.innerHTML = ''; let spawnedElements = []; let gộpKhoChung = [...currentActiveTuVung, ...currentActiveCauVan];
     function spawn() {
         if(isLocking || currentMode !== 'ban-chu') return;
-        let isT = Math.random() > 0.4;
-        let rS = gộpKhoChung[Math.floor(Math.random()*gộpKhoChung.length)].structured;
-        let p = isT ? target : (rS[Math.floor(Math.random()*rS.length)] || target);
-
-        let el = document.createElement('div'); el.className = 'falling-word';
-        el.innerHTML = createSyllableHTML(p);
-        el.style.left = Math.random() * (panel.clientWidth - 75) + 'px';
-        el.style.top = '0px'; panel.appendChild(el);
-
+        let isT = Math.random() > 0.4; let rText = gộpKhoChung[Math.floor(Math.random()*gộpKhoChung.length)].text;
+        let rS = getStructuredFromText(rText); let p = isT ? target : (rS[Math.floor(Math.random()*rS.length)] || target);
+        let el = document.createElement('div'); el.className = 'falling-word'; el.innerHTML = createSyllableHTML(p);
+        el.style.left = Math.random() * (panel.clientWidth - 75) + 'px'; el.style.top = '0px'; panel.appendChild(el);
         el.onclick = () => {
             if(isLocking) return;
-            if(p.join('') === target.join('')) {
-                playSound('correct'); addScore(15); el.remove(); initGame();
-            } else { playSound('wrong'); showFeedback("Nhầm từ rồi bé ơi! 🥰", false); }
-        };
-        spawnedElements.push(el);
+            if(p.join('') === target.join('')) { playSound('correct'); addScore(15); el.remove(); initGame(); } 
+            else { playSound('wrong'); showFeedback("Nhầm từ rồi bé ơi! 🥰", false); }
+        }; spawnedElements.push(el);
     }
-
     spawn();
     loopInterval = setInterval(() => {
-        for (let i = spawnedElements.length - 1; i >= 0; i--) {
-            let el = spawnedElements[i]; let top = parseInt(el.style.top) || 0;
-            if(top > panel.clientHeight - 45) { el.remove(); spawnedElements.splice(i, 1); }
-            else { el.style.top = (top + 4) + 'px'; }
-        }
+        for (let i = spawnedElements.length - 1; i >= 0; i--) { let el = spawnedElements[i]; let top = parseInt(el.style.top) || 0; if(top > panel.clientHeight - 45) { el.remove(); spawnedElements.splice(i, 1); } else { el.style.top = (top + 4) + 'px'; } }
         if(spawnedElements.length === 0 && currentMode === 'ban-chu') spawn();
     }, 80);
 }
 
-// ==========================================
-// MÀN 4: TÌM CHỮ (ĐIỀN KHUYẾT) - DATA CHUNG
-// ==========================================
 function setupTimChu() {
-    const instruct = document.getElementById('game-instruction');
-    instruct.innerHTML = `🎮 <b>Game 4: Tìm Chữ</b><br><span style="font-size:0.85rem;font-weight:normal;color:#555;">Chọn từ thích hợp điền vào dấu ?:</span>`;
-    
-    const panel = document.getElementById('game-panel');
-    const zone = document.getElementById('interactive-zone');
-    let missingIdx = Math.floor(Math.random() * currentItem.structured.length);
-    let target = currentItem.structured[missingIdx];
-
+    const instruct = document.getElementById('game-instruction'); instruct.innerHTML = `🎮 <b>Game 4: Tìm Chữ</b><br><span style="font-size:0.85rem;font-weight:normal;color:#555;">Chọn từ thích hợp điền vào dấu ?:</span>`;
+    const panel = document.getElementById('game-panel'); const zone = document.getElementById('interactive-zone');
+    let missingIdx = Math.floor(Math.random() * currentItem.structured.length); let target = currentItem.structured[missingIdx];
     let sentenceHTML = "";
-    currentItem.structured.forEach((pair, idx) => {
-        if(idx === missingIdx) {
-            sentenceHTML += `<span id="blank-slot" class="syllable" style="border:2px dashed #ff4d4d; background:#fff3cd; min-width:45px; text-align:center;">?</span>`;
-        } else { sentenceHTML += createSyllableHTML(pair); }
-    });
-    
+    currentItem.structured.forEach((pair, idx) => { if(idx === missingIdx) sentenceHTML += `<span id="blank-slot" class="syllable" style="border:2px dashed #ff4d4d; background:#fff3cd; min-width:45px; text-align:center;">?</span>`; else sentenceHTML += createSyllableHTML(pair); });
     panel.innerHTML = `<div style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:4px; width:100%;">${sentenceHTML}</div>`;
-
-    let gộpKhoChung = [...dbTuVung, ...dbCauVan];
-    let options = [target];
+    let gộpKhoChung = [...currentActiveTuVung, ...currentActiveCauVan]; let options = [target];
     while(options.length < 3) {
-        let rS = gộpKhoChung[Math.floor(Math.random()*gộpKhoChung.length)].structured;
-        let rP = rS[Math.floor(Math.random()*rS.length)];
+        let rText = gộpKhoChung[Math.floor(Math.random()*gộpKhoChung.length)].text;
+        let rS = getStructuredFromText(rText); let rP = rS[Math.floor(Math.random()*rS.length)];
         if(rP && rP.join('') !== target.join('') && !options.some(o => o.join('') === rP.join(''))) options.push(rP);
     }
     options.sort(() => Math.random() - 0.5);
-
     options.forEach(opt => {
-        let b = document.createElement('button'); b.className = 'block';
-        b.innerHTML = createSyllableHTML(opt);
+        let b = document.createElement('button'); b.className = 'block'; b.innerHTML = createSyllableHTML(opt);
         b.onclick = () => {
             if(isLocking) return;
             if(opt.join('') === target.join('')) {
-                playSound('correct'); isLocking = true; addScore(15);
-                showFeedback("Xuất sắc quá bé ơi! 🎉", true);
-                document.getElementById('blank-slot').innerHTML = createSyllableHTML(target);
+                playSound('correct'); isLocking = true; addScore(15); showFeedback("Xuất sắc quá bé ơi! 🎉", true); document.getElementById('blank-slot').innerHTML = createSyllableHTML(target);
                 setTimeout(() => { isLocking = false; initGame(); }, 2000);
             } else { playSound('wrong'); showFeedback("Chưa chính xác, thử từ khác nhé! 🥰", false); }
-        };
-        zone.appendChild(b);
+        }; zone.appendChild(b);
     });
 }
 
-// ==========================================
-// MÀN 5: GHÉP CẶP CÁCH 1 (ÂM ĐẦU - VẦN) - DATA CHUNG
-// ==========================================
 function setupGhepCap1() {
-    const instruct = document.getElementById('game-instruction');
-    const panel = document.getElementById('game-panel');
-    
+    const instruct = document.getElementById('game-instruction'); const panel = document.getElementById('game-panel');
     instruct.innerHTML = `🎮 <b>Game 5: Ghép Cặp 1</b><br><span style="font-size:0.83rem;font-weight:normal;color:#457B9D;">Nối Phụ âm đầu (Đỏ) và Vần (Xanh) tương ứng:</span>`;
-    
     let filteredSyllables = currentItem.structured.filter(p => p[0] !== "" && p[1] !== "");
-    if(filteredSyllables.length < 2) {
-        let gộpKhoChung = [...dbTuVung, ...dbCauVan];
-        filteredSyllables = gộpKhoChung[0].structured;
-    }
-    
-    let selectedPairs = [...filteredSyllables].slice(0, 5);
-    activePairsCount = selectedPairs.length;
-    
-    let pool = selectedPairs.map((p, idx) => ({
-        leftText: p[0],
-        rightText: p[1],
-        id: idx,
-        leftColor: "var(--color-dau)",
-        rightColor: "var(--color-van)"
-    }));
-
+    if(filteredSyllables.length < 2) { filteredSyllables = getStructuredFromText(currentActiveTuVung[0].text); }
+    let selectedPairs = [...filteredSyllables].slice(0, 5); activePairsCount = selectedPairs.length;
+    let pool = selectedPairs.map((p, idx) => ({ leftText: p[0], rightText: p[1], id: idx, leftColor: "var(--color-dau)", rightColor: "var(--color-van)" }));
     buildMatchingUI(pool, panel);
 }
 
-// ==========================================
-// MÀN 6: GHÉP CẶP CÁCH 2 (TỪ GHÉP CÓ NGHĨA) - CHỈ LẤY TAB TỪ VỰNG
-// ==========================================
+// GAME 6: GHÉP TỪ ĐÔI (MẶC ĐỊNH SẼ ĐỌC TỪ KHO TỪ VỰNG HỆ THỐNG)
 function setupGhepCap2() {
-    const instruct = document.getElementById('game-instruction');
-    const panel = document.getElementById('game-panel');
-    
+    const instruct = document.getElementById('game-instruction'); const panel = document.getElementById('game-panel');
     instruct.innerHTML = `🎮 <b>Game 6: Ghép Từ Đôi</b><br><span style="font-size:0.83rem;font-weight:normal;color:#e63946;">Nối các từ đứng cạnh nhau tạo thành từ có nghĩa:</span>`;
-    
     let validPhrases = [];
-    
-    // CHỈ quét lấy các cặp từ của riêng kho Tab Từ Vựng
-    dbTuVung.forEach(item => {
+    currentActiveTuVung.forEach(item => {
         let words = item.text.trim().split(/\s+/);
-        for (let i = 0; i < words.length - 1; i += 2) {
-            if (words[i] && words[i+1]) {
-                validPhrases.push({ left: words[i], right: words[i+1] });
-            }
-        }
+        for (let i = 0; i < words.length - 1; i += 2) { if (words[i] && words[i+1]) validPhrases.push({ left: words[i], right: words[i+1] }); }
     });
-
-    // Phòng hờ nếu tab từ vựng trống hoặc không đủ điều kiện bóc tách cặp từ
-    if (validPhrases.length === 0) {
-        validPhrases = [
-            { left: "Con", right: "kiến" }, { left: "Trái", right: "banh" },
-            { left: "Ngôi", right: "nhà" }, { left: "Xe", right: "đạp" }
-        ];
-    }
-
-    validPhrases.sort(() => Math.random() - 0.5);
-    let selectedPhrases = validPhrases.slice(0, 5);
-    activePairsCount = selectedPhrases.length;
-
-    let pool = selectedPhrases.map((p, idx) => ({
-        leftText: p.left,
-        rightText: p.right,
-        id: idx,
-        leftColor: "#2A9D8F",
-        rightColor: "#E67E22"
-    }));
-
+    if (validPhrases.length === 0) { validPhrases = [{ left: "Con", right: "kiến" }, { left: "Trái", right: "banh" }]; }
+    validPhrases.sort(() => Math.random() - 0.5); let selectedPhrases = validPhrases.slice(0, 5); activePairsCount = selectedPhrases.length;
+    let pool = selectedPhrases.map((p, idx) => ({ leftText: p.left, rightText: p.right, id: idx, leftColor: "#2A9D8F", rightColor: "#E67E22" }));
     buildMatchingUI(pool, panel);
 }
 
-// HÀM XÂY DỰNG GIAO DIỆN CHUNG CHO TRÒ CHƠI GHÉP CẶP (SỬ DỤNG CHO CẢ GAME 5 & 6)
 function buildMatchingUI(pool, panel) {
     matchColorIndex = 0; selectedLeft = null; selectedRight = null;
-
     let leftList = pool.map(item => ({ text: item.leftText, id: item.id, color: item.leftColor })).sort(() => Math.random() - 0.5);
     let rightList = pool.map(item => ({ text: item.rightText, id: item.id, color: item.rightColor })).sort(() => Math.random() - 0.5);
-
-    panel.innerHTML = `<div class="matching-container">
-        <div class="matching-column" id="col-left"></div>
-        <div class="matching-column" id="col-right"></div>
-    </div>`;
-
-    const cL = document.getElementById('col-left'); const cR = document.getElementById('col-right');
-    const itemStyle = `padding:clamp(5px,1.3vh,9px) 4px; font-size:clamp(1.45rem,4.2vh,1.95rem); width:100%;`;
-
+    panel.innerHTML = `<div class="matching-container"><div class="matching-column" id="col-left"></div><div class="matching-column" id="col-right"></div></div>`;
+    const cL = document.getElementById('col-left'); const cR = document.getElementById('col-right'); const itemStyle = `padding:clamp(5px,1.3vh,9px) 4px; font-size:clamp(1.45rem,4.2vh,1.95rem); width:100%;`;
     leftList.forEach(item => {
-        let div = document.createElement('div'); div.className = 'matching-item'; div.style.cssText = itemStyle + `color:${item.color};`;
-        div.textContent = item.text; div.onclick = () => {
-            if(isLocking || div.classList.contains('matched')) return;
-            document.querySelectorAll('#col-left .matching-item').forEach(el => { if(!el.classList.contains('matched')) el.classList.remove('selected'); });
-            selectedLeft = { id: item.id, el: div }; div.classList.add('selected'); checkMatch();
-        };
-        cL.appendChild(div);
+        let div = document.createElement('div'); div.className = 'matching-item'; div.style.cssText = itemStyle + `color:${item.color};`; div.textContent = item.text;
+        div.onclick = () => { if(isLocking || div.classList.contains('matched')) return; document.querySelectorAll('#col-left .matching-item').forEach(el => { if(!el.classList.contains('matched')) el.classList.remove('selected'); }); selectedLeft = { id: item.id, el: div }; div.classList.add('selected'); checkMatch(); }; cL.appendChild(div);
     });
-
     rightList.forEach(item => {
-        let div = document.createElement('div'); div.className = 'matching-item'; div.style.cssText = itemStyle + `color:${item.color};`;
-        div.textContent = item.text; div.onclick = () => {
-            if(isLocking || div.classList.contains('matched')) return;
-            document.querySelectorAll('#col-right .matching-item').forEach(el => { if(!el.classList.contains('matched')) el.classList.remove('selected'); });
-            selectedRight = { id: item.id, el: div }; div.classList.add('selected'); checkMatch();
-        };
-        cR.appendChild(div);
+        let div = document.createElement('div'); div.className = 'matching-item'; div.style.cssText = itemStyle + `color:${item.color};`; div.textContent = item.text;
+        div.onclick = () => { if(isLocking || div.classList.contains('matched')) return; document.querySelectorAll('#col-right .matching-item').forEach(el => { if(!el.classList.contains('matched')) el.classList.remove('selected'); }); selectedRight = { id: item.id, el: div }; div.classList.add('selected'); checkMatch(); }; cR.appendChild(div);
     });
-
     function checkMatch() {
         if(selectedLeft && selectedRight) {
             isLocking = true;
@@ -916,64 +566,29 @@ function buildMatchingUI(pool, panel) {
                 selectedLeft.el.style.cssText += `background:${color}!important; color:white!important; border-color:${color}!important;`;
                 selectedRight.el.style.cssText += `background:${color}!important; color:white!important; border-color:${color}!important;`;
                 addScore(5); activePairsCount--; selectedLeft = null; selectedRight = null; isLocking = false;
-                if(activePairsCount === 0) {
-                    showFeedback("Xuất sắc! Ghép đúng toàn bộ rồi! 🎉", true); addScore(10);
-                    setTimeout(() => { initGame(); }, 2000);
-                }
+                if(activePairsCount === 0) { showFeedback("Xuất sắc! Ghép đúng toàn bộ rồi! 🎉", true); addScore(10); setTimeout(() => { initGame(); }, 2000); }
             } else {
                 playSound('wrong'); showFeedback("Chưa chính xác, chọn lại nhé! 🥰", false);
-                setTimeout(() => {
-                    if(selectedLeft) selectedLeft.el.classList.remove('selected');
-                    if(selectedRight) selectedRight.el.classList.remove('selected');
-                    selectedLeft = null; selectedRight = null; isLocking = false;
-                }, 800);
+                setTimeout(() => { if(selectedLeft) selectedLeft.el.classList.remove('selected'); if(selectedRight) selectedRight.el.classList.remove('selected'); selectedLeft = null; selectedRight = null; isLocking = false; }, 800);
             }
         }
     }
 }
 
-// BẢNG XẾP HẠNG & ĐỒNG BỘ DỮ LIỆU
+// BẢNG XẾP HẠNG THUẦN LOCAL STORAGE
 function getLeaderboard() { let data = localStorage.getItem('vngame_bxh_v7'); return data ? JSON.parse(data) : []; }
-function saveScore(id, emoji, name, sVal) {
-    let bxh = getLeaderboard(); let p = bxh.find(u => u.id === id);
-    if(p) { p.nickname = name; p.emoji = emoji; if(sVal > p.score) p.score = sVal; }
-    else { bxh.push({id: id, emoji: emoji, nickname: name, score: sVal}); }
-    bxh.sort((a,b)=>b.score-a.score); localStorage.setItem('vngame_bxh_v7', JSON.stringify(bxh));
-}
+function saveScore(id, emoji, name, sVal) { let bxh = getLeaderboard(); let p = bxh.find(u => u.id === id); if(p) { p.nickname = name; p.emoji = emoji; if(sVal > p.score) p.score = sVal; } else { bxh.push({id: id, emoji: emoji, nickname: name, score: sVal}); } bxh.sort((a,b)=>b.score-a.score); localStorage.setItem('vngame_bxh_v7', JSON.stringify(bxh)); }
 function renderBXH() {
     let bxh = getLeaderboard(); let html = "";
-    bxh.forEach((u, i) => {
-        let isMe = u.id === myProfile.id ? "style='background:#fff3cd; font-weight:bold;'" : "";
-        html += `<tr ${isMe}><td>${i+1}</td><td><small>...${u.id.slice(-4).toUpperCase()}</small></td><td>${u.emoji} ${u.nickname}</td><td>${u.score} ⭐</td></tr>`;
-    });
-    document.getElementById('bxh-body').innerHTML = html;
+    bxh.forEach((u, i) => { let isMe = u.id === myProfile.id ? "style='background:#fff3cd; font-weight:bold;'" : ""; html += `<tr ${isMe}><td>${i+1}</td><td><small>...${u.id.slice(-4).toUpperCase()}</small></td><td>${u.emoji} ${escapeHTML(u.nickname)}</td><td>${u.score} ⭐</td></tr>`; }); document.getElementById('bxh-body').innerHTML = html;
 }
 
-function exportCode(type) {
-    let p = type === 'HXH' ? { type:'HXH', id:myProfile.id, emoji:myProfile.emoji, nickname:myProfile.nickname, score:score } : { type:'DATA', tuvung:dbTuVung, cauvan:dbCauVan };
-    let code = btoa(encodeURIComponent(JSON.stringify(p)));
-    navigator.clipboard.writeText(code).then(() => alert("Đã sao chép mã thành công!"));
-}
-
-function importCode() {
-    let input = document.getElementById('import-input').value.trim(); if(!input) return;
-    try {
-        let d = JSON.parse(decodeURIComponent(atob(input)));
-        if (d.type === 'DATA') {
-            if(d.tuvung) { dbTuVung = d.tuvung; localStorage.setItem('vngame_db_tuvung', JSON.stringify(dbTuVung)); }
-            if(d.cauvan) { dbCauVan = d.cauvan; localStorage.setItem('vngame_db_cauvan', JSON.stringify(dbCauVan)); }
-            alert("Đã cập nhật bài học mới thành công! 📚"); closeBXHOverlay(); switchDbTab('tu'); initGame();
-        } else if (d.id && d.nickname) {
-            saveScore(d.id, d.emoji, d.nickname, d.score); alert(`Đã nạp bạn "${d.nickname}" vào BXH!`); renderBXH();
-        }
-        document.getElementById('import-input').value = "";
-    } catch(e) { alert("Mã không đúng định dạng!"); }
-}
-
+// KHỞI ĐỘNG KHI TẢI XONG TRANG
 window.onload = () => {
     document.getElementById('player-avatar').textContent = myProfile.emoji;
     document.getElementById('player-profile-display').textContent = myProfile.nickname;
-    updateEmojiHighlight(); 
+    updateEmojiHighlight();
+    reloadAndMergeDatabase(); 
     switchDbTab('tu');
     initGame();
 };
