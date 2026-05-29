@@ -62,23 +62,24 @@
         .status-bar .profile-area { display: flex; align-items: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .btn-edit-profile { background: none; border: none; cursor: pointer; font-size: 1.1rem; margin-left: 4px; padding: 0; flex-shrink: 0; }
         
+        /* HÀNG NÚT CHỌN GAME 1 - 6 */
         .mode-selector { 
             display: flex; 
             justify-content: center; 
-            gap: clamp(8px, 3vw, 15px); 
+            gap: clamp(4px, 2vw, 10px); 
             margin: 6px 0; 
             width: 100%; 
             flex-shrink: 0; 
         }
         .btn-mode { 
-            width: clamp(35px, 5.5vh, 45px);
-            height: clamp(35px, 5.5vh, 45px);
+            width: clamp(32px, 5vh, 42px);
+            height: clamp(32px, 5vh, 42px);
             border: none; 
             border-radius: 50%; 
             background: #ddd; 
             cursor: pointer; 
             font-weight: bold; 
-            font-size: clamp(1rem, 2.5vh, 1.25rem); 
+            font-size: clamp(0.95rem, 2.2vh, 1.15rem); 
             display: flex; 
             justify-content: center; 
             align-items: center;
@@ -110,8 +111,8 @@
         }
         
         .syllable { 
-            font-size: clamp(1.2rem, 4vh, 2.2rem); 
-            font-weight: bold; display: inline-block; margin: 2px; padding: 2px 6px; 
+            font-size: clamp(1.8rem, 6vh, 3.3rem); 
+            font-weight: bold; display: inline-block; margin: 2px; padding: 2px 8px; 
             background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 2px solid transparent; 
         }
         .slot-clickable { cursor: pointer; border: 2px dashed #999; border-radius: 8px; display: inline-block; margin: 2px; }
@@ -135,8 +136,16 @@
             display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;
         }
         .profile-popup {
-            width: 90%; max-width: 450px; background: #eef2f3; border-radius: 15px; padding: 15px; display: flex; flex-direction: column; gap: 8px; max-height: 90vh; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 95%; max-width: 480px; background: #eef2f3; border-radius: 15px; padding: 15px; display: flex; flex-direction: column; gap: 8px; max-height: 90vh; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
+        
+        /* TAB STYLE CHO KHO TỪ VỰNG */
+        .db-tabs { display: flex; gap: 4px; margin-top: 4px; }
+        .db-tab-btn { flex: 1; padding: 6px; border: none; background: #ccc; font-weight: bold; cursor: pointer; border-radius: 6px 6px 0 0; font-size: 0.85rem; }
+        .db-tab-btn.active { background: white; color: #1b4332; border-bottom: 2px solid #1b4332; }
+        .db-list-container { text-align: left; margin-top: 0; font-size: 0.85rem; overflow-y: auto; flex: 1; background: #fff; padding: 8px; border-radius: 0 0 8px 8px; border: 1px solid #bbb; }
+        .db-item-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px dashed #eee; text-align: left; }
+
         .emoji-scroll { overflow-y: auto; max-height: 25vh; padding: 6px; border: 2px dashed #aaa; border-radius: 10px; background: #fff; }
         .emoji-group { margin-bottom: 5px; padding: 5px; border-radius: 8px; background: #f7f7f7; text-align: left; }
         .emoji-select { cursor: pointer; font-size: 20px; padding: 3px; display: inline-block; }
@@ -186,13 +195,14 @@
         </div>
     </div>
 
-    <!-- HÀNG 5 NÚT SỐ GỌN GÀNG -->
+    <!-- HÀNG NÚT ĐIỀU HƯỚNG TỪ GAME 1 ĐẾN GAME 6 -->
     <div class="mode-selector">
         <button class="btn-mode active" id="mode-ghep-chu" onclick="switchMode('ghep-chu', event)">1</button>
         <button class="btn-mode" id="mode-ghep-cau" onclick="switchMode('ghep-cau', event)">2</button>
         <button class="btn-mode" id="mode-ban-chu" onclick="switchMode('ban-chu', event)">3</button>
         <button class="btn-mode" id="mode-tim-chu" onclick="switchMode('tim-chu', event)">4</button>
-        <button class="btn-mode" id="mode-ghep-cap" onclick="switchMode('ghep-cap', event)">5</button>
+        <button class="btn-mode" id="mode-ghep-cap-1" onclick="switchMode('ghep-cap-1', event)">5</button>
+        <button class="btn-mode" id="mode-ghep-cap-2" onclick="switchMode('ghep-cap-2', event)">6</button>
     </div>
 
     <div class="game-instruction" id="game-instruction"></div>
@@ -225,19 +235,27 @@
     </div>
 </div>
 
-<!-- POPUP QUẢN LÝ TỪ VỰNG -->
+<!-- POPUP QUẢN LÝ TỪ VỰNG PHÂN TÁCH 2 TAB CHUẨN CÓ SỐ THỨ TỰ CANH TRÁI -->
 <div class="db-manager-overlay" id="db-manager-overlay">
     <div class="profile-popup">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <h4 style="margin:0; color:#1b4332;">⚙️ Kho Từ Vựng Phụ Huynh</h4>
             <button class="btn-action" onclick="toggleDatabaseManager()" style="background:#555; padding: 2px 8px;">X</button>
         </div>
-        <input type="text" id="new-sentence-input" placeholder="Ví dụ: Con kiến con cá trái banh">
+        
+        <input type="text" id="new-sentence-input" placeholder="Nhập từ hoặc câu mới vào đây...">
         <div style="display:flex; gap:4px; margin-top:4px;">
-            <button class="btn-action" onclick="addNewSentence()" style="flex:1; background:#1b4332;">Thêm Vào</button>
-            <button class="btn-action" onclick="resetDatabase()" style="background:#e63946; font-size:0.75rem;">Xóa Hết Reset</button>
+            <button class="btn-action" onclick="addNewItemFromInput()" style="flex:1; background:#1b4332;">Thêm Tự Động ➕</button>
+            <button class="btn-action" onclick="resetDatabase()" style="background:#e63946; font-size:0.75rem;">Reset Gốc</button>
         </div>
-        <div style="margin-top:5px; font-size:0.8rem; overflow-y:auto; flex:1; background:#fff; padding:6px; border-radius:8px; border:1px solid #bbb;" id="db-list-words"></div>
+
+        <!-- Thanh tiêu đề chuyển đổi 2 Tab -->
+        <div class="db-tabs">
+            <button class="db-tab-btn active" id="tab-btn-tu" onclick="switchDbTab('tu')">Từ Vựng (G6)</button>
+            <button class="db-tab-btn" id="tab-btn-cau" onclick="switchDbTab('cau')">Câu Văn</button>
+        </div>
+        <!-- Vùng hiển thị danh sách có Số thứ tự và Căn lề trái -->
+        <div class="db-list-container" id="db-list-words"></div>
     </div>
 </div>
 
@@ -345,7 +363,7 @@ function triggerCelebration() {
     let interval = setInterval(() => { createFirework(); count++; if (count >= 4) clearInterval(interval); }, 250);
 }
 
-// LOGIC XỬ LÝ TỪ VỰNG
+// LOGIC TÁCH PHỤ ÂM ĐẦU & VẦN
 function autoSplitSyllable(word) {
     if (!word) return ["", ""];
     const complexOnsets = ["ngh", "gh", "kh", "nh", "th", "ch", "tr", "ng", "ph", "gi", "qu"];
@@ -359,67 +377,111 @@ function convertSentenceToStructured(sentence) {
     return sentence.trim().split(/\s+/).map(w => autoSplitSyllable(w));
 }
 
-// CẬP NHẬT TỔNG CỘNG 5 CÂU MẪU DÀI VÀ 5 CẶP TỪ VỰNG TRONG KHO DỮ LIỆU GỐC
-const defaultDatabase = [
-    { text: "Con kiến Con cá Trái banh Ngôi nhà Xe đạp", structured: [["C", "on"], ["ki", "ến"], ["c", "á"], ["Tr", "ái"], ["b", "anh"], ["Ng", "ôi"], ["nh", "à"], ["X", "e"], ["đ", "ạp"]] },
+// KHO DỮ LIỆU GỐC ĐƯỢC CHIA THÀNH 2 KHO RIÊNG BIỆT (TỪ VỰNG VÀ CÂU VĂN)
+const defaultTuVung = [
+    { text: "Con kiến", structured: [["C", "on"], ["ki", "ến"]] },
+    { text: "Trái banh", structured: [["Tr", "ái"], ["b", "anh"]] },
+    { text: "Ngôi nhà", structured: [["Ng", "ôi"], ["nh", "à"]] },
+    { text: "Xe đạp", structured: [["X", "e"], ["đ", "ạp"]] },
+    { text: "Con cá", structured: [["c", "on"], ["c", "á"]] }
+];
+
+const defaultCauVan = [
     { text: "Chúc bé vui học Tiếng Việt chăm ngoan mỗi ngày", structured: [["Ch", "úc"], ["b", "é"], ["v", "ui"], ["h", "ọc"], ["T", "iếng"], ["V", "iệt"], ["ch", "ăm"], ["ng", "oan"], ["m", "ỗi"], ["ng", "ày"]] },
     { text: "Yêu Tổ quốc yêu đồng bào học tập tốt", structured: [["Y", "êu"], ["T", "ổ"], ["qu", "ốc"], ["y", "êu"], ["đ", "ồng"], ["b", "ào"], ["h", "ọc"], ["t", "ập"], ["t", "ốt"]] },
     { text: "Bầu ơi thương lấy bí cùng tuy rằng khác giống", structured: [["B", "ầu"], ["ơi", ""], ["th", "ương"], ["l", "ấy"], ["b", "í"], ["c", "ùng"], ["tu", "y"], ["r", "ằng"], ["kh", "ác"], ["gi", "ống"]] },
     { text: "Ăn quả nhớ kẻ trồng cây ăn khoai nhớ kẻ", structured: [["Ă", "n"], ["qu", "ả"], ["nh", "ớ"], ["k", "ẻ"], ["tr", "ồng"], ["c", "ây"], ["ă", "n"], ["kh", "oai"], ["nh", "ớ"], ["k", "ẻ"]] }
 ];
 
-// 5 Cặp từ vựng cố định phục vụ cho Cách chơi 2 của Game 5 (Ghép từ đôi có nghĩa)
-const wordPairsDataset = [
-    { left: "Con", right: "kiến" },
-    { left: "Trái", right: "banh" },
-    { left: "Ngôi", right: "nhà" },
-    { left: "Xe", right: "đạp" },
-    { left: "Con", right: "cá" }
-];
+let dbTuVung = JSON.parse(localStorage.getItem('vngame_db_tuvung')) || defaultTuVung;
+let dbCauVan = JSON.parse(localStorage.getItem('vngame_db_cauvan')) || defaultCauVan;
 
-let database = JSON.parse(localStorage.getItem('vngame_custom_db')) || defaultDatabase;
-let currentMode = 'ghep-chu'; let currentItem = database[0];
+let currentMode = 'ghep-chu'; 
+let currentItem = null;
+let currentTabActive = 'tu'; // Tab mặc định khi mở popup: 'tu' hoặc 'cau'
+
 let score = 0; let loopInterval = null; let isLocking = false; let ghepCauTimer = null;
 let selectedLeft = null; let selectedRight = null; let activePairsCount = 0; let matchColorIndex = 0;
 const pairColors = ["#E63946", "#E67E22", "#FFB703", "#2A9D8F", "#8338EC"];
 
-// ĐIỀU KHIỂN POPUP
+// QUẢN LÝ POPUP & ĐỔI TAB DỮ LIỆU
 function toggleDatabaseManager() {
     let box = document.getElementById('db-manager-overlay');
     box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
     if(box.style.display === 'flex') renderCurrentDBList();
 }
 
+function switchDbTab(tabName) {
+    currentTabActive = tabName;
+    document.getElementById('tab-btn-tu').classList.toggle('active', tabName === 'tu');
+    document.getElementById('tab-btn-cau').classList.toggle('active', tabName === 'cau');
+    renderCurrentDBList();
+}
+
 function renderCurrentDBList() {
     let listDiv = document.getElementById('db-list-words'); if(!listDiv) return;
     let html = "";
-    database.forEach((d, i) => {
-        html += `<div style="display:flex; justify-content:space-between; align-items:center; padding:4px 0; border-bottom:1px dashed #eee; font-size:0.75rem;">
-            <span style="flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><b>${d.text}</b></span>
-            <button onclick="deleteSentence(${i})" style="background:#E63946; color:white; border:none; padding:2px 4px; border-radius:4px; cursor:pointer;">Xóa</button>
-        </div>`;
-    });
+    let activeDb = (currentTabActive === 'tu') ? dbTuVung : dbCauVan;
+    
+    if(activeDb.length === 0) {
+        html = `<div style="color:#aaa; text-align:center; padding:15px;">Kho trống, vui lòng thêm bài học mới!</div>`;
+    } else {
+        activeDb.forEach((d, i) => {
+            html += `<div class="db-item-row">
+                <span style="flex:1; padding-right:10px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                    <b>${i + 1}.</b> ${d.text}
+                </span>
+                <button onclick="deleteDbItem(${i})" style="background:#E63946; color:white; border:none; padding:2px 6px; border-radius:4px; cursor:pointer; font-size:0.75rem; flex-shrink:0;">Xóa</button>
+            </div>`;
+        });
+    }
     listDiv.innerHTML = html;
 }
 
-function addNewSentence() {
+function addNewItemFromInput() {
     let input = document.getElementById('new-sentence-input'); let text = input.value.trim();
-    if (!text || text.split(/\s+/).length < 2) return alert("Vui lòng nhập câu có từ 2 từ trở lên!");
-    database.push({ text: text, structured: convertSentenceToStructured(text) });
-    localStorage.setItem('vngame_custom_db', JSON.stringify(database));
-    input.value = ""; renderCurrentDBList(); initGame();
+    if (!text) return alert("Vui lòng nhập nội dung!");
+    
+    let wordCount = text.split(/\s+/).length;
+    let structuredData = convertSentenceToStructured(text);
+    
+    // Tự động phân loại dựa trên tab đang đứng hoặc số lượng từ
+    if (currentTabActive === 'tu' || wordCount <= 2) {
+        dbTuVung.push({ text: text, structured: structuredData });
+        localStorage.setItem('vngame_db_tuvung', JSON.stringify(dbTuVung));
+        switchDbTab('tu');
+    } else {
+        dbCauVan.push({ text: text, structured: structuredData });
+        localStorage.setItem('vngame_db_cauvan', JSON.stringify(dbCauVan));
+        switchDbTab('cau');
+    }
+    
+    input.value = ""; 
+    initGame();
 }
 
-function deleteSentence(index) {
-    if (database.length <= 1) return alert("Kho bài học phải giữ lại ít nhất 1 câu!");
-    database.splice(index, 1); localStorage.setItem('vngame_custom_db', JSON.stringify(database));
-    renderCurrentDBList(); initGame();
+function deleteDbItem(index) {
+    if (currentTabActive === 'tu') {
+        if (dbTuVung.length <= 1) return alert("Học phần từ vựng phải giữ lại ít nhất 1 mục!");
+        dbTuVung.splice(index, 1);
+        localStorage.setItem('vngame_db_tuvung', JSON.stringify(dbTuVung));
+    } else {
+        if (dbCauVan.length <= 1) return alert("Học phần câu văn phải giữ lại ít nhất 1 mục!");
+        dbCauVan.splice(index, 1);
+        localStorage.setItem('vngame_db_cauvan', JSON.stringify(dbCauVan));
+    }
+    renderCurrentDBList(); 
+    initGame();
 }
 
 function resetDatabase() {
-    if(confirm("Xác nhận khôi phục dữ liệu gốc?")) {
-        localStorage.removeItem('vngame_custom_db'); database = [...defaultDatabase];
-        renderCurrentDBList(); initGame();
+    if(confirm("Xác nhận khôi phục toàn bộ dữ liệu gốc?")) {
+        localStorage.removeItem('vngame_db_tuvung');
+        localStorage.removeItem('vngame_db_cauvan');
+        dbTuVung = [...defaultTuVung];
+        dbCauVan = [...defaultCauVan];
+        switchDbTab(currentTabActive); 
+        initGame();
     }
 }
 
@@ -457,7 +519,7 @@ function createSyllableHTML(pair) {
     return `<span class="syllable"><span class="part-dau">${pair[0]}</span><span class="part-van">${pair[1]}</span></span>`;
 }
 
-// ĐIỀU HƯỚNG GAME
+// ĐIỀU HƯỚNG VÀ PHÂN PHỐI NGUỒN DATA CHO TỪNG GAME
 function initGame() {
     if(isLocking) return; if(loopInterval) clearInterval(loopInterval);
     document.getElementById('game-panel').innerHTML = '';
@@ -469,13 +531,25 @@ function initGame() {
         if (saved) { score = parseInt(saved) || 0; document.getElementById('score-val').textContent = score; }
     }
 
-    currentItem = database[Math.floor(Math.random() * database.length)];
+    // GAME 1-5: Trộn cả 2 kho dữ liệu lại làm một để bốc ngẫu nhiên câu hỏi
+    let gộpKhoChung = [...dbTuVung, ...dbCauVan];
+    
+    if (currentMode === 'ghep-cap-2') {
+        // GAME 6: Chỉ bốc từ kho Từ Vựng độc lập
+        currentItem = dbTuVung[Math.floor(Math.random() * dbTuVung.length)];
+    } else {
+        // GAME 1, 2, 3, 4, 5 lấy dữ liệu hỗn hợp chung
+        currentItem = gộpKhoChung[Math.floor(Math.random() * gộpKhoChung.length)];
+    }
+    
+    if (!currentItem) currentItem = defaultTuVung[0]; // Dự phòng bảo vệ lỗi dữ liệu trống
     
     if (currentMode === 'ghep-chu') setupGhepChu();
     else if (currentMode === 'ghep-cau') setupGhepCau();
     else if (currentMode === 'ban-chu') setupBanChu();
     else if (currentMode === 'tim-chu') setupTimChu();
-    else if (currentMode === 'ghep-cap') setupGhepCap();
+    else if (currentMode === 'ghep-cap-1') setupGhepCap1();
+    else if (currentMode === 'ghep-cap-2') setupGhepCap2();
     autoScaleTitle();
 }
 
@@ -500,7 +574,7 @@ function addScore(p) {
 }
 
 // ==========================================
-// MÀN 1: GHÉP CHỮ (TÌM PHỤ ÂM ĐẦU)
+// MÀN 1: GHÉP CHỮ (TÌM PHỤ ÂM ĐẦU) - DATA CHUNG
 // ==========================================
 function setupGhepChu() {
     const instruct = document.getElementById('game-instruction');
@@ -515,9 +589,10 @@ function setupGhepChu() {
 
     panel.innerHTML = `<div class="syllable"><span class="part-dau" style="opacity:0.3">?</span><span class="part-van">${target[1]}</span></div>`;
 
+    let gộpKhoChung = [...dbTuVung, ...dbCauVan];
     let options = [target[0]];
     while(options.length < 3) {
-        let rS = database[Math.floor(Math.random() * database.length)].structured;
+        let rS = gộpKhoChung[Math.floor(Math.random() * gộpKhoChung.length)].structured;
         let rD = rS[Math.floor(Math.random() * rS.length)][0];
         if(rD && rD !== target[0] && !options.includes(rD)) options.push(rD);
     }
@@ -539,7 +614,7 @@ function setupGhepChu() {
 }
 
 // ==========================================
-// MÀN 2: GHÉP CÂU (SẮP XẾP THỨ TỰ TỪ CỦA CÂU)
+// MÀN 2: GHÉP CÂU (SẮP XẾP TỪ) - DATA CHUNG
 // ==========================================
 function setupGhepCau() {
     if (ghepCauTimer) clearInterval(ghepCauTimer);
@@ -631,7 +706,7 @@ function setupGhepCau() {
 }
 
 // ==========================================
-// MÀN 3: BẮN CHỮ (CHỮ RƠI)
+// MÀN 3: BẮN CHỮ (CHỮ RƠI) - DATA CHUNG
 // ==========================================
 function setupBanChu() {
     const instruct = document.getElementById('game-instruction');
@@ -645,11 +720,12 @@ function setupBanChu() {
     zone.innerHTML = ''; 
     
     let spawnedElements = [];
+    let gộpKhoChung = [...dbTuVung, ...dbCauVan];
 
     function spawn() {
         if(isLocking || currentMode !== 'ban-chu') return;
         let isT = Math.random() > 0.4;
-        let rS = database[Math.floor(Math.random()*database.length)].structured;
+        let rS = gộpKhoChung[Math.floor(Math.random()*gộpKhoChung.length)].structured;
         let p = isT ? target : (rS[Math.floor(Math.random()*rS.length)] || target);
 
         let el = document.createElement('div'); el.className = 'falling-word';
@@ -678,7 +754,7 @@ function setupBanChu() {
 }
 
 // ==========================================
-// MÀN 4: TÌM CHỮ (ĐIỀN KHUYẾT TRONG CÂU)
+// MÀN 4: TÌM CHỮ (ĐIỀN KHUYẾT) - DATA CHUNG
 // ==========================================
 function setupTimChu() {
     const instruct = document.getElementById('game-instruction');
@@ -698,9 +774,10 @@ function setupTimChu() {
     
     panel.innerHTML = `<div style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:4px; width:100%;">${sentenceHTML}</div>`;
 
+    let gộpKhoChung = [...dbTuVung, ...dbCauVan];
     let options = [target];
     while(options.length < 3) {
-        let rS = database[Math.floor(Math.random()*database.length)].structured;
+        let rS = gộpKhoChung[Math.floor(Math.random()*gộpKhoChung.length)].structured;
         let rP = rS[Math.floor(Math.random()*rS.length)];
         if(rP && rP.join('') !== target.join('') && !options.some(o => o.join('') === rP.join(''))) options.push(rP);
     }
@@ -723,50 +800,82 @@ function setupTimChu() {
 }
 
 // ==========================================
-// MÀN 5: GHÉP CẶP (HỖ TRỢ 2 CÁCH CHƠI ĐỘC LẬP)
+// MÀN 5: GHÉP CẶP CÁCH 1 (ÂM ĐẦU - VẦN) - DATA CHUNG
 // ==========================================
-function setupGhepCap() {
+function setupGhepCap1() {
     const instruct = document.getElementById('game-instruction');
     const panel = document.getElementById('game-panel');
-    document.getElementById('interactive-zone').innerHTML = '';
+    
+    instruct.innerHTML = `🎮 <b>Game 5: Ghép Cặp 1</b><br><span style="font-size:0.83rem;font-weight:normal;color:#457B9D;">Nối Phụ âm đầu (Đỏ) và Vần (Xanh) tương ứng:</span>`;
+    
+    let filteredSyllables = currentItem.structured.filter(p => p[0] !== "" && p[1] !== "");
+    if(filteredSyllables.length < 2) {
+        let gộpKhoChung = [...dbTuVung, ...dbCauVan];
+        filteredSyllables = gộpKhoChung[0].structured;
+    }
+    
+    let selectedPairs = [...filteredSyllables].slice(0, 5);
+    activePairsCount = selectedPairs.length;
+    
+    let pool = selectedPairs.map((p, idx) => ({
+        leftText: p[0],
+        rightText: p[1],
+        id: idx,
+        leftColor: "var(--color-dau)",
+        rightColor: "var(--color-van)"
+    }));
 
-    // Lựa chọn Ngẫu nhiên Cách chơi (1 hoặc 2)
-    const playMethod = Math.random() > 0.5 ? 1 : 2;
-    let pool = [];
+    buildMatchingUI(pool, panel);
+}
 
-    if (playMethod === 1) {
-        // CÁCH 1: Nối Phụ âm (Trái) và Vần (Phải) của các chữ trong câu mẫu
-        instruct.innerHTML = `🎮 <b>Game 5: Ghép Cặp (Cách 1)</b><br><span style="font-size:0.83rem;font-weight:normal;color:#457B9D;">Nối Phụ âm đầu (Đỏ) và Vần (Xanh) tương ứng:</span>`;
-        let filteredSyllables = currentItem.structured.filter(p => p[0] !== "" && p[1] !== "");
-        if(filteredSyllables.length < 3) filteredSyllables = defaultDatabase[0].structured;
-        // Lấy tối đa 5 cặp
-        let selectedPairs = [...filteredSyllables].slice(0, 5);
-        activePairsCount = selectedPairs.length;
-        
-        pool = selectedPairs.map((p, idx) => ({
-            leftText: p[0],
-            rightText: p[1],
-            id: idx,
-            leftColor: "var(--color-dau)",
-            rightColor: "var(--color-van)"
-        }));
-    } else {
-        // CÁCH 2: Nối 5 Cặp Từ Vựng ghép đôi có nghĩa (Ví dụ: Con - kiến, Trái - banh)
-        instruct.innerHTML = `🎮 <b>Game 5: Ghép Cặp (Cách 2)</b><br><span style="font-size:0.83rem;font-weight:normal;color:#e63946;">Nối các từ tạo thành Từ Ghép có nghĩa đầy đủ:</span>`;
-        activePairsCount = wordPairsDataset.length;
-        
-        pool = wordPairsDataset.map((p, idx) => ({
-            leftText: p.left,
-            rightText: p.right,
-            id: idx,
-            leftColor: "#2A9D8F",
-            rightColor: "#E67E22"
-        }));
+// ==========================================
+// MÀN 6: GHÉP CẶP CÁCH 2 (TỪ GHÉP CÓ NGHĨA) - CHỈ LẤY TAB TỪ VỰNG
+// ==========================================
+function setupGhepCap2() {
+    const instruct = document.getElementById('game-instruction');
+    const panel = document.getElementById('game-panel');
+    
+    instruct.innerHTML = `🎮 <b>Game 6: Ghép Từ Đôi</b><br><span style="font-size:0.83rem;font-weight:normal;color:#e63946;">Nối các từ đứng cạnh nhau tạo thành từ có nghĩa:</span>`;
+    
+    let validPhrases = [];
+    
+    // CHỈ quét lấy các cặp từ của riêng kho Tab Từ Vựng
+    dbTuVung.forEach(item => {
+        let words = item.text.trim().split(/\s+/);
+        for (let i = 0; i < words.length - 1; i += 2) {
+            if (words[i] && words[i+1]) {
+                validPhrases.push({ left: words[i], right: words[i+1] });
+            }
+        }
+    });
+
+    // Phòng hờ nếu tab từ vựng trống hoặc không đủ điều kiện bóc tách cặp từ
+    if (validPhrases.length === 0) {
+        validPhrases = [
+            { left: "Con", right: "kiến" }, { left: "Trái", right: "banh" },
+            { left: "Ngôi", right: "nhà" }, { left: "Xe", right: "đạp" }
+        ];
     }
 
+    validPhrases.sort(() => Math.random() - 0.5);
+    let selectedPhrases = validPhrases.slice(0, 5);
+    activePairsCount = selectedPhrases.length;
+
+    let pool = selectedPhrases.map((p, idx) => ({
+        leftText: p.left,
+        rightText: p.right,
+        id: idx,
+        leftColor: "#2A9D8F",
+        rightColor: "#E67E22"
+    }));
+
+    buildMatchingUI(pool, panel);
+}
+
+// HÀM XÂY DỰNG GIAO DIỆN CHUNG CHO TRÒ CHƠI GHÉP CẶP (SỬ DỤNG CHO CẢ GAME 5 & 6)
+function buildMatchingUI(pool, panel) {
     matchColorIndex = 0; selectedLeft = null; selectedRight = null;
 
-    // Trộn ngẫu nhiên danh sách cột trái và cột phải
     let leftList = pool.map(item => ({ text: item.leftText, id: item.id, color: item.leftColor })).sort(() => Math.random() - 0.5);
     let rightList = pool.map(item => ({ text: item.rightText, id: item.id, color: item.rightColor })).sort(() => Math.random() - 0.5);
 
@@ -776,7 +885,7 @@ function setupGhepCap() {
     </div>`;
 
     const cL = document.getElementById('col-left'); const cR = document.getElementById('col-right');
-    const itemStyle = `padding:clamp(5px,1.3vh,9px) 4px; font-size:clamp(0.95rem,2.8vh,1.3rem); width:100%;`;
+    const itemStyle = `padding:clamp(5px,1.3vh,9px) 4px; font-size:clamp(1.45rem,4.2vh,1.95rem); width:100%;`;
 
     leftList.forEach(item => {
         let div = document.createElement('div'); div.className = 'matching-item'; div.style.cssText = itemStyle + `color:${item.color};`;
@@ -823,7 +932,7 @@ function setupGhepCap() {
     }
 }
 
-// BẢNG XẾP HẠNG & ĐỒNG BỘ
+// BẢNG XẾP HẠNG & ĐỒNG BỘ DỮ LIỆU
 function getLeaderboard() { let data = localStorage.getItem('vngame_bxh_v7'); return data ? JSON.parse(data) : []; }
 function saveScore(id, emoji, name, sVal) {
     let bxh = getLeaderboard(); let p = bxh.find(u => u.id === id);
@@ -841,7 +950,7 @@ function renderBXH() {
 }
 
 function exportCode(type) {
-    let p = type === 'HXH' ? { type:'HXH', id:myProfile.id, emoji:myProfile.emoji, nickname:myProfile.nickname, score:score } : { type:'DATA', customDatabase:database };
+    let p = type === 'HXH' ? { type:'HXH', id:myProfile.id, emoji:myProfile.emoji, nickname:myProfile.nickname, score:score } : { type:'DATA', tuvung:dbTuVung, cauvan:dbCauVan };
     let code = btoa(encodeURIComponent(JSON.stringify(p)));
     navigator.clipboard.writeText(code).then(() => alert("Đã sao chép mã thành công!"));
 }
@@ -850,9 +959,10 @@ function importCode() {
     let input = document.getElementById('import-input').value.trim(); if(!input) return;
     try {
         let d = JSON.parse(decodeURIComponent(atob(input)));
-        if (d.type === 'DATA' && Array.isArray(d.customDatabase)) {
-            database = d.customDatabase; localStorage.setItem('vngame_custom_db', JSON.stringify(database));
-            alert("Đã cập nhật bài học mới thành công! 📚"); closeBXHOverlay(); initGame();
+        if (d.type === 'DATA') {
+            if(d.tuvung) { dbTuVung = d.tuvung; localStorage.setItem('vngame_db_tuvung', JSON.stringify(dbTuVung)); }
+            if(d.cauvan) { dbCauVan = d.cauvan; localStorage.setItem('vngame_db_cauvan', JSON.stringify(dbCauVan)); }
+            alert("Đã cập nhật bài học mới thành công! 📚"); closeBXHOverlay(); switchDbTab('tu'); initGame();
         } else if (d.id && d.nickname) {
             saveScore(d.id, d.emoji, d.nickname, d.score); alert(`Đã nạp bạn "${d.nickname}" vào BXH!`); renderBXH();
         }
@@ -863,7 +973,9 @@ function importCode() {
 window.onload = () => {
     document.getElementById('player-avatar').textContent = myProfile.emoji;
     document.getElementById('player-profile-display').textContent = myProfile.nickname;
-    updateEmojiHighlight(); initGame();
+    updateEmojiHighlight(); 
+    switchDbTab('tu');
+    initGame();
 };
 </script>
 </body>
