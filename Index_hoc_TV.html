@@ -65,20 +65,20 @@
         .mode-selector { 
             display: flex; 
             justify-content: center; 
-            gap: clamp(8px, 3vw, 15px); 
+            gap: clamp(6px, 2.5vw, 12px); 
             margin: 6px 0; 
             width: 100%; 
             flex-shrink: 0; 
         }
         .btn-mode { 
-            width: clamp(35px, 5.5vh, 45px);
-            height: clamp(35px, 5.5vh, 45px);
+            width: clamp(33px, 5.2vh, 42px);
+            height: clamp(33px, 5.2vh, 42px);
             border: none; 
             border-radius: 50%; 
             background: #ddd; 
             cursor: pointer; 
             font-weight: bold; 
-            font-size: clamp(1rem, 2.5vh, 1.25rem); 
+            font-size: clamp(0.95rem, 2.3vh, 1.2rem); 
             display: flex; 
             justify-content: center; 
             align-items: center;
@@ -191,7 +191,8 @@
         <button class="btn-mode" id="mode-ghep-cau" onclick="switchMode('ghep-cau', event)">2</button>
         <button class="btn-mode" id="mode-ban-chu" onclick="switchMode('ban-chu', event)">3</button>
         <button class="btn-mode" id="mode-tim-chu" onclick="switchMode('tim-chu', event)">4</button>
-        <button class="btn-mode" id="mode-ghep-cap" onclick="switchMode('ghep-cap', event)">5</button>
+        <button class="btn-mode" id="mode-ghep-cap-v2" onclick="switchMode('ghep-cap-v2', event)">5</button>
+        <button class="btn-mode" id="mode-ghep-tu-v2" onclick="switchMode('ghep-tu-v2', event)">6</button>
     </div>
 
     <div class="game-instruction" id="game-instruction"></div>
@@ -356,7 +357,11 @@ function convertSentenceToStructured(sentence) {
 }
 
 const defaultDatabase = [
-    { text: "Con kiến Con cá Trái banh Ngôi nhà Xe đạp", structured: [["C", "on"], ["ki", "ến"], ["c", "á"], ["Tr", "ái"], ["b", "anh"], ["Ng", "ôi"], ["nh", "à"], ["X", "e"], ["đ", "ạp"]] },
+    { text: "Xe đạp", structured: [["X", "e"], ["đ", "ạp"]] },
+    { text: "Con kiến", structured: [["C", "on"], ["ki", "ến"]] },
+    { text: "Con cá", structured: [["C", "on"],["c", "á"]] },
+    { text: "Trái banh", structured: [["Tr", "ái"], ["b", "anh"]] },
+    { text: "Ngôi nhà", structured: [["Ng", "ôi"], ["nh", "à"]] },
     { text: "Chúc bé vui học Tiếng Việt chăm ngoan mỗi ngày", structured: [["Ch", "úc"], ["b", "é"], ["v", "ui"], ["h", "ọc"], ["T", "iếng"], ["V", "iệt"], ["ch", "ăm"], ["ng", "oan"], ["m", "ỗi"], ["ng", "ày"]] },
     { text: "Yêu Tổ quốc yêu đồng bào học tập tốt", structured: [["Y", "êu"], ["T", "ổ"], ["qu", "ốc"], ["y", "êu"], ["đ", "ồng"], ["b", "ào"], ["h", "ọc"], ["t", "ập"], ["t", "ốt"]] },
     { text: "Bầu ơi thương lấy bí cùng tuy rằng khác giống", structured: [["B", "ầu"], ["ơi", ""], ["th", "ương"], ["l", "ấy"], ["b", "í"], ["c", "ùng"], ["tu", "y"], ["r", "ằng"], ["kh", "ác"], ["gi", "ống"]] },
@@ -373,12 +378,13 @@ const wordPairsDataset = [
 
 let database = JSON.parse(localStorage.getItem('vngame_custom_db')) || defaultDatabase;
 let currentMode = 'ghep-chu'; let currentItem = database[0];
-let score = 0; let loopInterval = null; let isLocking = false; let ghepCauTimer = null;
+let score = 0; let loopInterval = null; let spawnTimer = null; let isLocking = false; let ghepCauTimer = null;
 let selectedLeft = null; let selectedRight = null; let activePairsCount = 0; let matchColorIndex = 0;
 const pairColors = ["#E63946", "#E67E22", "#FFB703", "#2A9D8F", "#8338EC"];
 
-// BIẾN QUẢN LÝ ĐỘ KHÓ DÀNH RIÊNG CHO GAME 3
+// BIẾN QUẢN LÝ GAME 3
 let game3Combo = 0;
+let game3TargetPair = null; 
 
 // ĐIỀU KHIỂN POPUP
 function toggleDatabaseManager() {
@@ -456,7 +462,10 @@ function createSyllableHTML(pair) {
 
 // ĐIỀU HƯỚNG GAME
 function initGame() {
-    if(isLocking) return; if(loopInterval) clearInterval(loopInterval);
+    if(isLocking) return; 
+    if(loopInterval) { clearInterval(loopInterval); loopInterval = null; }
+    if(spawnTimer) { clearInterval(spawnTimer); spawnTimer = null; }
+    
     document.getElementById('game-panel').innerHTML = '';
     document.getElementById('interactive-zone').innerHTML = '';
     document.getElementById('feedback').textContent = '';
@@ -470,9 +479,10 @@ function initGame() {
     
     if (currentMode === 'ghep-chu') setupGhepChu();
     else if (currentMode === 'ghep-cau') setupGhepCau();
-    else if (currentMode === 'ban-chu') setupBanChu();
+    else if (currentMode === 'ban-chu') { game3TargetPair = null; setupBanChu(); }
     else if (currentMode === 'tim-chu') setupTimChu();
-    else if (currentMode === 'ghep-cap') setupGhepCap();
+    else if (currentMode === 'ghep-cap-v2') setupGhepCapAmVan();
+    else if (currentMode === 'ghep-tu-v2') setupGhepCapTuGhep();
     autoScaleTitle();
 }
 
@@ -536,7 +546,7 @@ function setupGhepChu() {
 }
 
 // ==========================================
-// MÀN 2: GHÉP CÂU
+// MÀN 2: GHÉP CÂU (ĐÃ SỬA: CHẮC CHẮN TRỘN NGƯỢC NẾU CÓ 2 TỪ)
 // ==========================================
 function setupGhepCau() {
     if (ghepCauTimer) clearInterval(ghepCauTimer);
@@ -550,6 +560,26 @@ function setupGhepCau() {
     const slots = document.getElementById('answer-slots');
 
     let shuffled = [...currentItem.structured].sort(() => Math.random() - 0.5);
+    
+    // NẾU CÓ TỪ 2 TỪ TRỞ LÊN, KIỂM TRA ĐỂ ĐẢM BẢO CHẮC CHẮN THỨ TỰ HIỂN THỊ PHẢI KHÁC VỚI CÂU GỐC
+    if (currentItem.structured.length >= 2) {
+        let isIdentical = shuffled.every((pair, i) => pair.join('') === currentItem.structured[i].join(''));
+        if (isIdentical) {
+            if (currentItem.structured.length === 2) {
+                shuffled.reverse(); // Câu có đúng 2 từ thì chỉ cần đảo ngược vị trí
+            } else {
+                // Câu có nhiều hơn 2 từ thì xáo trộn liên tục cho tới khi khác hoàn toàn câu gốc
+                let attempts = 0;
+                while (isIdentical && attempts < 15) {
+                    shuffled.sort(() => Math.random() - 0.5);
+                    isIdentical = shuffled.every((pair, i) => pair.join('') === currentItem.structured[i].join(''));
+                    attempts++;
+                }
+                if (isIdentical) shuffled.reverse();
+            }
+        }
+    }
+
     let currentAnswer = [];
 
     isLocking = true;
@@ -628,65 +658,87 @@ function setupGhepCau() {
 }
 
 // ==========================================
-// MÀN 3: BẮN CHỮ (NÂNG CẤP: TĂNG SỐ LƯỢNG TỪ & TỐC ĐỘ THEO CHUỖI ĐÚNG)
+// MÀN 3: BẮN CHỮ
 // ==========================================
 function setupBanChu() {
     const instruct = document.getElementById('game-instruction');
     const panel = document.getElementById('game-panel');
     const zone = document.getElementById('interactive-zone');
     
-    let target = currentItem.structured[Math.floor(Math.random() * currentItem.structured.length)];
-    let targetTxt = target.join('');
+    if (!game3TargetPair) {
+        game3TargetPair = currentItem.structured[Math.floor(Math.random() * currentItem.structured.length)];
+    }
+    let targetTxt = game3TargetPair.join('');
     
-    // Tính toán Cấp độ khó dựa vào Chuỗi Combo đúng của bé
     let currentLevel = 1;
-    let maxWordsOnScreen = 1; // Số lượng từ rớt cùng lúc
-    let speedMultiplier = 1.0; // Hệ số tốc độ
+    let spawnSpeedTime = 3000; 
+    let speedMultiplier = 1.0;  
     
     if (game3Combo >= 10) {
-        currentLevel = 3;
-        maxWordsOnScreen = 3;
-        speedMultiplier = 1.5; // Tốc độ nhanh hơn 50%
+        currentLevel = 3; spawnSpeedTime = 2000; speedMultiplier = 1.35; 
     } else if (game3Combo >= 5) {
-        currentLevel = 2;
-        maxWordsOnScreen = 2;
-        speedMultiplier = 1.25; // Tốc độ nhanh hơn 25%
+        currentLevel = 2; spawnSpeedTime = 2500; speedMultiplier = 1.15; 
     }
     
-    // Giao diện hướng dẫn hiển thị chi tiết Cấp độ và Chuỗi đúng hiện tại
     instruct.innerHTML = `
         <div style="font-size:0.9rem; margin-bottom:2px;">🎮 <b>Game 3: Bắn Chữ</b> (Mức ${currentLevel})</div>
         <div style="font-size:0.75rem; color:#457B9D; font-weight:normal; margin-bottom:2px;">
-            Chuỗi đúng liên tiếp: <b style="color:#e63946;">${game3Combo}</b> 🔥 | Số từ rơi: <b>${maxWordsOnScreen}</b>
+            Chuỗi đúng liên tiếp: <b style="color:#e63946;">${game3Combo}</b> 🔥
         </div>
         <div style="font-size:0.95rem; margin-top:2px;">Chạm đúng chữ: <b style="color:var(--color-dau);font-size:1.1rem;">${targetTxt}</b></div>
     `;
     
     zone.innerHTML = ''; 
     let spawnedElements = [];
+    let availableLanes = [0, 1, 2]; 
 
     function spawnWord() {
         if(isLocking || currentMode !== 'ban-chu') return;
+        if (availableLanes.length === 0) return;
+
+        let currentTextsOnScreen = spawnedElements.map(el => el.dataset.wordText);
+        let wordPair = null;
+        let isCorrectTarget = Math.random() < 0.45;
         
-        // Xác định xem từ này sẽ là từ Đúng (Mục tiêu) hay từ Sai (Gây nhiễu)
-        let isCorrectTarget = Math.random() > 0.5;
-        let wordPair;
-        
-        if (isCorrectTarget) {
-            wordPair = target;
+        if (isCorrectTarget && !currentTextsOnScreen.includes(targetTxt)) {
+            wordPair = game3TargetPair;
         } else {
-            let rS = database[Math.floor(Math.random()*database.length)].structured;
-            wordPair = rS[Math.floor(Math.random()*rS.length)] || target;
+            let safeDistractors = [];
+            database.forEach(sentence => {
+                sentence.structured.forEach(pair => {
+                    let text = pair.join('');
+                    if (!currentTextsOnScreen.includes(text) && text !== targetTxt) {
+                        safeDistractors.push(pair);
+                    }
+                });
+            });
+            
+            if (safeDistractors.length > 0) {
+                wordPair = safeDistractors[Math.floor(Math.random() * safeDistractors.length)];
+            } else {
+                let alt = currentItem.structured.filter(p => p.join('') !== targetTxt);
+                wordPair = alt.length > 0 ? alt[Math.floor(Math.random() * alt.length)] : game3TargetPair;
+            }
         }
+
+        let currentPairTxt = wordPair.join('');
+        let laneIndexIdx = Math.floor(Math.random() * availableLanes.length);
+        let assignedLane = availableLanes.splice(laneIndexIdx, 1)[0]; 
 
         let el = document.createElement('div'); 
         el.className = 'falling-word';
         el.innerHTML = createSyllableHTML(wordPair);
-        el.style.left = Math.random() * (panel.clientWidth - 75) + 'px';
+        
+        let laneWidth = panel.clientWidth / 3;
+        let paddingOffset = (laneWidth - 75) / 2;
+        let xPos = (assignedLane * laneWidth) + Math.max(5, paddingOffset);
+        
+        el.style.left = xPos + 'px';
         el.style.top = '0px'; 
         
-        // Lưu trữ thông tin định danh trực tiếp trên Element
-        el.dataset.isTarget = (wordPair.join('') === target.join(''));
+        el.dataset.isTarget = (currentPairTxt === targetTxt);
+        el.dataset.wordText = currentPairTxt;
+        el.dataset.laneId = assignedLane;
         
         panel.appendChild(el);
 
@@ -694,54 +746,73 @@ function setupBanChu() {
             if(isLocking) return;
             if(el.dataset.isTarget === "true") {
                 playSound('correct'); 
-                game3Combo++; // Tăng chuỗi đúng liên tiếp lên
+                game3Combo++; 
                 addScore(15); 
-                el.remove(); 
-                initGame(); // Sang màn mới tăng độ khó ngay lập tức
+                
+                isLocking = true;
+                clearAllFallingWords();
+                showFeedback("Tuyệt vời! Bé chọn đúng rồi! 🎉", true);
+                
+                setTimeout(() => {
+                    isLocking = false;
+                    game3TargetPair = null; 
+                    initGame();
+                }, 1500);
             } else { 
                 playSound('wrong'); 
-                game3Combo = 0; // Sai phát rớt chuỗi về 0
-                showFeedback("Nhầm từ rồi, chuỗi đúng đã reset! 🥰", false); 
-                // Cập nhật lại giao diện hướng dẫn ngay khi sai
-                setupBanChu();
+                game3Combo = 0; 
+                showFeedback("Nhầm rồi bé ơi, tìm chữ khác nhé! 🥰", false); 
+                cleanupWordElement(el); 
+                
+                let comboText = instruct.querySelector('b');
+                if(comboText) comboText.textContent = "0";
             }
         };
         spawnedElements.push(el);
     }
 
-    // Spawn ngay số lượng từ ban đầu tương ứng với độ khó hiện tại
-    for (let i = 0; i < maxWordsOnScreen; i++) {
-        setTimeout(spawnWord, i * 600); // Rớt so le nhau một chút nhìn cho đẹp
+    function cleanupWordElement(el) {
+        let laneId = parseInt(el.dataset.laneId);
+        if (!availableLanes.includes(laneId)) {
+            availableLanes.push(laneId); 
+        }
+        el.remove();
+        let idx = spawnedElements.indexOf(el);
+        if (idx > -1) spawnedElements.splice(idx, 1);
     }
 
-    // Vòng lặp chuyển động rơi tự do
-    let baseSpeed = 4; // Tốc độ dịch chuyển pixel gốc
-    let currentIntervalSpeed = 80; // Thời gian cập nhật tính bằng mili giây
+    function clearAllFallingWords() {
+        if(spawnTimer) clearInterval(spawnTimer);
+        spawnedElements.forEach(el => el.remove());
+        spawnedElements = [];
+        availableLanes = [0, 1, 2];
+    }
+
+    spawnWord();
+
+    spawnTimer = setInterval(() => {
+        if (!isLocking && currentMode === 'ban-chu') {
+            spawnWord();
+        }
+    }, spawnSpeedTime);
+    
+    let baseSpeed = 3.5; 
+    let refreshRate = 60; 
     
     loopInterval = setInterval(() => {
+        if (isLocking) return;
+        
         for (let i = spawnedElements.length - 1; i >= 0; i--) {
             let el = spawnedElements[i]; 
             let top = parseInt(el.style.top) || 0;
             
             if(top > panel.clientHeight - 45) {
-                // Nếu từ Đúng lỡ rơi mất mà bé chưa kịp bấm -> reset chuỗi combo
-                if(el.dataset.isTarget === "true") {
-                    game3Combo = 0;
-                    showFeedback("Bé bỏ sót chữ đúng rồi! 🥰", false);
-                }
-                el.remove(); 
-                spawnedElements.splice(i, 1); 
+                cleanupWordElement(el); 
             } else { 
-                // Di chuyển chữ xuống dưới áp dụng hệ số tốc độ nâng cấp
                 el.style.top = (top + (baseSpeed * speedMultiplier)) + 'px'; 
             }
         }
-        
-        // Nếu số lượng chữ trên màn hình ít hơn cấu hình Mức độ khó -> tự động bù chữ vào
-        if(spawnedElements.length < maxWordsOnScreen && currentMode === 'ban-chu' && !isLocking) {
-            spawnWord();
-        }
-    }, currentIntervalSpeed);
+    }, refreshRate);
 }
 
 // ==========================================
@@ -790,43 +861,92 @@ function setupTimChu() {
 }
 
 // ==========================================
-// MÀN 5: GHÉP CẶP (HỖ TRỢ 2 CÁCH CHƠI ĐỘC LẬP)
+// MÀN 5: GHÉP CẶP (ĐÃ SỬA: LUÔN TÌM THÊM ĐỂ ĐỦ ÍT NHẤT 5 CẶP)
 // ==========================================
-function setupGhepCap() {
+function setupGhepCapAmVan() {
     const instruct = document.getElementById('game-instruction');
     const panel = document.getElementById('game-panel');
     document.getElementById('interactive-zone').innerHTML = '';
 
-    const playMethod = Math.random() > 0.5 ? 1 : 2;
-    let pool = [];
-
-    if (playMethod === 1) {
-        instruct.innerHTML = `🎮 <b>Game 5: Ghép Cặp (Cách 1)</b><br><span style="font-size:0.83rem;font-weight:normal;color:#457B9D;">Nối Phụ âm đầu (Đỏ) và Vần (Xanh) tương ứng:</span>`;
-        let filteredSyllables = currentItem.structured.filter(p => p[0] !== "" && p[1] !== "");
-        if(filteredSyllables.length < 3) filteredSyllables = defaultDatabase[0].structured;
-        let selectedPairs = [...filteredSyllables].slice(0, 5);
-        activePairsCount = selectedPairs.length;
+    instruct.innerHTML = `🎮 <b>Game 5: Ghép Âm và Vần</b><br><span style="font-size:0.83rem;font-weight:normal;color:#457B9D;">Nối Phụ âm đầu (Đỏ) và Vần (Xanh) tương ứng:</span>`;
+    
+    // Lấy các cặp từ hợp lệ trong câu hiện tại (phải có cả phụ âm và vần)
+    let selectedPairs = currentItem.structured.filter(p => p[0] !== "" && p[1] !== "");
+    
+    // NẾU KHÔNG ĐỦ 5 TỪ, TÌM THÊM CÁC CẶP TỪ TỪ CÁC CÂU KHÁC TRONG KHO DỮ LIỆU ĐỂ BÙ VÀO CHO ĐỦ ÍT NHẤT 5 TỪ
+    if (selectedPairs.length < 5) {
+        let extraPool = [];
+        database.forEach(sentence => {
+            sentence.structured.forEach(pair => {
+                if (pair[0] !== "" && pair[1] !== "") {
+                    // Tránh trùng lặp từ đã có sẵn trong danh sách
+                    let exist = selectedPairs.some(p => p[0] === pair[0] && p[1] === pair[1]);
+                    let existInExtra = extraPool.some(p => p[0] === pair[0] && p[1] === pair[1]);
+                    if (!exist && !existInExtra) {
+                        extraPool.push(pair);
+                    }
+                }
+            });
+        });
         
-        pool = selectedPairs.map((p, idx) => ({
-            leftText: p[0],
-            rightText: p[1],
-            id: idx,
-            leftColor: "var(--color-dau)",
-            rightColor: "var(--color-van)"
-        }));
-    } else {
-        instruct.innerHTML = `🎮 <b>Game 5: Ghép Cặp (Cách 2)</b><br><span style="font-size:0.83rem;font-weight:normal;color:#e63946;">Nối các từ tạo thành Từ Ghép có nghĩa đầy đủ:</span>`;
-        activePairsCount = wordPairsDataset.length;
+        // Trộn ngẫu nhiên danh sách phụ để lấy ngẫu nhiên các cặp từ bù đắp
+        extraPool.sort(() => Math.random() - 0.5);
+        while (selectedPairs.length < 5 && extraPool.length > 0) {
+            selectedPairs.push(extraPool.pop());
+        }
         
-        pool = wordPairsDataset.map((p, idx) => ({
-            leftText: p.left,
-            rightText: p.right,
-            id: idx,
-            leftColor: "#2A9D8F",
-            rightColor: "#E67E22"
-        }));
+        // Nếu duyệt hết cơ sở dữ liệu tuỳ chỉnh vẫn chưa đủ 5 (do kho từ quá ít), lấy thêm từ defaultDatabase
+        if (selectedPairs.length < 5) {
+            defaultDatabase.forEach(sentence => {
+                sentence.structured.forEach(pair => {
+                    if (pair[0] !== "" && pair[1] !== "") {
+                        let exist = selectedPairs.some(p => p[0] === pair[0] && p[1] === pair[1]);
+                        if (!exist) selectedPairs.push(pair);
+                    }
+                });
+            });
+        }
     }
+    
+    // Giới hạn lấy chính xác 5 cặp từ để làm bảng nối cân đối vừa vặn màn hình
+    selectedPairs = selectedPairs.slice(0, 5);
+    activePairsCount = selectedPairs.length;
+    
+    let pool = selectedPairs.map((p, idx) => ({
+        leftText: p[0],
+        rightText: p[1],
+        id: idx,
+        leftColor: "var(--color-dau)",
+        rightColor: "var(--color-van)"
+    }));
 
+    handleMatchingLogic(panel, pool);
+}
+
+// ==========================================
+// MÀN 6: GHÉP TỪ GHÉP
+// ==========================================
+function setupGhepCapTuGhep() {
+    const instruct = document.getElementById('game-instruction');
+    const panel = document.getElementById('game-panel');
+    document.getElementById('interactive-zone').innerHTML = '';
+
+    instruct.innerHTML = `🎮 <b>Game 6: Ghép Từ Có Nghĩa</b><br><span style="font-size:0.83rem;font-weight:normal;color:#e63946;">Nối các từ tạo thành Từ Ghép có nghĩa đầy đủ:</span>`;
+    
+    activePairsCount = wordPairsDataset.length;
+    let pool = wordPairsDataset.map((p, idx) => ({
+        leftText: p.left,
+        rightText: p.right,
+        id: idx,
+        leftColor: "#2A9D8F",
+        rightColor: "#E67E22"
+    }));
+
+    handleMatchingLogic(panel, pool);
+}
+
+// HÀM XỬ LÝ CHUNG LOGIC KÉO NỐI CHO GAME 5 & GAME 6
+function handleMatchingLogic(panel, pool) {
     matchColorIndex = 0; selectedLeft = null; selectedRight = null;
 
     let leftList = pool.map(item => ({ text: item.leftText, id: item.id, color: item.leftColor })).sort(() => Math.random() - 0.5);
