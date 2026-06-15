@@ -3,26 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Chúc Bé Vui Học Tiếng Việt</title>
+    <title>SoFiNB:Chúc Bé Vui Học</title>
     
-    <script>
-        window.KHO_GOC_AUTHOR = {
-            tuvung: [
-                { text: "Con kiến" },
-                { text: "Trái banh" },
-                { text: "Bông hoa" },
-                { text: "Con mèo" },
-                { text: "Ngôi sao" }
-            ],
-            cauvan: [
-                { text: "Chúc bé vui học Tiếng Việt chăm ngoan mỗi ngày" },
-                { text: "Em yêu trường em" },
-                { text: "Bé ngoan nghe lời ông bà cha mẹ" }
-            ]
-        };
-    </script>
+<script>
+    window.KHO_GOC_AUTHOR = {
+        tuvung: [
+            // 1-5 (Gốc)
+            { text: "Con kiến" }, { text: "Trái banh" }, { text: "Bông hoa" }, { text: "Con mèo" }, { text: "Ngôi sao" },
+            // 6-20 (Động vật nuôi & Hoang dã)
+            { text: "Con chó" }, { text: "Con gà" }, { text: "Con vịt" }, { text: "Con heo" }, { text: "Con trâu" },
+            { text: "Con bò" }, { text: "Con ngựa" }, { text: "Con voi" }, { text: "Con hổ" }, { text: "Con thỏ" },
+            { text: "Con chuột" }, { text: "Con cá" }, { text: "Con chim" }, { text: "Con bướm" }, { text: "Con ong" },
+            // 21-35 (Trái cây / Thực vật)
+            { text: "Quả táo" }, { text: "Quả chuối" }, { text: "Quả cam" }, { text: "Quả xoài" }, { text: "Quả dưa hấu" },
+            { text: "Quả chanh" }, { text: "Quả bưởi" }, { text: "Cây bàng" }, { text: "Cây phượng" }, { text: "Cây tre" },
+            { text: "Hoa hồng" }, { text: "Hoa mai" }, { text: "Hoa đào" }, { text: "Hoa sen" }, { text: "Hoa cúc" },
+            // 36-50 (Đồ vật / Đồ dùng học tập)
+            { text: "Sách vở" }, { text: "Bút chì" }, { text: "Thước kẻ" }, { text: "Cặp sách" }, { text: "Cục tẩy" },
+            { text: "Bàn học" }, { text: "Cái ghế" }, { text: "Bảng đen" }, { text: "Máy tính" }, { text: "Điện thoại" },
+            { text: "Cái cốc" }, { text: "Cái thìa" }, { text: "Đôi đũa" }, { text: "Cái bát" }, { text: "Cái giường" },
+            // 51-65 (Gia đình / Con người)
+            { text: "Ông nội" }, { text: "Bà nội" }, { text: "Ông ngoại" }, { text: "Bà ngoại" }, { text: "Cha mẹ" },
+            { text: "Anh trai" }, { text: "Chị gái" }, { text: "Em bé" }, { text: "Thầy giáo" }, { text: "Cô giáo" },
+            { text: "Bác sĩ" }, { text: "Công an" }, { text: "Kỹ sư" }, { text: "Học sinh" }, { text: "Bạn bè" },
+            // 66-80 (Thiên nhiên / Đất nước)
+            { text: "Mặt trời" }, { text: "Mặt trăng" }, { text: "Đám mây" }, { text: "Cơn mưa" }, { text: "Ngọn gió" },
+            { text: "Bầu trời" }, { text: "Ngọn núi" }, { text: "Dòng sông" }, { text: "Biển cả" }, { text: "Cánh đồng" },
+            { text: "Đất nước" }, { text: "Việt Nam" }, { text: "Thành phố" }, { text: "Nông thôn" }, { text: "Ngôi nhà" },
+            // 81-100 (Phương tiện / Khác)
+            { text: "Xe đạp" }, { text: "Xe máy" }, { text: "Ô tô" }, { text: "Máy bay" }, { text: "Tàu hỏa" },
+            { text: "Thuyền buồm" }, { text: "Mũ bảo hiểm" }, { text: "Áo khoác" }, { text: "Đôi giày" }, { text: "Đôi dép" },
+            { text: "Bánh chưng" }, { text: "Ngày Tết" }, { text: "Trung thu" }, { text: "Mùa xuân" }, { text: "Mùa hạ" },
+            { text: "Mùa thu" }, { text: "Mùa đông" }, { text: "Sức khỏe" }, { text: "Niềm vui" }, { text: "Hạnh phúc" },
+
+            // NÂNG CẤP: TỪ 101 ĐẾN 200 (Mở rộng Động thực vật & Đồ gia dụng)
+            { text: "Con sư tử" }, { text: "Con gấu" }, { text: "Con hươu" }, { text: "Con nai" }, { text: "Con cáo" },
+            { text: "Con khỉ" }, { text: "Con sóc" }, { text: "Con chuột túi" }, { text: "Con đà điểu" }, { text: "Con đại bàng" },
+            { text: "Con chim sẻ" }, { text: "Con bồ câu" }, { text: "Con hải âu" }, { text: "Con cá mập" }, { text: "Con cá voi" },
+            { text: "Con cá heo" }, { text: "Con rùa" }, { text: "Con ba ba" }, { text: "Con ếch" }, { text: "Con nhái" },
+            { text: "Con tôm" }, { text: "Con cua" }, { text: "Con ghẹ" }, { text: "Con ốc" }, { text: "Con nghêu" },
+            { text: "Con sò" }, { text: "Con mực" }, { text: "Con bạch tuộc" }, { text: "Con sứa" }, { text: "Con sao biển" },
+            { text: "Quả đu đủ" }, { text: "Quả sầu riêng" }, { text: "Quả măng cụt" }, { text: "Quả chôm chôm" }, { text: "Quả vải" },
+            { text: "Quả nhãn" }, { text: "Quả ổi" }, { text: "Quả mận" }, { text: "Quả đào" }, { text: "Quả mơ" },
+            { text: "Quả hồng" }, { text: "Quả dâu tây" }, { text: "Quả nho" }, { text: "Quả dứa" }, { text: "Quả mít" },
+            { text: "Cây dừa" }, { text: "Cây chuối" }, { text: "Cây khế" }, { text: "Cây mía" }, { text: "Cây lúa" },
+            { text: "Cây ngô" }, { text: "Cây khoai lang" }, { text: "Cây sắn" }, { text: "Cây đậu xanh" }, { text: "Cây lạc" },
+            { text: "Hoa hướng dương" }, { text: "Hoa phong lan" }, { text: "Hoa ly" }, { text: "Hoa huệ" }, { text: "Hoa nhài" },
+            { text: "Hoa giấy" }, { text: "Hoa mười giờ" }, { text: "Hoa súng" }, { text: "Hoa bỉ ngạn" }, { text: "Hoa cẩm tú cầu" },
+            { text: "Cái tivi" }, { text: "Tủ lạnh" }, { text: "Máy giặt" }, { text: "Điều hòa" }, { text: "Quạt điện" },
+            { text: "Nồi cơm điện" }, { text: "Bếp ga" }, { text: "Lò vi sóng" }, { text: "Ấm siêu tốc" }, { text: "Máy xay sinh tố" },
+            { text: "Cái tủ quần áo" }, { text: "Cái gương" }, { text: "Cái lược" }, { text: "Cái bàn chải" }, { text: "Kem đánh răng" },
+            { text: "Khăn mặt" }, { text: "Xà bông" }, { text: "Dầu gội" }, { text: "Nước rửa tay" }, { text: "Cái chậu" },
+            { text: "Cái xô" }, { text: "Cái chổi" }, { text: "Cây lau nhà" }, { text: "Thùng rác" }, { text: "Hốt rác" },
+            { text: "Cái kéo" }, { text: "Dao găm" }, { text: "Cái thớt" }, { text: "Cái chảo" }, { text: "Cái nồi" },
+            { text: "Cái vá" }, { text: "Cái rổ" }, { text: "Cái rây" }, { text: "Hộp đựng cơm" }, { text: "Bình giữ nhiệt" },
+
+            // NÂNG CẤP: TỪ 201 ĐẾN 300 (Bộ phận cơ thể, Trang phục & Trường học)
+            { text: "Mái tóc" }, { text: "Khuôn mặt" }, { text: "Cái đầu" }, { text: "Vầng trán" }, { text: "Đôi mắt" },
+            { text: "Hàng lông mày" }, { text: "Cái mũi" }, { text: "Đôi tai" }, { text: "Cái miệng" }, { text: "Đôi môi" },
+            { text: "Hàm răng" }, { text: "Cái lưỡi" }, { text: "Cái cằm" }, { text: "Cái cổ" }, { text: "Bờ vai" },
+            { text: "Cánh tay" }, { text: "Bàn tay" }, { text: "Ngón tay" }, { text: "Móng tay" }, { text: "Cái lưng" },
+            { text: "Cái bụng" }, { text: "Cái ngực" }, { text: "Đôi chân" }, { text: "Bàn chân" }, { text: "Ngón chân" },
+            { text: "Đầu gối" }, { text: "Gót chân" }, { text: "Trái tim" }, { text: "Lá phổi" }, { text: "Dạ dày" },
+            { text: "Áo sơ mi" }, { text: "Áo thun" }, { text: "Quần tây" }, { text: "Quần bò" }, { text: "Quần soóc" },
+            { text: "Cái váy" }, { text: "Áo đầm" }, { text: "Áo dài" }, { text: "Áo len" }, { text: "Áo phao" },
+            { text: "Bộ đồ ngủ" }, { text: "Đôi tất" }, { text: "Găng tay" }, { text: "Khăn quàng" }, { text: "Cái mũ" },
+            { text: "Thắt lưng" }, { text: "Cà vạt" }, { text: "Kính mắt" }, { text: "Đồng hồ" }, { text: "Cái vòng tay" },
+            { text: "Bút mực" }, { text: "Bút sáp màu" }, { text: "Bút dạ quang" }, { text: "Hộp bút" }, { text: "Vở bài tập" },
+            { text: "Giấy thủ công" }, { text: "Kéo cắt giấy" }, { text: "Hồ dán" }, { text: "Băng dính" }, { text: "Đất nặn" },
+            { text: "Bản đồ" }, { text: "Quả địa cầu" }, { text: "Cái trống trường" }, { text: "Cột cờ" }, { text: "Lá cờ" },
+            { text: "Phòng học" }, { text: "Thư viện" }, { text: "Phòng y tế" }, { text: "Nhà thể chất" }, { text: "Sân trường" },
+            { text: "Giờ ra chơi" }, { text: "Bài tập về nhà" }, { text: "Bài kiểm tra" }, { text: "Điểm mười" }, { text: "Sổ liên lạc" },
+            { text: "Bác bảo vệ" }, { text: "Cô lao công" }, { text: "Bạn cùng bàn" }, { text: "Lớp trưởng" }, { text: "Đội viên" },
+            { text: "Môn Toán" }, { text: "Môn Tiếng Việt" }, { text: "Môn Khoa học" }, { text: "Môn Lịch sử" }, { text: "Môn Địa lý" },
+            { text: "Môn Ngoại ngữ" }, { text: "Môn Mỹ thuật" }, { text: "Môn Âm nhạc" }, { text: "Môn Thể dục" }, { text: "Tin học" },
+            { text: "Phấn viết" }, { text: "Khăn lau bảng" }, { text: "Giấy khen" }, { text: "Học bổng" }, { text: "Lễ bế giảng" },
+            { text: "Khai giảng" }, { text: "Cắm trại" }, { text: "Đại hội" }, { text: "Chào cờ" }, { text: "Học nhóm" },
+
+            // NÂNG CẤP: TỪ 301 ĐẾN 400 (Nghề nghiệp, Ẩm thực & Giao thông)
+            { text: "Y tá" }, { text: "Dược sĩ" }, { text: "Nha sĩ" }, { text: "Phi công" }, { text: "Tiếp viên" },
+            { text: "Tài xế" }, { text: "Thủy thủ" }, { text: "Nông dân" }, { text: "Ngư dân" }, { text: "Thợ mộc" },
+            { text: "Thợ xây" }, { text: "Thợ cơ khí" }, { text: "Thợ may" }, { text: "Thợ làm tóc" }, { text: "Đầu bếp" },
+            { text: "Phục vụ" }, { text: "Nhân viên" }, { text: "Giám đốc" }, { text: "Thư ký" }, { text: "Kế toán" },
+            { text: "Nhà báo" }, { text: "Phóng viên" }, { text: "Biên tập viên" }, { text: "Đạo diễn" }, { text: "Diễn viên" },
+            { text: "Ca sĩ" }, { text: "Nhạc sĩ" }, { text: "Họa sĩ" }, { text: "Nhà văn" }, { text: "Nhà thơ" },
+            { text: "Kiến trúc sư" }, { text: "Luật sư" }, { text: "Thẩm phán" }, { text: "Nhà khoa học" }, { text: "Nhân viên cứu hỏa" },
+            { text: "Cơm tấm" }, { text: "Phở bò" }, { text: "Bún chả" }, { text: "Bánh mì" }, { text: "Bánh xèo" },
+            { text: "Bánh cuốn" }, { text: "Bánh bao" }, { text: "Xôi gấc" }, { text: "Cháo gà" }, { text: "Mì tôm" },
+            { text: "Canh chua" }, { text: "Thịt kho tàu" }, { text: "Cá rán" }, { text: "Rau muống luộc" }, { text: "Đậu phụ" },
+            { text: "Trứng rán" }, { text: "Giò lụa" }, { text: "Lạp xưởng" }, { text: "Nem rán" }, { text: "Canh măng" },
+            { text: "Sữa tươi" }, { text: "Nước lọc" }, { text: "Nước ép cam" }, { text: "Sinh tố bơ" }, { text: "Trà sữa" },
+            { text: "Cà phê" }, { text: "Nước mía" }, { text: "Kem vani" }, { text: "Sữa chua" }, { text: "Bánh ngọt" },
+            { text: "Gia vị" }, { text: "Nước mắm" }, { text: "Muối ăn" }, { text: "Đường cát" }, { text: "Hạt tiêu" },
+            { text: "Ớt cay" }, { text: "Củ tỏi" }, { text: "Củ hành" }, { text: "Củ gừng" }, { text: "Nhánh sả" },
+            { text: "Xe cứu thương" }, { text: "Xe cứu hỏa" }, { text: "Xe cảnh sát" }, { text: "Xe buýt" }, { text: "Xe taxi" },
+            { text: "Xe tải" }, { text: "Xe cần cẩu" }, { text: "Xe xúc đất" }, { text: "Xe rác" }, { text: "Xe xích lô" },
+            { text: "Tàu thủy" }, { text: "Cano" }, { text: "Thuyền thúng" }, { text: "Bè tre" }, { text: "Trực thăng" },
+            { text: "Khinh khí cầu" }, { text: "Tàu ngầm" }, { text: "Nhà ga" }, { text: "Bến xe" }, { text: "Sân bay" },
+            { text: "Cảng biển" }, { text: "Đường quốc lộ" }, { text: "Ngã tư" }, { text: "Đèn giao thông" }, { text: "Vạch kẻ đường" },
+
+            // NÂNG CẤP: TỪ 401 ĐẾN 500 (Địa lý, Trạng thái, Cảm xúc & Từ trừu tượng thông dụng)
+            { text: "Hòn đảo" }, { text: "Bán đảo" }, { text: "Vịnh biển" }, { text: "Hang động" }, { text: "Thác nước" },
+            { text: "Suối nước ngọt" }, { text: "Ao hồ" }, { text: "Đầm lầy" }, { text: "Sa mạc" }, { text: "Thảo nguyên" },
+            { text: "Rừng rậm" }, { text: "Đồi chè" }, { text: "Thung lũng" }, { text: "Bờ biển" }, { text: "Bãi cát" },
+            { text: "Châu Á" }, { text: "Châu Âu" }, { text: "Châu Mỹ" }, { text: "Châu Phi" }, { text: "Châu Đại Dương" },
+            { text: "Thủ đô" }, { text: "Hà Nội" }, { text: "Thành phố Hồ Chí Minh" }, { text: "Đà Nẵng" }, { text: "Cần Thơ" },
+            { text: "Yêu thương" }, { text: "Tức giận" }, { text: "Lo lắng" }, { text: "Sợ hãi" }, { text: "Ngạc nhiên" },
+            { text: "Buồn bã" }, { text: "Hào hứng" }, { text: "Tự tin" }, { text: "Xấu hổ" }, { text: "Cảm động" },
+            { text: "Chăm chỉ" }, { text: "Lười biếng" }, { text: "Thông minh" }, { text: "Cẩn thận" }, { text: "Cẩu thả" },
+            { text: "Ngoan ngoãn" }, { text: "Lễ phép" }, { text: "Dũng cảm" }, { text: "Nhút nhát" }, { text: "Thật thà" },
+            { text: "Trung thực" }, { text: "Khiêm tốn" }, { text: "Tự phụ" }, { text: "Kiên trì" }, { text: "Nhân hậu" },
+            { text: "To lớn" }, { text: "Nhỏ bé" }, { text: "Khổng lồ" }, { text: "Tí hon" }, { text: "Dài ngoằng" },
+            { text: "Ngắn ngủn" }, { text: "Cao vút" }, { text: "Thấp tịt" }, { text: "Nặng nề" }, { text: "Nhẹ tênh" },
+            { text: "Xinh đẹp" }, { text: "Xấu xí" }, { text: "Dễ thương" }, { text: "Sạch sẽ" }, { text: "Bừa bộn" },
+            { text: "Mới tinh" }, { text: "Cũ kỹ" }, { text: "Hiện đại" }, { text: "Cổ kính" }, { text: "Giàu có" },
+            { text: "Nghèo khó" }, { text: "Nhanh nhẹn" }, { text: "Chậm chạp" }, { text: "Ấm áp" }, { text: "Lạnh lẽo" },
+            { text: "Mát mẻ" }, { text: "Nóng bức" }, { text: "Sáng sủa" }, { text: "Tối tăm" }, { text: "Yên tĩnh" },
+            { text: "Ồn ào" }, { text: "Đông đúc" }, { text: "Vắng vẻ" }, { text: "Thuận lợi" }, { text: "Khó khăn" },
+            { text: "Bình yên" }, { text: "An toàn" }, { text: "Nguy hiểm" }, { text: "Đoàn kết" }, { text: "Chiến thắng" },
+            { text: "Thành công" }, { text: "Thất bại" }, { text: "Kỷ niệm" }, { text: "Ước mơ" }, { text: "Tương lai" },
+            { text: "Quá khứ" }, { text: "Hiện tại" }, { text: "Thời gian" }, { text: "Không gian" }, { text: "Trí tuệ" }
+        ],
+        cauvan: [
+            // 1-5 (Gốc)
+            { text: "Chúc bé vui học Tiếng Việt" }, { text: "Em yêu trường em" }, { text: "Tốt gỗ hơn tốt nước sơn" }, { text: "Có công mài sắt, có ngày nên kim" }, { text: "Bé ngoan nghe lời ông bà cha mẹ" },
+            // 6-20 (Câu ngắn cho bé)
+            { text: "Con mèo trèo cây cau" }, { text: "Con chim hót líu lo trên cành" }, { text: "Bé thích đi học mỗi ngày" }, { text: "Mẹ mua cho em sách mới" }, { text: "Ba đưa em đi công viên chơi" },
+            { text: "Bầu trời hôm nay rất xanh" }, { text: "Ánh mặt trời tỏa sáng ấm áp" }, { text: "Em giúp mẹ quét dọn nhà cửa" }, { text: "Cây bàng trường em che bóng mát" }, { text: "Đàn cá bơi lội dưới hồ nước" },
+            { text: "Chúng em xếp hàng vào lớp" }, { text: "Cô giáo khen em chăm chỉ" }, { text: "Bé ăn nhiều để mau lớn" }, { text: "Mùa xuân hoa mai nở rộ" }, { text: "Đêm rằm trung thu rước đèn" },
+            // 21-45 (Ca dao, tục ngữ, thành ngữ)
+            { text: "Ăn quả nhớ kẻ trồng cây" }, { text: "Uống nước nhớ nguồn" }, { text: "Thương người như thể thương thân" }, { text: "Lá lành đùm lá rách" }, { text: "Một cây làm chẳng nên non, ba cây chụm lại nên hòn núi cao" },
+            { text: "Bầu ơi thương lấy bí cùng, tuy rằng khác giống nhưng chung một giàn" }, { text: "Nhiễu điều phủ lấy giá gương, người trong một nước phải thương nhau cùng" }, { text: "Công cha như núi Thái Sơn, nghĩa mẹ như nước trong nguồn chảy ra" }, { text: "Kính trên nhường dưới" }, { text: "Đi thưa về trình" },
+            { text: "Học thầy không tày học bạn" }, { text: "Học ăn, học nói, học gói, học mở" }, { text: "Gần mực thì đen, gần đèn thì sáng" }, { text: "Tiên học lễ, hậu học văn" }, { text: "Sai một ly, đi một dặm" },
+            { text: "Chớ thấy sóng cả mà ngã tay chèo" }, { text: "Có chí thì nên" }, { text: "Thất bại là mẹ thành công" }, { text: "Lời nói chẳng mất tiền mua, lựa lời mà nói cho vừa lòng nhau" }, { text: "Ngọc không mài không sáng, người không học không tài" },
+            { text: "Cây xanh thì lá cũng xanh, cha mẹ hiền lành để đức cho con" }, { text: "Muốn biết phải hỏi, muốn giỏi phải học" }, { text: "Đoàn kết là sức mạnh" }, { text: "Một chữ cũng là thầy, nửa chữ cũng là thầy" }, { text: "Nước chảy đá mòn" },
+            // 46-75 (Câu văn miêu tả / Đời sống)
+            { text: "Quê hương em có cánh đồng lúa chín vàng" }, { text: "Dòng sông quê em uốn lượn hiền hòa" }, { text: "Mỗi ngày đến trường là một ngày vui" }, { text: "Thầy cô luôn yêu thương và dạy dỗ chúng em" }, { text: "Gia định là tổ ấm hạnh phúc nhất của em" },
+            { text: "Em luôn tự hào về đất nước Việt Nam" }, { text: "Sách là người bạn thân thiết của học sinh" }, { text: "Tập thể dục buổi sáng giúp cơ thể khỏe mạnh" }, { text: "Rửa tay sạch sẽ trước khi ăn cơm" }, { text: "Trồng thêm cây xanh để bảo vệ môi trường" },
+            { text: "Chúng ta không nên lãng phí thức ăn" }, { text: "Nhặt được của rơi trả người đánh mất" }, { text: "Luôn biết nói lời cảm ơn và xin lỗi" }, { text: "Giữ gìn vệ sinh lớp học luôn sạch đẹp" }, { text: "Giúp đỡ bạn bè khi gặp khó khăn" },
+            { text: "Chăm chỉ đọc sách giúp mở rộng kiến thức" }, { text: "Nụ cười rạng rỡ trên môi em thơ" }, { text: "Tiếng cười rộn rã khắp sân trường" }, { text: "Mẹ là người phụ nữ tuyệt vời nhất" }, { text: "Cha luôn là chỗ dựa vững chắc cho gia đình" },
+            { text: "Anh em trong nhà phải biết nhường nhịn nhau" }, { text: "Bé chăm ngoan học giỏi được mọi người yêu mến" }, { text: "Biển Việt Nam giàu đẹp và bao la" }, { text: "Ánh trăng rằm sáng tỏ khắp sân nhà" }, { text: "Mùa hè đến, hoa phượng nở đỏ rực" },
+            { text: "Tiếng ve kêu râm ran suốt mùa hè" }, { text: "Mùa thu lá vàng rơi nhẹ nhàng trên phố" }, { text: "Mùa đông lạnh có chiếc áo len ấm áp" }, { text: "Đôi mắt em sáng ngời niềm hy vọng" }, { text: "Ước mơ của em là trở thành bác sĩ" },
+            // 76-100 (Tục ngữ & Lời hay ý đẹp tiếp theo)
+            { text: "Tấc đất tấc vàng" }, { text: "Thời gian là vàng bạc" }, { text: "Chậm mà chắc" }, { text: "Cẩn thận không bao giờ thừa" }, { text: "Sức khỏe là vốn quý nhất của con người" },
+            { text: "Vạn sự khởi đầu nan" }, { text: "Có nuôi con mới biết lòng cha mẹ" }, { text: "Kính già già để tuổi cho" }, { text: "Yêu trẻ, trẻ đến nhà" }, { text: "Một nụ cười bằng mười thang thuốc bổ" },
+            { text: "Ở hiền gặp lành" }, { text: "Gieo gió gặt bão" }, { text: "Cây ngay không sợ chết đứng" }, { text: "Đói cho sạch, rách cho thơm" }, { text: "Lá rụng về cội" },
+            { text: "Trâu buộc ghét trâu ăn" }, { text: "Chị ngã em nâng" }, { text: "Gà cùng một mẹ chớ hoài đá nhau" }, { text: "Khen cho chết, chê cho sống" }, { text: "Mật ngọt chết ruồi" },
+            { text: "Muốn lành nghề phải chăm hay làm" }, { text: "Đi một ngày đàng, học một sàng khôn" }, { text: "Có đức mặc sức mà ăn" }, { text: "Có nuôi con mới hiếu thảo với mẹ cha" }, { text: "Học tập là chìa khóa của thành công" }
+        ]
+    };
+</script>
+
 
     <script src="data.js"></script>
+
 
     <style>
         :root {
@@ -31,6 +165,7 @@
             --color-bg: #F1FAEE;
             --color-btn: #457B9D;
             --color-accent: #A8DADC;
+            --color-success: #2A9D8F;
         }
         * { box-sizing: border-box; }
         body { 
@@ -63,30 +198,67 @@
         .game-instruction { font-size: clamp(0.85rem, 2vh, 1.05rem); font-weight: bold; margin-bottom: 4px; color: #1D3557; flex-shrink: 0; min-height: 24px; }
         .game-panel { 
             flex: 1; min-height: 80px; background: #fafafa; border: 3px dashed var(--color-btn); border-radius: 15px; 
-            padding: 6px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            padding: 8px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; 
         }
         .syllable { 
             font-size: clamp(1.8rem, 6vh, 3.3rem); font-weight: bold; display: inline-block; margin: 2px; padding: 2px 8px; 
             background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 2px solid transparent; 
         }
+        
+        .game-panel .syllable-result {
+            font-size: clamp(1.05rem, 3.2vh, 1.6rem) !important;
+            padding: 2px 6px !important;
+            margin: 2px !important;
+        }
+
+        .comparison-box {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            width: 100%; max-height: 100%; padding: 8px; border-radius: 10px; background: #fff3e0;
+            border: 2px solid #ffb74d; box-sizing: border-box; text-align: center; gap: 8px;
+        }
+        .comparison-title { font-size: clamp(0.85rem, 2vh, 1.05rem); font-weight: bold; color: #d84315; margin-bottom: 2px; }
+        .comparison-words { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 3px; width: 100%; }
+        
+        .syllable-highlight {
+            background: #ffeb3b !important;
+            border: 2px solid #f44336 !important;
+            box-shadow: 0 0 6px rgba(244,67,54,0.4) !important;
+        }
+
         .slot-clickable { cursor: pointer; border: 2px dashed #999; border-radius: 8px; display: inline-block; margin: 2px; }
         .slot-clickable:hover { border-color: var(--color-dau); background: #ffe3e3; }
         .part-dau { color: var(--color-dau); }
         .part-van { color: var(--color-van); }
         .feedback { font-size: clamp(0.9rem, 2vh, 1.10rem); font-weight: bold; margin: 2px 0; height: 22px; color: #2a9d8f; flex-shrink: 0; }
         .interactive-zone { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-top: 4px; min-height: 45px; width: 100%; flex-shrink: 0; align-items: center; }
+        
         .block { 
-            padding: clamp(4px, 1.1vh, 8px) clamp(8px, 1.8vw, 14px); font-size: clamp(0.9rem, 2.8vh, 1.2rem); 
-            font-weight: bold; background: white; border: 2px solid #ccc; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 0 #bbb; transition: all 0.1s; margin: 2px;
+            padding: clamp(3px, 0.9vh, 6px) clamp(6px, 1.5vw, 12px); font-size: clamp(0.85rem, 2.3vh, 1.05rem); 
+            font-weight: bold; background: white; border: 2px solid #ccc; border-radius: 12px; cursor: pointer; box-shadow: 0 3px 0 #bbb; transition: all 0.1s; margin: 2px;
         }
-        .block:active { transform: translateY(4px); box-shadow: none; }
+        .block:active { transform: translateY(3px); box-shadow: none; }
+        
         .profile-edit-box, .db-manager-overlay, .bxh-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
         .profile-popup { width: 95%; max-width: 500px; background: #eef2f3; border-radius: 15px; padding: 15px; display: flex; flex-direction: column; gap: 8px; max-height: 95vh; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
         .db-tabs { display: flex; gap: 4px; margin-top: 4px; }
-        .db-tab-btn { flex: 1; padding: 6px; border: none; background: #ccc; font-weight: bold; cursor: pointer; border-radius: 6px 6px 0 0; font-size: 0.85rem; }
-        .db-tab-btn.active { background: white; color: #1b4332; border-bottom: 2px solid #1b4332; }
+        .db-tab-btn { flex: 1; padding: 6px; border: none; background: #bdc3c7; color: #7f8c8d; font-weight: bold; cursor: pointer; border-radius: 6px 6px 0 0; font-size: 0.85rem; opacity: 0.6; transition: all 0.2s; }
+        .db-tab-btn.active { background: white; color: #1b4332; border-bottom: 2px solid #1b4332; opacity: 1; }
+        
+        .vocab-filter-tabs { 
+            display: flex; background: #d1dbed; padding: 3px; border-radius: 10px; margin: 4px 0; width: 100%; gap: 2px;
+        }
+        .vocab-filter-item { 
+            flex: 1; text-align: center; padding: 8px 4px; font-size: 0.9rem; font-weight: bold; 
+            color: #7f8c8d; background: #bdc3c7; opacity: 0.5; cursor: pointer; border-radius: 8px; transition: all 0.2s;
+        }
+        .vocab-filter-item.active { 
+            background: white; color: var(--color-van); opacity: 1; box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+        }
+
         .db-list-container { text-align: left; margin-top: 0; font-size: 0.85rem; overflow-y: auto; flex: 1; background: #fff; padding: 8px; border-radius: 0 0 8px 8px; border: 1px solid #bbb; min-height: 180px; }
-        .db-item-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px dashed #eee; }
+        .db-item-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px dashed #eee; gap: 6px; }
+        .db-item-text { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .db-item-actions { display: flex; gap: 4px; flex-shrink: 0; }
         .emoji-scroll { overflow-y: auto; max-height: 20vh; padding: 6px; border: 2px dashed #aaa; border-radius: 10px; background: #fff; }
         .emoji-group { margin-bottom: 5px; padding: 5px; border-radius: 8px; background: #f7f7f7; text-align: left; }
         .emoji-select { cursor: pointer; font-size: 20px; padding: 3px; display: inline-block; }
@@ -102,22 +274,21 @@
         .matching-item:active { transform: translateY(2px); box-shadow: 0 1px 0 #bbb; }
         .matching-item.selected { background-color: var(--color-accent) !important; border-color: var(--color-btn) !important; }
         .matching-item.matched { cursor: default; pointer-events: none; box-shadow: none; transform: none; }
-        .falling-word { position: absolute; cursor: pointer; z-index: 50; animation: custom-pulse 1s infinite alternate; }
-        @keyframes custom-pulse { from { transform: scale(1); } to { transform: scale(1.03); } }
+        .falling-word { position: absolute; cursor: pointer; z-index: 50; }
     </style>
 </head>
 <body>
 <canvas id="fw-canvas"></canvas>
 
 <div class="container">
-    <div class="title-wrap"><h1 id="main-title">Chúc Bé Vui Học Tiếng Việt 🎉</h1></div>
+    <div class="title-wrap"><h1 id="main-title">SoFiNB:Chúc Bé Vui Học 🎉</h1></div>
     
     <div class="status-bar">
         <div class="profile-area">
-            <span id="player-avatar">😀</span>&nbsp;
-            Bé: <span id="player-profile-display">Bé Yêu</span>
             <button class="btn-edit-profile" onclick="toggleEditProfile()">⚙️</button>
-            <button class="btn-edit-profile" onclick="toggleDatabaseManager()" style="margin-left:5px;">📚</button> 
+            <span id="player-avatar">😀</span>&nbsp;
+            <span id="player-profile-display">Bé Yêu</span>
+            <button class="btn-edit-profile" onclick="toggleDatabaseManager()" style="margin-center:5px;">📚</button> 
         </div>
         <div style="flex-shrink: 0; cursor: pointer; background: rgba(255,255,255,0.3); padding: 2px 10px; border-radius: 15px;" onclick="openBXHOverlay()">
             Điểm Số: <span id="score-val">0</span> ⭐
@@ -164,10 +335,15 @@
 <div class="db-manager-overlay" id="db-manager-overlay">
     <div class="profile-popup">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h4 style="margin:0; color:#1b4332;"> Kho Từ Vựng Phụ Huynh (Offline)</h4>
+            <h4 style="margin:0; color:#1b4332;"> Kho Từ Vựng Phụ Huynh</h4>
             <button class="btn-action" onclick="toggleDatabaseManager()" style="background:#555; padding: 2px 8px; color:white; border:none; border-radius:4px; cursor:pointer;">X</button>
         </div>
         
+        <div class="vocab-filter-tabs">
+            <div class="vocab-filter-item" id="filter-tab-tu" onclick="setVocabFilter('tu')">Học Từ Vựng</div>
+            <div class="vocab-filter-item" id="filter-tab-cau" onclick="setVocabFilter('cau')">Học Câu Văn</div>
+        </div>
+
         <input type="text" id="new-sentence-input" placeholder="Nhập từ hoặc câu để bé học thêm...">
         <div style="display:flex; gap:4px; margin-top:4px;">
             <button class="btn-action" onclick="addNewItemFromInput()" style="flex:1; background:#1b4332; color:white; border:none; padding:6px; border-radius:8px; font-weight:bold; cursor:pointer;">Thêm Câu Học ➕</button>
@@ -175,8 +351,8 @@
         </div>
 
         <div class="db-tabs">
-            <button class="db-tab-btn active" id="tab-btn-tu" onclick="switchDbTab('tu')">Từ Vựng</button>
-            <button class="db-tab-btn" id="tab-btn-cau" onclick="switchDbTab('cau')">Câu Văn</button>
+            <button class="db-tab-btn active" id="tab-btn-tu" onclick="switchDbTab('tu')">Xem Từ Vựng</button>
+            <button class="db-tab-btn" id="tab-btn-cau" onclick="switchDbTab('cau')">Xem Câu Văn</button>
         </div>
         <div class="db-list-container" id="db-list-words"></div>
     </div>
@@ -198,7 +374,6 @@
 </div>
 
 <script>
-// KHỞI TẠO HỒ SƠ AN TOÀN
 function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         let r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -213,11 +388,16 @@ const myProfile = {
 localStorage.setItem('vngame_global_id', myProfile.id);
 let tempEmoji = myProfile.emoji;
 
-// ĐỌC TRỘN DỮ LIỆU AN TOÀN
 let userAddedTuVung = JSON.parse(localStorage.getItem('user_db_tuvung')) || [];
 let userAddedCauVan = JSON.parse(localStorage.getItem('user_db_cauvan')) || [];
 let currentActiveTuVung = [];
 let currentActiveCauVan = [];
+
+let filterState = { tu: true, cau: true };
+
+// Khởi tạo biến đếm số lần đúng cho Game 1
+let game1CorrectCount = 0;
+let isForcingNextItem = false;
 
 function reloadAndMergeDatabase() {
     let originTu = (window.KHO_GOC_AUTHOR && window.KHO_GOC_AUTHOR.tuvung) ? window.KHO_GOC_AUTHOR.tuvung : [{text: "Vui học"}];
@@ -225,9 +405,43 @@ function reloadAndMergeDatabase() {
 
     currentActiveTuVung = [...originTu, ...userAddedTuVung];
     currentActiveCauVan = [...originCau, ...userAddedCauVan];
+    
+    updateFilterTabUI();
 }
 
-// Mặc định trò chơi đầu tiên chạy khi tải trang lúc này là Game Bắn Chữ ('ban-chu')
+function updateFilterTabUI() {
+    const tabTu = document.getElementById('filter-tab-tu');
+    const tabCau = document.getElementById('filter-tab-cau');
+    if (tabTu) tabTu.classList.toggle('active', filterState.tu);
+    if (tabCau) tabCau.classList.toggle('active', filterState.cau);
+}
+
+function setVocabFilter(type) {
+    if (type === 'tu') {
+        filterState.tu = !filterState.tu;
+    } else if (type === 'cau') {
+        filterState.cau = !filterState.cau;
+    }
+    
+    if (!filterState.tu && !filterState.cau) {
+        alert("Phụ huynh cần giữ lại ít nhất một mục nội dung để bé học nhé!");
+        filterState[type] = true; 
+        return;
+    }
+
+    updateFilterTabUI();
+    isForcingNextItem = true;
+    initGame();
+}
+
+function getFilteredCombinedDatabase() {
+    let pool = [];
+    if (filterState.tu) pool = pool.concat(currentActiveTuVung);
+    if (filterState.cau) pool = pool.concat(currentActiveCauVan);
+    if (pool.length === 0) pool = currentActiveTuVung.length > 0 ? currentActiveTuVung : [{ text: "Vui học" }];
+    return pool;
+}
+
 let currentMode = 'ban-chu'; 
 let currentItem = null;
 let currentTabActive = 'tu'; 
@@ -238,7 +452,10 @@ const pairColors = ["#E63946", "#E67E22", "#FFB703", "#2A9D8F", "#8338EC"];
 function toggleDatabaseManager() {
     let box = document.getElementById('db-manager-overlay');
     box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
-    if(box.style.display === 'flex') renderCurrentDBList();
+    if(box.style.display === 'flex') {
+        updateFilterTabUI();
+        renderCurrentDBList();
+    }
 }
 
 function switchDbTab(tabName) {
@@ -256,21 +473,33 @@ function renderCurrentDBList() {
 
     if (currentTabActive === 'tu') {
         html += `<div style="background:#f1faee; padding:4px; font-weight:bold; font-size:0.75rem;">📌 TỪ VỰNG GỐC HỆ THỐNG (${originTu.length})</div>`;
-        originTu.forEach((d, i) => { html += `<div class="db-item-row" style="opacity:0.75;"><span>${i+1}. ${escapeHTML(d.text)}</span><span style="color:green; font-size:0.7rem;">[Gốc]</span></div>`; });
+        originTu.forEach((d, i) => { html += `<div class="db-item-row" style="opacity:0.75;"><span class="db-item-text">${i+1}. ${escapeHTML(d.text)}</span><span style="color:green; font-size:0.7rem; flex-shrink:0;">[Gốc]</span></div>`; });
         
         html += `<div style="background:#ffe3e3; padding:4px; font-weight:bold; font-size:0.75rem; margin-top:8px;">✏️ TỪ VỰNG PHỤ HUYNH THÊM (${userAddedTuVung.length})</div>`;
         if(userAddedTuVung.length===0) html += `<div style="color:#aaa; padding:5px; font-size:0.8rem;">Chưa có từ thêm thủ công.</div>`;
         userAddedTuVung.forEach((d, i) => {
-            html += `<div class="db-item-row"><span>${i+1}. ${escapeHTML(d.text)}</span><button onclick="deleteUserItem(${i}, 'tu')" style="background:#E63946; color:white; border:none; padding:2px 6px; border-radius:4px; cursor:pointer; font-size:0.7rem;">Xóa</button></div>`;
+            html += `<div class="db-item-row">
+                <span class="db-item-text">${i+1}. ${escapeHTML(d.text)}</span>
+                <div class="db-item-actions">
+                    <button onclick="editUserItem(${i}, 'tu')" style="background:#457B9D; color:white; border:none; padding:2px 6px; border-radius:4px; cursor:pointer; font-size:0.7rem;">Sửa</button>
+                    <button onclick="deleteUserItem(${i}, 'tu')" style="background:#E63946; color:white; border:none; padding:2px 6px; border-radius:4px; cursor:pointer; font-size:0.7rem;">Xóa</button>
+                </div>
+            </div>`;
         });
     } else {
         html += `<div style="background:#f1faee; padding:4px; font-weight:bold; font-size:0.75rem;">📌 CÂU VĂN GỐC HỆ THỐNG (${originCau.length})</div>`;
-        originCau.forEach((d, i) => { html += `<div class="db-item-row" style="opacity:0.75;"><span>${i+1}. ${escapeHTML(d.text)}</span><span style="color:green; font-size:0.7rem;">[Gốc]</span></div>`; });
+        originCau.forEach((d, i) => { html += `<div class="db-item-row" style="opacity:0.75;"><span class="db-item-text">${i+1}. ${escapeHTML(d.text)}</span><span style="color:green; font-size:0.7rem; flex-shrink:0;">[Gốc]</span></div>`; });
         
         html += `<div style="background:#ffe3e3; padding:4px; font-weight:bold; font-size:0.75rem; margin-top:8px;">✏️ CÂU VĂN PHỤ HUYNH THÊM (${userAddedCauVan.length})</div>`;
         if(userAddedCauVan.length===0) html += `<div style="color:#aaa; padding:5px; font-size:0.8rem;">Chưa có câu thêm thủ công.</div>`;
         userAddedCauVan.forEach((d, i) => {
-            html += `<div class="db-item-row"><span>${i+1}. ${escapeHTML(d.text)}</span><button onclick="deleteUserItem(${i}, 'cau')" style="background:#E63946; color:white; border:none; padding:2px 6px; border-radius:4px; cursor:pointer; font-size:0.7rem;">Xóa</button></div>`;
+            html += `<div class="db-item-row">
+                <span class="db-item-text">${i+1}. ${escapeHTML(d.text)}</span>
+                <div class="db-item-actions">
+                    <button onclick="editUserItem(${i}, 'cau')" style="background:#457B9D; color:white; border:none; padding:2px 6px; border-radius:4px; cursor:pointer; font-size:0.7rem;">Sửa</button>
+                    <button onclick="deleteUserItem(${i}, 'cau')" style="background:#E63946; color:white; border:none; padding:2px 6px; border-radius:4px; cursor:pointer; font-size:0.7rem;">Xóa</button>
+                </div>
+            </div>`;
         });
     }
     listDiv.innerHTML = html;
@@ -296,6 +525,27 @@ function addNewItemFromInput() {
     }
     input.value = ""; 
     reloadAndMergeDatabase();
+    isForcingNextItem = true;
+    initGame();
+}
+
+function editUserItem(index, type) {
+    let currentArr = (type === 'tu') ? userAddedTuVung : userAddedCauVan;
+    let oldText = currentArr[index].text;
+    let newText = prompt("Chỉnh sửa lại nội dung:", oldText);
+    if (newText === null) return; 
+    newText = newText.trim();
+    if (!newText) return alert("Nội dung không được để trống!");
+    
+    currentArr[index].text = newText;
+    if (type === 'tu') {
+        localStorage.setItem('user_db_tuvung', JSON.stringify(userAddedTuVung));
+    } else {
+        localStorage.setItem('user_db_cauvan', JSON.stringify(userAddedCauVan));
+    }
+    reloadAndMergeDatabase();
+    renderCurrentDBList();
+    isForcingNextItem = true;
     initGame();
 }
 
@@ -309,6 +559,7 @@ function deleteUserItem(index, type) {
     }
     reloadAndMergeDatabase();
     renderCurrentDBList(); 
+    isForcingNextItem = true;
     initGame();
 }
 
@@ -318,11 +569,11 @@ function resetDatabase() {
         localStorage.removeItem('user_db_tuvung'); localStorage.removeItem('user_db_cauvan');
         reloadAndMergeDatabase();
         renderCurrentDBList(); 
+        isForcingNextItem = true;
         initGame();
     }
 }
 
-// HIỆU ỨNG ÂM THANH & PHÁO HOA
 let audioCtx = null; function initAudio() { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
 function playSound(type) {
     initAudio(); if (!audioCtx) return; const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination);
@@ -345,7 +596,6 @@ function updateFireworks() {
 requestAnimationFrame(updateFireworks);
 function triggerCelebration() { let count = 0; let interval = setInterval(() => { createFirework(); count++; if (count >= 4) clearInterval(interval); }, 250); }
 
-// PHÂN TÍCH TIẾNG VIỆT TỰ ĐỘNG
 function autoSplitSyllable(word) {
     if (!word) return ["", ""]; const complexOnsets = ["ngh", "gh", "kh", "nh", "th", "ch", "tr", "ng", "ph", "gi", "qu"]; let lowerWord = word.toLowerCase();
     for (let onset of complexOnsets) { if (lowerWord.startsWith(onset)) return [word.substr(0, onset.length), word.substr(onset.length)]; }
@@ -364,7 +614,7 @@ function saveNewProfile() {
 }
 function openBXHOverlay() { document.getElementById('bxh-overlay').style.display = 'flex'; renderBXH(); }
 function closeBXHOverlay() { document.getElementById('bxh-overlay').style.display = 'none'; }
-function createSyllableHTML(pair) { if(!pair) return ''; return `<span class="syllable"><span class="part-dau">${escapeHTML(pair[0])}</span><span class="part-van">${escapeHTML(pair[1])}</span></span>`; }
+function createSyllableHTML(pair, customClass = '') { if(!pair) return ''; return `<span class="syllable ${customClass}"><span class="part-dau">${escapeHTML(pair[0])}</span><span class="part-van">${escapeHTML(pair[1])}</span></span>`; }
 
 function autoScaleTitle() {
     const title = document.getElementById('main-title'); const wrap = title.parentElement; if (!title || !wrap) return;
@@ -372,16 +622,21 @@ function autoScaleTitle() {
     if (currentWidth > maxWidth) title.style.fontSize = ((maxWidth / currentWidth) * 1.3) + "rem";
 }
 
-// KÍCH HOẠT GAME
 function initGame() {
     if(isLocking) return; if(loopInterval) clearInterval(loopInterval);
     document.getElementById('game-panel').innerHTML = ''; document.getElementById('interactive-zone').innerHTML = ''; document.getElementById('feedback').textContent = '';
     if (score === 0) { let saved = localStorage.getItem('player_score_' + myProfile.id); if (saved) { score = parseInt(saved) || 0; document.getElementById('score-val').textContent = score; } }
 
-    let gộpKhoChung = [...currentActiveTuVung, ...currentActiveCauVan];
-    let selectedItem = (currentMode === 'ghep-cap-2') ? currentActiveTuVung[Math.floor(Math.random() * currentActiveTuVung.length)] : gộpKhoChung[Math.floor(Math.random() * gộpKhoChung.length)];
-    if (!selectedItem) selectedItem = { text: "Vui học" }; 
-    currentItem = { text: selectedItem.text, structured: getStructuredFromText(selectedItem.text) };
+    let gộpKhoChung = getFilteredCombinedDatabase();
+    
+    // Nếu không ở Game 1 hoặc bị ép đổi từ, hoặc đã hoàn thành 5 lần đúng của Game 1 -> lấy từ mới
+    if (currentMode !== 'ban-chu' || isForcingNextItem || game1CorrectCount >= 5 || !currentItem) {
+        let selectedItem = (currentMode === 'ghep-cap-2') ? currentActiveTuVung[Math.floor(Math.random() * currentActiveTuVung.length)] : gộpKhoChung[Math.floor(Math.random() * gộpKhoChung.length)];
+        if (!selectedItem) selectedItem = { text: "Vui học" }; 
+        currentItem = { text: selectedItem.text, structured: getStructuredFromText(selectedItem.text) };
+        game1CorrectCount = 0; // Reset số lần đếm đúng cho từ mới
+        isForcingNextItem = false;
+    }
     
     if (currentMode === 'ghep-chu') setupGhepChu();
     else if (currentMode === 'ghep-cau') setupGhepCau();
@@ -395,6 +650,7 @@ function initGame() {
 function switchMode(mode, e) {
     if (ghepCauTimer) { clearInterval(ghepCauTimer); ghepCauTimer = null; }
     isLocking = false; currentMode = mode;
+    isForcingNextItem = true; // Chuyển chế độ game -> Đổi luôn từ mới
     document.querySelectorAll('.btn-mode').forEach(b => b.classList.remove('active'));
     if (e && e.target) { let btn = e.target.closest('.btn-mode'); if(btn) btn.classList.add('active'); }
     initGame();
@@ -405,7 +661,7 @@ function addScore(p) { score += p; document.getElementById('score-val').textCont
 
 // --- LOGIC CÁC MINI GAME ---
 
-// GAME: GHÉP CHỮ (HIỆN TẠI LÀ SỐ 2)
+// GAME 2: GHÉP CHỮ
 function setupGhepChu() {
     const instruct = document.getElementById('game-instruction'); instruct.innerHTML = `🎮 <b>Game 2: Ghép Chữ</b><br><span style="font-size:0.85rem;font-weight:normal;color:#555;">Tìm phụ âm màu Đỏ điền vào ô trống:</span>`;
     const panel = document.getElementById('game-panel'); const zone = document.getElementById('interactive-zone');
@@ -413,7 +669,7 @@ function setupGhepChu() {
     let target = filtered[Math.floor(Math.random() * filtered.length)];
     panel.innerHTML = `<div class="syllable"><span class="part-dau" style="opacity:0.3">?</span><span class="part-van">${escapeHTML(target[1])}</span></div>`;
     
-    let gộpKhoChung = [...currentActiveTuVung, ...currentActiveCauVan];
+    let gộpKhoChung = getFilteredCombinedDatabase();
     let options = [target[0]];
     while(options.length < 3) {
         let rText = gộpKhoChung[Math.floor(Math.random() * gộpKhoChung.length)].text;
@@ -433,80 +689,199 @@ function setupGhepChu() {
     });
 }
 
-// GAME: GHÉP CÂU (HIỆN TẠI LÀ SỐ 6)
+// GAME 6: GHÉP CÂU
 function setupGhepCau() {
     if (ghepCauTimer) clearInterval(ghepCauTimer);
     const instruct = document.getElementById('game-instruction'); instruct.innerHTML = `🎮 <b>Game 6: Ghép Câu</b><br><span id="countdown-text" style="font-size:0.85rem;color:#e65100;font-weight:normal;">Ghi nhớ mẫu câu...</span>`;
     const panel = document.getElementById('game-panel'); const zone = document.getElementById('interactive-zone');
-    panel.innerHTML = `<div id="answer-slots" style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:4px;"></div>`;
+    
+    panel.innerHTML = `<div id="answer-slots" style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:4px; width:100%; min-height:80px; padding:4px; max-height:100%; overflow-y:auto;"></div>`;
     const slots = document.getElementById('answer-slots');
     
     let shuffled = [...currentItem.structured];
     if (shuffled.length === 2) {
-        let temp = shuffled[0];
-        shuffled[0] = shuffled[1];
-        shuffled[1] = temp;
+        let temp = shuffled[0]; shuffled[0] = shuffled[1]; shuffled[1] = temp;
     } else {
         shuffled.sort(() => Math.random() - 0.5);
     }
 
     let currentAnswer = []; isLocking = true;
-    currentItem.structured.forEach(pair => { let div = document.createElement('div'); div.className = 'slot-clickable'; div.innerHTML = createSyllableHTML(pair); slots.appendChild(div); });
+    currentItem.structured.forEach(pair => { 
+        let div = document.createElement('div'); div.className = 'slot-clickable'; 
+        div.innerHTML = createSyllableHTML(pair, 'syllable-result'); 
+        slots.appendChild(div); 
+    });
     let timeLeft = 5;
-    zone.innerHTML = `<div style="text-align:center; width:100%;"><button class="btn-action" id="skip-preview-btn" style="padding:4px 12px; font-size:0.85rem;background:#457B9D;color:white;border:none;border-radius:4px;cursor:pointer;">Ghép Ngay Khỏi Đợi 🚀</button></div>`;
+    
+    zone.innerHTML = `<div style="text-align:center; width:100%;"><button class="block" id="skip-preview-btn" style="background:#457B9D;color:white;border:none;box-shadow:0 3px 0 #2b4f66;">Ghép Ngay Khỏi Đợi 🚀</button></div>`;
     document.getElementById('countdown-text').innerHTML = `Xem câu mẫu còn: <b>${timeLeft}s</b>`;
-    function startMainGame() { if (ghepCauTimer) { clearInterval(ghepCauTimer); ghepCauTimer = null; } isLocking = false; instruct.innerHTML = `🎮 <b>Game 6: Ghép Câu</b><br><span style="font-size:0.85rem;font-weight:normal;color:#555;">Chạm các chữ bên dưới để xếp lại câu đúng:</span>`; slots.innerHTML = ''; renderChoices(); }
+    
+    function startMainGame() { 
+        if (ghepCauTimer) { clearInterval(ghepCauTimer); ghepCauTimer = null; } 
+        isLocking = false; 
+        instruct.innerHTML = `🎮 <b>Game 6: Ghép Câu</b><br><span style="font-size:0.85rem;font-weight:normal;color:#555;">Chạm các chữ bên dưới để xếp lại câu đúng:</span>`; 
+        slots.innerHTML = ''; 
+        renderChoices(); 
+    }
+    
     document.getElementById('skip-preview-btn').onclick = startMainGame;
     ghepCauTimer = setInterval(() => { timeLeft--; let txt = document.getElementById('countdown-text'); if(!txt) { clearInterval(ghepCauTimer); return; } txt.innerHTML = `Xem câu mẫu còn: <b>${timeLeft}s</b>`; if(timeLeft <= 0) startMainGame(); }, 1000);
+    
     function renderChoices() {
         zone.innerHTML = '';
         shuffled.forEach((pair, idx) => {
             let b = document.createElement('button'); b.className = 'block'; b.innerHTML = createSyllableHTML(pair); b.id = "choice-btn-" + idx;
+            let syllablesInside = b.querySelectorAll('.syllable');
+            syllablesInside.forEach(s => { s.style.fontSize = 'clamp(0.95rem, 2.5vh, 1.25rem)'; s.style.padding = '1px 4px'; s.style.background = 'none'; s.style.boxShadow = 'none'; });
             b.onclick = () => { if(isLocking) return; currentAnswer.push({ pair: pair, srcIndex: idx }); b.style.visibility = 'hidden'; renderUpperSlots(); checkSentenceResult(); }; zone.appendChild(b);
         });
     }
     function renderUpperSlots() {
         slots.innerHTML = '';
         currentAnswer.forEach((item, ansIdx) => {
-            let div = document.createElement('div'); div.className = 'slot-clickable'; div.innerHTML = createSyllableHTML(item.pair);
+            let div = document.createElement('div'); div.className = 'slot-clickable'; 
+            div.innerHTML = createSyllableHTML(item.pair, 'syllable-result'); 
             div.onclick = () => { if(isLocking) return; document.getElementById("choice-btn-" + item.srcIndex).style.visibility = 'visible'; currentAnswer.splice(ansIdx, 1); renderUpperSlots(); }; slots.appendChild(div);
         });
     }
     function checkSentenceResult() {
         if(currentAnswer.length === currentItem.structured.length) {
             let correct = currentAnswer.every((item, i) => item.pair.join('') === currentItem.structured[i].join(''));
-            if(correct) { playSound('correct'); addScore(20); showFeedback("Đúng rồi! Bé xếp câu siêu quá! 🎉", true); isLocking = true; setTimeout(() => { isLocking = false; initGame(); }, 2000); } 
-            else { playSound('wrong'); isLocking = true; showFeedback("Chưa chính xác, xem mẫu câu đúng:", false); zone.innerHTML = `<div style="display:flex; gap:2px; justify-content:center; flex-wrap:wrap; background:#fff3e0; padding:6px; border-radius:8px; width:100%;">${currentItem.structured.map(p => createSyllableHTML(p)).join('')}</div>`; setTimeout(() => { isLocking = false; initGame(); }, 4000); }
+            if(correct) { 
+                playSound('correct'); addScore(20); showFeedback("Đúng rồi! Bé xếp câu siêu quá! 🎉", true); isLocking = true; 
+                setTimeout(() => { isLocking = false; initGame(); }, 2000); 
+            } 
+            else { 
+                playSound('wrong'); isLocking = true; showFeedback("Chưa chính xác rồi bé ơi!", false); 
+                
+                let dungHTML = "";
+                currentItem.structured.forEach((p, idx) => {
+                    let beXepWord = currentAnswer[idx] ? currentAnswer[idx].pair.join('') : "";
+                    let dungWord = p.join('');
+                    let highlightClass = (beXepWord !== dungWord) ? 'syllable-result syllable-highlight' : 'syllable-result';
+                    dungHTML += createSyllableHTML(p, highlightClass);
+                });
+
+                let saiHTML = currentAnswer.map(item => createSyllableHTML(item.pair, 'syllable-result')).join('');
+
+                panel.innerHTML = `
+                    <div class="comparison-box">
+                        <div style="width:100%;">
+                            <div class="comparison-title" style="color:#c62828;">❌ Câu của con xếp là:</div>
+                            <div class="comparison-words" style="opacity: 0.85;">${saiHTML}</div>
+                        </div>
+                        <div style="width:100%; border-top: 1px dashed #ffb74d; padding-top: 6px;">
+                            <div class="comparison-title" style="color:#2e7d32;">✨ Câu đúng phải là:</div>
+                            <div class="comparison-words">${dungHTML}</div>
+                        </div>
+                    </div>
+                `;
+                zone.innerHTML = '';
+                setTimeout(() => { isLocking = false; initGame(); }, 5000); 
+            }
         }
     }
 }
 
-// GAME: BẮN CHỮ (HIỆN TẠI LÀ SỐ 1)
+// GAME 1: BẮN CHỮ (ĐÃ ĐƯỢC CHỈNH SỬA RANDOM THỨ TỰ HOÀN TOÀN + ĐẾM ĐỦ 5 LẦN ĐÚNG + BIẾN MẤT KHI CHẠM ĐÁY)
 function setupBanChu() {
-    const instruct = document.getElementById('game-instruction'); const panel = document.getElementById('game-panel'); const zone = document.getElementById('interactive-zone');
-    let target = currentItem.structured[Math.floor(Math.random() * currentItem.structured.length)]; let targetTxt = target.join('');
-    instruct.innerHTML = `🎮 <b>Game 1: Bắn Chữ</b><br><span style="font-size:0.85rem;font-weight:normal;">Chạm đúng chữ: <b style="color:var(--color-dau);font-size:1rem;">${escapeHTML(targetTxt)}</b></span>`;
-    zone.innerHTML = ''; let spawnedElements = []; let gộpKhoChung = [...currentActiveTuVung, ...currentActiveCauVan];
+    const instruct = document.getElementById('game-instruction'); 
+    const panel = document.getElementById('game-panel'); 
+    const zone = document.getElementById('interactive-zone');
+    
+    let target = currentItem.structured[Math.floor(Math.random() * currentItem.structured.length)]; 
+    let targetTxt = target.join('');
+    
+    // Hiển thị thanh tiến trình 5 lượt bắn trúng cho bé dễ theo dõi
+    instruct.innerHTML = `🎮 <b>Game 1: Bắn Chữ</b> (Lượt trúng: ${game1CorrectCount}/5)<br><span>Tìm chữ đúng: <b style="color:var(--color-dau);font-size:1.1rem;">${escapeHTML(targetTxt)}</b></span>`;
+    zone.innerHTML = ''; 
+    
+    let spawnedElements = []; 
+    let gộpKhoChung = getFilteredCombinedDatabase();
+    let tickCounter = 0;
+
     function spawn() {
         if(isLocking || currentMode !== 'ban-chu') return;
-        let isT = Math.random() > 0.4; let rText = gộpKhoChung[Math.floor(Math.random()*gộpKhoChung.length)].text;
-        let rS = getStructuredFromText(rText); let p = isT ? target : (rS[Math.floor(Math.random()*rS.length)] || target);
-        let el = document.createElement('div'); el.className = 'falling-word'; el.innerHTML = createSyllableHTML(p);
-        el.style.left = Math.random() * (panel.clientWidth - 75) + 'px'; el.style.top = '0px'; panel.appendChild(el);
+        
+        // Tỷ lệ xuất hiện từ đúng là 35% ngẫu nhiên theo thời gian
+        let xuatHienTuDung = Math.random() < 0.35; 
+        let p;
+        if(xuatHienTuDung) {
+            p = target;
+        } else {
+            let rText = gộpKhoChung[Math.floor(Math.random() * gộpKhoChung.length)].text;
+            let rS = getStructuredFromText(rText); 
+            p = rS[Math.floor(Math.random() * rS.length)] || target;
+        }
+        
+        let el = document.createElement('div'); 
+        el.className = 'falling-word'; 
+        el.innerHTML = createSyllableHTML(p);
+        
+        // Tạo ngẫu nhiên vị trí cột rơi (chia màn hình làm 3 làn đường)
+        let sectionWidth = (panel.clientWidth - 80) / 3;
+        let columnRandom = Math.floor(Math.random() * 3);
+        let posX = (columnRandom * sectionWidth) + (Math.random() * (sectionWidth - 10));
+        
+        el.style.left = posX + 'px'; 
+        el.style.top = '-45px'; 
+        panel.appendChild(el);
+        
         el.onclick = () => {
             if(isLocking) return;
-            if(p.join('') === target.join('')) { playSound('correct'); addScore(15); el.remove(); initGame(); } 
-            else { playSound('wrong'); showFeedback("Nhầm từ rồi bé ơi! 🥰", false); }
-        }; spawnedElements.push(el);
+            if(p.join('') === target.join('')) { 
+                playSound('correct'); 
+                addScore(15); 
+                el.remove();
+                
+                game1CorrectCount++; // Tăng số lượt trúng thành công
+                if(game1CorrectCount >= 5) {
+                    showFeedback("Xuất sắc! Bé đã hoàn thành từ này 🎉", true);
+                    isLocking = true;
+                    setTimeout(() => { isLocking = false; initGame(); }, 1500);
+                } else {
+                    showFeedback("Bắn trúng rồi! Bé tìm tiếp nhé! 🎯", true);
+                    // Cập nhật nhanh số lượt trên giao diện hướng dẫn
+                    instruct.innerHTML = `🎮 <b>Game 1: Bắn Chữ</b> (Lượt trúng: ${game1CorrectCount}/5)<br><span>Tìm chữ đúng: <b style="color:var(--color-dau);font-size:1.1rem;">${escapeHTML(targetTxt)}</b></span>`;
+                }
+            } else { 
+                playSound('wrong'); 
+                showFeedback("Nhầm từ rồi bé ơi! 🥰", false); 
+            }
+        }; 
+        spawnedElements.push(el);
     }
+    
+    // Tạo phần tử đầu tiên ngay lập tức
     spawn();
+    
     loopInterval = setInterval(() => {
-        for (let i = spawnedElements.length - 1; i >= 0; i--) { let el = spawnedElements[i]; let top = parseInt(el.style.top) || 0; if(top > panel.clientHeight - 45) { el.remove(); spawnedElements.splice(i, 1); } else { el.style.top = (top + 4) + 'px'; } }
-        if(spawnedElements.length === 0 && currentMode === 'ban-chu') spawn();
-    }, 80);
+        if (currentMode !== 'ban-chu') return;
+        tickCounter++;
+
+        // Di chuyển các khối chữ rơi xuống dưới
+        for (let i = spawnedElements.length - 1; i >= 0; i--) { 
+            let el = spawnedElements[i]; 
+            let top = parseInt(el.style.top) || 0; 
+            
+            // Nếu chữ rơi quá/chạm sát cạnh đáy khung game panel -> Biến mất hoàn toàn (Không đứng lại nữa)
+            if (top > (panel.clientHeight - 42)) { 
+                el.remove(); 
+                spawnedElements.splice(i, 1); 
+            } else { 
+                el.style.top = (top + 3) + 'px'; // Tốc độ rơi mượt mà
+            }
+        }
+        
+        // Cứ mỗi khoảng thời gian (khoảng 1.5 giây), tự động tạo thêm chữ rơi ngẫu nhiên mới
+        if(spawnedElements.length < 4 && tickCounter >= 20) {
+            spawn();
+            tickCounter = 0;
+        }
+    }, 75);
 }
 
-// GAME: TÌM CHỮ (HIỆN TẠI LÀ SỐ 3)
+// GAME 3: TÌM CHỮ
 function setupTimChu() {
     const instruct = document.getElementById('game-instruction'); instruct.innerHTML = `🎮 <b>Game 3: Tìm Chữ</b><br><span style="font-size:0.85rem;font-weight:normal;color:#555;">Chọn từ thích hợp điền vào dấu ?:</span>`;
     const panel = document.getElementById('game-panel'); const zone = document.getElementById('interactive-zone');
@@ -514,7 +889,7 @@ function setupTimChu() {
     let sentenceHTML = "";
     currentItem.structured.forEach((pair, idx) => { if(idx === missingIdx) sentenceHTML += `<span id="blank-slot" class="syllable" style="border:2px dashed #ff4d4d; background:#fff3cd; min-width:45px; text-align:center;">?</span>`; else sentenceHTML += createSyllableHTML(pair); });
     panel.innerHTML = `<div style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:4px; width:100%;">${sentenceHTML}</div>`;
-    let gộpKhoChung = [...currentActiveTuVung, ...currentActiveCauVan]; let options = [target];
+    let gộpKhoChung = getFilteredCombinedDatabase(); let options = [target];
     while(options.length < 3) {
         let rText = gộpKhoChung[Math.floor(Math.random()*gộpKhoChung.length)].text;
         let rS = getStructuredFromText(rText); let rP = rS[Math.floor(Math.random()*rS.length)];
@@ -533,13 +908,13 @@ function setupTimChu() {
     });
 }
 
-// GAME: GHÉP CẶP 1 (HIỆN TẠI LÀ SỐ 4)
+// GAME 4: GHÉP CẶP 1
 function setupGhepCap1() {
     const instruct = document.getElementById('game-instruction'); const panel = document.getElementById('game-panel');
     instruct.innerHTML = `🎮 <b>Game 4: Ghép Cặp 1</b><br><span style="font-size:0.83rem;font-weight:normal;color:#457B9D;">Nối Phụ âm đầu (Đỏ) và Vần (Xanh) tương ứng:</span>`;
     
     let selectedPairs = currentItem.structured.filter(p => p[0] !== "" && p[1] !== "");
-    let gộpKhoChung = [...currentActiveTuVung, ...currentActiveCauVan];
+    let gộpKhoChung = getFilteredCombinedDatabase();
     let attempts = 0;
     while (selectedPairs.length < 5 && attempts < 100) {
         attempts++;
@@ -555,16 +930,14 @@ function setupGhepCap1() {
             }
         }
     }
-    if (selectedPairs.length > 6) {
-        selectedPairs = selectedPairs.slice(0, 6);
-    }
+    if (selectedPairs.length > 6) { selectedPairs = selectedPairs.slice(0, 6); }
     
     activePairsCount = selectedPairs.length;
     let pool = selectedPairs.map((p, idx) => ({ leftText: p[0], rightText: p[1], id: idx, leftColor: "var(--color-dau)", rightColor: "var(--color-van)" }));
     buildMatchingUI(pool, panel);
 }
 
-// GAME: GHÉP TỪ ĐÔI (HIỆN TẠI LÀ SỐ 5)
+// GAME 5: GHÉP TỪ ĐÔI
 function setupGhepCap2() {
     const instruct = document.getElementById('game-instruction'); const panel = document.getElementById('game-panel');
     instruct.innerHTML = `🎮 <b>Game 5: Ghép Từ Đôi</b><br><span style="font-size:0.83rem;font-weight:normal;color:#e63946;">Nối các từ đứng cạnh nhau tạo thành từ có nghĩa:</span>`;
@@ -611,7 +984,6 @@ function buildMatchingUI(pool, panel) {
     }
 }
 
-// BẢNG XẾP HẠNG THUẦN LOCAL STORAGE
 function getLeaderboard() { let data = localStorage.getItem('vngame_bxh_v7'); return data ? JSON.parse(data) : []; }
 function saveScore(id, emoji, name, sVal) { let bxh = getLeaderboard(); let p = bxh.find(u => u.id === id); if(p) { p.nickname = name; p.emoji = emoji; if(sVal > p.score) p.score = sVal; } else { bxh.push({id: id, emoji: emoji, nickname: name, score: sVal}); } bxh.sort((a,b)=>b.score-a.score); localStorage.setItem('vngame_bxh_v7', JSON.stringify(bxh)); }
 function renderBXH() {
@@ -619,7 +991,6 @@ function renderBXH() {
     bxh.forEach((u, i) => { let isMe = u.id === myProfile.id ? "style='background:#fff3cd; font-weight:bold;'" : ""; html += `<tr ${isMe}><td>${i+1}</td><td><small>...${u.id.slice(-4).toUpperCase()}</small></td><td>${u.emoji} ${escapeHTML(u.nickname)}</td><td>${u.score} ⭐</td></tr>`; }); document.getElementById('bxh-body').innerHTML = html;
 }
 
-// KHỔI ĐỘNG KHI TẢI XONG TRANG
 window.onload = () => {
     document.getElementById('player-avatar').textContent = myProfile.emoji;
     document.getElementById('player-profile-display').textContent = myProfile.nickname;
