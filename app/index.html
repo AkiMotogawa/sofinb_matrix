@@ -135,7 +135,7 @@
             { text: "Ca sĩ" }, { text: "Nhạc sĩ" }, { text: "Họa sĩ" }, { text: "Nhà văn" }, { text: "Nhà thơ" },
             { text: "Kiến trúc sư" }, { text: "Luật sư" }, { text: "Thẩm phán" }, { text: "Nhà khoa học" }, { text: "Nhân viên cứu hỏa" },
             { text: "Cơm tấm" }, { text: "Phở bò" }, { text: "Bún chả" }, { text: "Bánh mì" }, { text: "Bánh xèo" },
-            { text: "Bánh cuốn" }, { text: "Bánh bao" }, { text: "Xôi gấc" }, { text: "Cháo gà" }, { Mì tôm" },
+            { text: "Bánh cuốn" }, { text: "Bánh bao" }, { text: "Xôi gấc" }, { text: "Cháo gà" }, { text: "Mì tôm" },
             { text: "Canh chua" }, { text: "Thịt kho tàu" }, { text: "Cá rán" }, { text: "Rau muống luộc" }, { text: "Đậu phụ" },
             { text: "Trứng rán" }, { text: "Giò lụa" }, { text: "Lạp xưởng" }, { text: "Nem rán" }, { text: "Canh măng" },
             { text: "Sữa tươi" }, { text: "Nước lọc" }, { text: "Nước ép cam" }, { text: "Sinh tố bơ" }, { text: "Trà sữa" },
@@ -222,16 +222,24 @@
             width: 100vw; display: flex; align-items: center; justify-content: center;
             position: fixed; top: 0; left: 0; right: 0; bottom: 0; /* Khóa cứng màn hình nền */
         }
+        
         .container { 
             width: 100%; max-width: 600px; 
-            height: calc(var(--true-vh, 1vh) * 100) !important;
-            max-height: calc(var(--true-vh, 1vh) * 100) !important;
-            margin: auto; background: white; 
-            padding: clamp(6px, 1.5vh, 12px) 12px calc(clamp(6px, 1.5vh, 12px) + 8px) 12px; /* Tăng lề dưới an toàn */
+            /* Rút ngắn chiều cao thực tế lại một chút để chừa khoảng trống an toàn ở đáy */
+            height: calc((var(--true-vh, 1vh) * 100) - 35px) !important;
+            max-height: calc((var(--true-vh, 1vh) * 100) - 35px) !important;
+            
+            /* Đẩy cục hiển thị dịch lên phía trên, cách xa đáy màn hình hẳn ra */
+            margin: 0 auto auto auto; 
+            
+            background: white; 
+            padding: clamp(6px, 1.5vh, 12px) 12px clamp(12px, 2.5vh, 20px) 12px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.1); position: relative; 
             z-index: 10; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
             box-sizing: border-box;
+            border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; /* Bo góc đáy cho đẹp mắt */
         }
+        
         #fw-canvas { 
             position: fixed; top: 0; left: 0; width: 100vw; 
             height: calc(var(--true-vh, 1vh) * 100) !important; 
@@ -656,7 +664,6 @@ function playSound(type) {
 }
 const canvas = document.getElementById('fw-canvas'); const ctx = canvas.getContext('2d'); let particles = [];
 
-// Chỉnh lại hàm tính toán canvas theo visualViewport của điện thoại di động
 function resizeCanvas() { 
     canvas.width = window.innerWidth; 
     canvas.height = window.visualViewport ? window.visualViewport.height : window.innerHeight; 
@@ -1025,7 +1032,7 @@ function buildMatchingUI(pool, panel) {
     let leftList = pool.map(item => ({ text: item.leftText, id: item.id, color: item.leftColor })).sort(() => Math.random() - 0.5);
     let rightList = pool.map(item => ({ text: item.rightText, id: item.id, color: item.rightColor })).sort(() => Math.random() - 0.5);
     panel.innerHTML = `<div class="matching-container"><div class="matching-column" id="col-left"></div><div class="matching-column" id="col-right"></div></div>`;
-    const cL = document.getElementById('col-left'); const cR = document.getElementById('col-right'); const itemStyle = `padding:clamp(5px,1.3vh,9px) 4px; font-size:clamp(1.45rem,4.2vh,1.95rem); width:100%;`;
+    const itemStyle = `padding:clamp(5px,1.3vh,9px) 4px; font-size:clamp(1.45rem,4.2vh,1.95rem); width:100%;`;
     leftList.forEach(item => {
         let div = document.createElement('div'); div.className = 'matching-item'; div.style.cssText = itemStyle + `color:${item.color};`; div.textContent = item.text;
         div.onclick = () => { if(isLocking || div.classList.contains('matched')) return; document.querySelectorAll('#col-left .matching-item').forEach(el => { if(!el.classList.contains('matched')) el.classList.remove('selected'); }); selectedLeft = { id: item.id, el: div }; div.classList.add('selected'); checkMatch(); }; cL.appendChild(div);
