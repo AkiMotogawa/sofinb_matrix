@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <!-- ================= SEO TIÊU CHUẨN ================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
     <title>SoFiNB: Chúc Bé Vui Học - Trò Chơi Ghép Chữ, Học Tiếng Việt Cho Bé</title>
     <meta name="description" content="Ứng dụng web giáo dục miễn phí giúp bé vui học Tiếng Việt thông qua các trò chơi tương tác lý thú: Bắn chữ, Ghép vần, Tìm từ đôi và Xếp câu đúng ngữ pháp.">
     <meta name="keywords" content="sofinb, chuc be vui hoc, app sofinb, game hoc tieng viet, be ghep chu, tap doc tieng viet, tro choi giao duc, hoc tieng viet cho be, phat trien ngon ngu">
@@ -9,27 +11,23 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://app.sofinb.com/">
 
-    <!-- ================= OPEN GRAPH (Facebook, Zalo, Messenger...) ================= -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://app.sofinb.com/">
     <meta property="og:title" content="SoFiNB: Chúc Bé Vui Học - Trò Chơi Học Tiếng Việt Cho Bé">
     <meta property="og:description" content="Ứng dụng tương tác giúp bé vừa chơi vừa học phụ âm, vần, từ vựng và câu văn Tiếng Việt một cách tự nhiên, hiệu quả.">
-    <meta property="og:image" content="https://app.sofinb.com/thumbnail.jpg"> <!-- Bạn nhớ up 1 file ảnh tên thumbnail.jpg lên thư mục gốc của app nhé -->
+    <meta property="og:image" content="https://app.sofinb.com/thumbnail.jpg">
 
-    <!-- ================= TWITTER CARD ================= -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SoFiNB: Chúc Bé Vui Học - Trò Chơi Học Tiếng Việt Cho Bé">
     <meta name="twitter:description" content="Ứng dụng tương tác giúp bé vừa chơi vừa học phụ âm, vần, từ vựng và câu văn Tiếng Việt hiệu quả.">
     <meta name="twitter:image" content="https://app.sofinb.com/thumbnail.jpg">
 
-    <!-- ================= ĐỊNH DẠNG ỨNG DỤNG DI ĐỘNG (PWA/Mobile Web App) ================= -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="SoFiNB Vui Học">
     <meta name="theme-color" content="#E63946">
     <link rel="apple-touch-icon" href="https://app.sofinb.com/icon-192.png">
 
-    <!-- ================= DỮ LIỆU CẤU TRÚC GOOGLE (Schema JSON-LD) ================= -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -52,10 +50,6 @@
       }
     }
     </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SoFiNB:Chúc Bé Vui Học</title>
     
 <script>
     window.KHO_GOC_AUTHOR = {
@@ -141,7 +135,7 @@
             { text: "Ca sĩ" }, { text: "Nhạc sĩ" }, { text: "Họa sĩ" }, { text: "Nhà văn" }, { text: "Nhà thơ" },
             { text: "Kiến trúc sư" }, { text: "Luật sư" }, { text: "Thẩm phán" }, { text: "Nhà khoa học" }, { text: "Nhân viên cứu hỏa" },
             { text: "Cơm tấm" }, { text: "Phở bò" }, { text: "Bún chả" }, { text: "Bánh mì" }, { text: "Bánh xèo" },
-            { text: "Bánh cuốn" }, { text: "Bánh bao" }, { text: "Xôi gấc" }, { text: "Cháo gà" }, { text: "Mì tôm" },
+            { text: "Bánh cuốn" }, { text: "Bánh bao" }, { text: "Xôi gấc" }, { text: "Cháo gà" }, { Mì tôm" },
             { text: "Canh chua" }, { text: "Thịt kho tàu" }, { text: "Cá rán" }, { text: "Rau muống luộc" }, { text: "Đậu phụ" },
             { text: "Trứng rán" }, { text: "Giò lụa" }, { text: "Lạp xưởng" }, { text: "Nem rán" }, { text: "Canh măng" },
             { text: "Sữa tươi" }, { text: "Nước lọc" }, { text: "Nước ép cam" }, { text: "Sinh tố bơ" }, { text: "Trà sữa" },
@@ -206,9 +200,7 @@
     };
 </script>
 
-
     <script src="data.js"></script>
-
 
     <style>
         :root {
@@ -220,29 +212,35 @@
             --color-success: #2A9D8F;
         }
         * { box-sizing: border-box; }
+        
+        /* ================= VÁ LỖI HIỂN THỊ ĐIỆN THOẠI TRIỆT ĐỂ ================= */
         body { 
-    font-family: 'Segoe UI', Arial, sans-serif; background: var(--color-bg); margin: 0; padding: 0; 
-    text-align: center; color: #333; -webkit-user-select: none; user-select: none; 
-    overflow: hidden !important; 
-    height: 100vh; 
-    height: -webkit-fill-available; /* Sửa lỗi khoảng trống cho Safari cũ */
-    height: 100dvh; /* Chiều cao tự động co giãn theo thanh địa chỉ */
-    width: 100vw; display: flex; align-items: center; justify-content: center;
-}
-.container { 
-    width: 100%; max-width: 600px; 
-    height: 100vh; 
-    height: 100dvh; /* Thay đổi tại đây */
-    max-height: 100dvh; /* Thay đổi tại đây */
-    margin: auto; background: white; 
-    padding: clamp(6px, 1.5vh, 12px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); position: relative; 
-    z-index: 10; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
-}
+            font-family: 'Segoe UI', Arial, sans-serif; background: var(--color-bg); margin: 0; padding: 0; 
+            text-align: center; color: #333; -webkit-user-select: none; user-select: none; 
+            overflow: hidden !important; 
+            height: calc(var(--true-vh, 1vh) * 100) !important; /* Dùng JS biến động thực tế */
+            width: 100vw; display: flex; align-items: center; justify-content: center;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; /* Khóa cứng màn hình nền */
+        }
+        .container { 
+            width: 100%; max-width: 600px; 
+            height: calc(var(--true-vh, 1vh) * 100) !important;
+            max-height: calc(var(--true-vh, 1vh) * 100) !important;
+            margin: auto; background: white; 
+            padding: clamp(6px, 1.5vh, 12px) 12px calc(clamp(6px, 1.5vh, 12px) + 8px) 12px; /* Tăng lề dưới an toàn */
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1); position: relative; 
+            z-index: 10; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
+            box-sizing: border-box;
+        }
+        #fw-canvas { 
+            position: fixed; top: 0; left: 0; width: 100vw; 
+            height: calc(var(--true-vh, 1vh) * 100) !important; 
+            pointer-events: none; z-index: 999; 
+        }
+        /* ===================================================================== */
 
         .title-wrap { width: 100%; overflow: hidden; margin: 2px 0; flex-shrink: 0; }
         h1 { color: var(--color-dau); margin: 0; font-size: clamp(1.1rem, 2.5vh, 1.5rem); text-shadow: 1px 1px 2px rgba(0,0,0,0.1); white-space: nowrap; display: inline-block; }
-     #fw-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; pointer-events: none; z-index: 999; }
-
         .status-bar { 
             display: flex; justify-content: space-between; align-items: center; background: var(--color-accent); 
             padding: clamp(4px, 1vh, 6px) 12px; border-radius: 30px; font-weight: bold; margin-bottom: 4px; font-size: clamp(0.75rem, 1.8vh, 0.9rem); flex-shrink: 0;
@@ -436,6 +434,20 @@
 </div>
 
 <script>
+// ================= HÀM ĐO CHIỀU CAO THỰC TẾ TRÁNH BỊ THANH ĐỊA CHỈ CHE QUẤT =================
+function fixMobileScreenHeight() {
+    const vh = (window.visualViewport ? window.visualViewport.height : window.innerHeight) * 0.01;
+    document.documentElement.style.setProperty('--true-vh', `${vh}px`);
+}
+window.addEventListener('DOMContentLoaded', fixMobileScreenHeight);
+window.addEventListener('load', fixMobileScreenHeight);
+window.addEventListener('resize', fixMobileScreenHeight);
+if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', fixMobileScreenHeight);
+    window.visualViewport.addEventListener('scroll', fixMobileScreenHeight);
+}
+// =========================================================================================
+
 function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         let r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -457,7 +469,6 @@ let currentActiveCauVan = [];
 
 let filterState = { tu: true, cau: true };
 
-// Khởi tạo biến đếm số lần đúng cho Game 1
 let game1CorrectCount = 0;
 let isForcingNextItem = false;
 
@@ -644,12 +655,14 @@ function playSound(type) {
     else if (type === 'wrong') { osc.type = 'sawtooth'; osc.frequency.setValueAtTime(220, audioCtx.currentTime); gain.gain.setValueAtTime(0.1, audioCtx.currentTime); osc.start(); osc.stop(audioCtx.currentTime + 0.2); }
 }
 const canvas = document.getElementById('fw-canvas'); const ctx = canvas.getContext('2d'); let particles = [];
+
+// Chỉnh lại hàm tính toán canvas theo visualViewport của điện thoại di động
 function resizeCanvas() { 
     canvas.width = window.innerWidth; 
     canvas.height = window.visualViewport ? window.visualViewport.height : window.innerHeight; 
 }
-
 window.addEventListener('resize', resizeCanvas); resizeCanvas();
+
 function createFirework() {
     playSound('milestone'); let x = Math.random() * canvas.width; let y = canvas.height * 0.4; let colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF']; let color = colors[Math.floor(Math.random() * colors.length)];
     for (let i = 0; i < 40; i++) { let angle = Math.random() * Math.PI * 2; let speed = Math.random() * 4 + 2; particles.push({ x: x, y: y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, alpha: 1, color: color }); }
@@ -695,12 +708,11 @@ function initGame() {
 
     let gộpKhoChung = getFilteredCombinedDatabase();
     
-    // Nếu không ở Game 1 hoặc bị ép đổi từ, hoặc đã hoàn thành 5 lần đúng của Game 1 -> lấy từ mới
     if (currentMode !== 'ban-chu' || isForcingNextItem || game1CorrectCount >= 5 || !currentItem) {
         let selectedItem = (currentMode === 'ghep-cap-2') ? currentActiveTuVung[Math.floor(Math.random() * currentActiveTuVung.length)] : gộpKhoChung[Math.floor(Math.random() * gộpKhoChung.length)];
         if (!selectedItem) selectedItem = { text: "Vui học" }; 
         currentItem = { text: selectedItem.text, structured: getStructuredFromText(selectedItem.text) };
-        game1CorrectCount = 0; // Reset số lần đếm đúng cho từ mới
+        game1CorrectCount = 0; 
         isForcingNextItem = false;
     }
     
@@ -716,7 +728,7 @@ function initGame() {
 function switchMode(mode, e) {
     if (ghepCauTimer) { clearInterval(ghepCauTimer); ghepCauTimer = null; }
     isLocking = false; currentMode = mode;
-    isForcingNextItem = true; // Chuyển chế độ game -> Đổi luôn từ mới
+    isForcingNextItem = true; 
     document.querySelectorAll('.btn-mode').forEach(b => b.classList.remove('active'));
     if (e && e.target) { let btn = e.target.closest('.btn-mode'); if(btn) btn.classList.add('active'); }
     initGame();
@@ -724,8 +736,6 @@ function switchMode(mode, e) {
 
 function showFeedback(msg, isSuccess) { const fb = document.getElementById('feedback'); fb.textContent = msg; fb.style.color = isSuccess ? "#2a9d8f" : "#e63946"; }
 function addScore(p) { score += p; document.getElementById('score-val').textContent = score; localStorage.setItem('player_score_' + myProfile.id, score); saveScore(myProfile.id, myProfile.emoji, myProfile.nickname, score); if (score > 0 && score % 50 === 0) triggerCelebration(); }
-
-// --- LOGIC CÁC MINI GAME ---
 
 // GAME 2: GHÉP CHỮ
 function setupGhepChu() {
@@ -849,7 +859,7 @@ function setupGhepCau() {
     }
 }
 
-// GAME 1: BẮN CHỮ (ĐÃ ĐƯỢC CHỈNH SỬA RANDOM THỨ TỰ HOÀN TOÀN + ĐẾM ĐỦ 5 LẦN ĐÚNG + BIẾN MẤT KHI CHẠM ĐÁY)
+// GAME 1: BẮN CHỮ
 function setupBanChu() {
     const instruct = document.getElementById('game-instruction'); 
     const panel = document.getElementById('game-panel'); 
@@ -858,7 +868,6 @@ function setupBanChu() {
     let target = currentItem.structured[Math.floor(Math.random() * currentItem.structured.length)]; 
     let targetTxt = target.join('');
     
-    // Hiển thị thanh tiến trình 5 lượt bắn trúng cho bé dễ theo dõi
     instruct.innerHTML = `🎮 <b>Game 1: Bắn Chữ</b> (Lượt trúng: ${game1CorrectCount}/5)<br><span>Tìm chữ đúng: <b style="color:var(--color-dau);font-size:1.1rem;">${escapeHTML(targetTxt)}</b></span>`;
     zone.innerHTML = ''; 
     
@@ -869,7 +878,6 @@ function setupBanChu() {
     function spawn() {
         if(isLocking || currentMode !== 'ban-chu') return;
         
-        // Tỷ lệ xuất hiện từ đúng là 35% ngẫu nhiên theo thời gian
         let xuatHienTuDung = Math.random() < 0.35; 
         let p;
         if(xuatHienTuDung) {
@@ -884,7 +892,6 @@ function setupBanChu() {
         el.className = 'falling-word'; 
         el.innerHTML = createSyllableHTML(p);
         
-        // Tạo ngẫu nhiên vị trí cột rơi (chia màn hình làm 3 làn đường)
         let sectionWidth = (panel.clientWidth - 80) / 3;
         let columnRandom = Math.floor(Math.random() * 3);
         let posX = (columnRandom * sectionWidth) + (Math.random() * (sectionWidth - 10));
@@ -900,14 +907,13 @@ function setupBanChu() {
                 addScore(15); 
                 el.remove();
                 
-                game1CorrectCount++; // Tăng số lượt trúng thành công
+                game1CorrectCount++; 
                 if(game1CorrectCount >= 5) {
                     showFeedback("Xuất sắc! Bé đã hoàn thành từ này 🎉", true);
                     isLocking = true;
                     setTimeout(() => { isLocking = false; initGame(); }, 1500);
                 } else {
                     showFeedback("Bắn trúng rồi! Bé tìm tiếp nhé! 🎯", true);
-                    // Cập nhật nhanh số lượt trên giao diện hướng dẫn
                     instruct.innerHTML = `🎮 <b>Game 1: Bắn Chữ</b> (Lượt trúng: ${game1CorrectCount}/5)<br><span>Tìm chữ đúng: <b style="color:var(--color-dau);font-size:1.1rem;">${escapeHTML(targetTxt)}</b></span>`;
                 }
             } else { 
@@ -918,28 +924,24 @@ function setupBanChu() {
         spawnedElements.push(el);
     }
     
-    // Tạo phần tử đầu tiên ngay lập tức
     spawn();
     
     loopInterval = setInterval(() => {
         if (currentMode !== 'ban-chu') return;
         tickCounter++;
 
-        // Di chuyển các khối chữ rơi xuống dưới
         for (let i = spawnedElements.length - 1; i >= 0; i--) { 
             let el = spawnedElements[i]; 
             let top = parseInt(el.style.top) || 0; 
             
-            // Nếu chữ rơi quá/chạm sát cạnh đáy khung game panel -> Biến mất hoàn toàn (Không đứng lại nữa)
             if (top > (panel.clientHeight - 42)) { 
                 el.remove(); 
                 spawnedElements.splice(i, 1); 
             } else { 
-                el.style.top = (top + 3) + 'px'; // Tốc độ rơi mượt mà
+                el.style.top = (top + 3) + 'px'; 
             }
         }
         
-        // Cứ mỗi khoảng thời gian (khoảng 1.5 giây), tự động tạo thêm chữ rơi ngẫu nhiên mới
         if(spawnedElements.length < 4 && tickCounter >= 20) {
             spawn();
             tickCounter = 0;
